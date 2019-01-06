@@ -1,0 +1,82 @@
+.octagon
+  width 204px
+  height 204px
+  position fixed
+  left 0
+  top 0
+  pointer-events none
+  // transform translate(-50%, -50%)
+
+  // transition transform .1s ease
+
+  &__container
+    width 100%
+    height 100% 
+
+    &--rotate
+      animation rotation 5s linear infinite
+
+    &--scale
+      transform scale(0)
+      visibility hidden
+      opacity 0
+
+      transition transform .3s ease, opacity .3s ease, visibility .3s ease
+
+      &.active
+        visibility visible
+        opacity 1
+        transform scale(1)
+
+  &__part
+    width 78px
+    height 188px
+    position absolute
+    left 50%
+    top 50%
+
+    background-color $white
+    
+    &:nth-child(1)
+      transform translate(-50%, -50%) rotate(22.5deg)
+    &:nth-child(2)
+      transform translate(-50%, -50%) rotate(-22.5deg)
+    &:nth-child(3)
+      transform translate(-50%, -50%) rotate(67.5deg)
+    &:nth-child(4)
+      transform translate(-50%, -50%) rotate(-67.5deg)
+
+    // & p
+    //   z-index 100
+    //   position absolute
+  
+  &__text
+    width 78px
+    height 188px
+    position absolute
+    left 50%
+    top 50%
+    display flex
+    flex-direction column
+    justify-content space-between
+    align-items center
+    padding 4px 0
+
+    color $background
+
+    &--1
+      transform translate(-50%, -50%) rotate(-22.5deg)
+      & p:nth-child(2)
+        transform rotate(180deg)
+
+    &--2
+      transform translate(-50%, -50%) rotate(22.5deg)
+      & p:nth-child(2)
+        transform rotate(180deg)
+        margin-bottom 2px
+
+
+@keyframes rotation {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}

@@ -1,0 +1,8 @@
+.leftSide {
+  width: 20vw;
+  height: calc(100% - 100px);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

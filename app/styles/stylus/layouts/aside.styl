@@ -1,0 +1,44 @@
+aside
+  width 6vw
+  height 100vh
+  position fixed
+  top 0
+  right 0
+  display flex
+  align-items center
+  justify-content center
+
+  font-size 12px
+
+  & .tips
+    width 60px
+    display flex
+    align-items center
+    opacity .6
+
+    &__arrow
+      width 7px
+      height 12px
+      position relative
+      margin-right 10px
+      
+      &::before
+        content ''
+        width 1px
+        height 8px
+        position absolute
+        left 50%
+
+        background-color $fonts
+
+        transform translate(-50%, 0px) rotate(45deg)
+      &::after
+        content ''
+        width 1px
+        height 8px
+        position absolute
+        left 50%
+
+        background-color $fonts
+        
+        transform translate(-50%, 5px) rotate(-45deg)

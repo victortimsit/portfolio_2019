@@ -1,0 +1,8 @@
+header li {
+  margin-bottom: 6px;
+  opacity: 0.5;
+}
+header li.active {
+  text-decoration: underline;
+  opacity: 1;
+}

@@ -1,0 +1,7 @@
+.projectsTitles {
+  flex: 1;
+  margin: 50px 0;
+}
+.projectsTitles__tab {
+  text-align: right;
+}

@@ -1,7 +1,8 @@
 body {
   line-height: 1.4;
-}
-h2 {
-  font-size: 16px;
-  font-family: Medium;
+  font-family: Regular;
+  font-size: 14px;
+  color: $fonts;
+  background-color: $background;
+  padding: 50px 6vw;
 }
