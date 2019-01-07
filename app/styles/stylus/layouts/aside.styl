@@ -14,7 +14,10 @@ aside
     width 60px
     display flex
     align-items center
-    opacity .6
+    // opacity .6
+    opacity 0
+    visibility hidden
+    transition opacity 300ms ease, visibility 300ms ease
 
     &__arrow
       width 7px
@@ -42,3 +45,24 @@ aside
         background-color $fonts
         
         transform translate(-50%, 5px) rotate(-45deg)
+
+    &.visible
+      opacity .6
+      visibility visible
+
+  & .tips--close
+    position absolute
+    flex-direction column-reverse
+    text-align center
+    margin-top 4px
+    align-items center
+    justify-content center
+
+    & .tips__arrow
+      transform rotate(-90deg)
+      height 100%
+      margin-top 8px
+    
+    &.visible
+      opacity .6
+      visibility visible

@@ -254,7 +254,6 @@ body {
 .rightSide {
   width: 56.6vw;
   margin-left: 31.4vw;
-  overflow: hidden;
 }
 aside {
   width: 6vw;
@@ -271,7 +270,9 @@ aside .tips {
   width: 60px;
   display: flex;
   align-items: center;
-  opacity: 0.6;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 300ms ease, visibility 300ms ease;
 }
 aside .tips__arrow {
   width: 7px;
@@ -297,6 +298,27 @@ aside .tips__arrow::after {
   background-color: #749ea3;
   transform: translate(-50%, 5px) rotate(-45deg);
 }
+aside .tips.visible {
+  opacity: 0.6;
+  visibility: visible;
+}
+aside .tips--close {
+  position: absolute;
+  flex-direction: column-reverse;
+  text-align: center;
+  margin-top: 4px;
+  align-items: center;
+  justify-content: center;
+}
+aside .tips--close .tips__arrow {
+  transform: rotate(-90deg);
+  height: 100%;
+  margin-top: 8px;
+}
+aside .tips--close.visible {
+  opacity: 0.6;
+  visibility: visible;
+}
 header li {
   margin-bottom: 6px;
   opacity: 0.5;
@@ -317,6 +339,10 @@ header li.active {
 }
 .projectsPreviews__item {
   margin-bottom: 50px;
+  transition: transform 300ms ease;
+}
+.projectsPreviews__item.opened {
+  transform: translateX(-31.4vw);
 }
 .projectsPreviews__category {
   margin-bottom: 6px;
@@ -331,6 +357,7 @@ header li.active {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  pointer-events: none;
 }
 .contact {
   opacity: 0.6;
@@ -438,4 +465,37 @@ header li.active {
   to {
     transform: rotate(-360deg);
   }
+}
+.cursor {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+.cursor__circle {
+  width: 100%;
+  height: 100%;
+  background-color: #385a5f;
+  border-radius: 50%;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(20);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+.cursor__circle.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+.cursor__circle.scale {
+  transform: scale(1.8);
+  opacity: 0.8;
+}
+.cursor__circle.fill {
+  transform: scale(8);
+  opacity: 1;
+  transition: transform 300ms linear;
 }
