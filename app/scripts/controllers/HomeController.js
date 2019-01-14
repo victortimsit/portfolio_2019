@@ -26,8 +26,9 @@ class HomeController
       const data = request.response
 
       this._craftProjectsTitles(data)
-      
+
       new ScrollBar()
+      new Octagon()
     }
   }
 

@@ -1,2 +1,1 @@
-new Octagon()
 new HomeController()
