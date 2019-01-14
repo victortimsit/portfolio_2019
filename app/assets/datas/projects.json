@@ -4,12 +4,12 @@
       {
         "category": "Agency",
         "title": "Project number one",
-        "description": "Armolator le philosphe des lumières"
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/keyboardGame.jpg"
       },
       {
         "category": "School",
         "title": "Project number two",
-        "description": "Victor l'humaniste des lumières"
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/lamontgolfiere.jpg"
       }
     ]
 }

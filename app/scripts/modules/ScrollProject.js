@@ -1,5 +1,3 @@
-import data from '../../assets/datas/projects'
-
 class ScrollProject
 {
   constructor()
@@ -63,5 +61,3 @@ class ScrollProject
 }
 
 new ScrollProject()
-
-console.log(data)
