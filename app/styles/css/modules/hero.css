@@ -1,0 +1,19 @@
+.hero {
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+}
+.hero__title {
+  margin-bottom: 50px;
+  width: 400px;
+  font-family: SemiBold;
+}
+.hero__category {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-family: SemiBold;
+  opacity: 0.6;
+}

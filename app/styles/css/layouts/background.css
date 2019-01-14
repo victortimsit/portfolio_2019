@@ -1,0 +1,35 @@
+.background {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+.background__image {
+  width: 110%;
+  height: 106%;
+  margin-left: -5%;
+  margin-top: -3%;
+}
+.background__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.background__gradient {
+  width: 112%;
+  height: 106%;
+  margin-left: -6%;
+  margin-top: -3%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.background__gradient--linear {
+  background: linear-gradient(180deg, rgba(0,28,32,0) 0%, $background 96.69%);
+}
+.background__gradient--radial {
+  background: radial-gradient(454.42px at 50% 50%, rgba(0,28,32,0.67) 0%, $background 100%);
+  opacity: 0.6;
+}

@@ -1,0 +1,9 @@
+.description {
+  width: 43vw;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 18px;
+  font-family: SemiBold;
+  opacity: 0.8;
+  line-height: 1.6;
+}

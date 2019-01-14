@@ -6,3 +6,12 @@ body {
   background-color: $background;
   padding: 50px 6vw;
 }
+h1 {
+  font-size: 40px;
+  font-family: SemiBold;
+}
+h2 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-family: SemiBold;
+}

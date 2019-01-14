@@ -139,6 +139,11 @@ class Octagon
 
       this.bool.linksIsActive = true
       this.bool.descriptionIsOpen = false
+
+      if(!this.bool.descriptionIsOpen)
+      {
+        this._handleOctagon()
+      }
     }
   }
 
