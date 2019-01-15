@@ -6,4 +6,6 @@
   font-family: SemiBold;
   opacity: 0.8;
   line-height: 1.6;
+  will-change: transform;
+  transition: transform $projectScrollTransitionDuration ease;
 }

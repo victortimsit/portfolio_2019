@@ -7,6 +7,10 @@
   src: url("../../assets/fonts/Inter-UI-Bold.otf");
 }
 @font-face {
+  font-family: "Black";
+  src: url("../../assets/fonts/Inter-UI-Black.otf");
+}
+@font-face {
   font-family: "SemiBold";
   src: url("../../assets/fonts/Inter-UI-SemiBold.otf");
 }

@@ -6,6 +6,7 @@ class HomeController
     {
       projectsTitles: document.querySelector('.projectsTitles__list'),
       projectsPreviews: document.querySelector('.projectsPreviews'),
+      links: []
     }
 
     this.data
@@ -25,14 +26,26 @@ class HomeController
     request.onload = () => {
       const data = request.response
 
-      this._craftProjectsTitles(data)
+      this._craftProjectsDOM(data)
+      this._listeners(data)
 
       new ScrollBar()
       new Octagon()
     }
   }
 
-  _craftProjectsTitles(_data)
+  _listeners(_data)
+  {
+    const data = _data.projects
+
+    for(let i = 0; i < this.$.links.length; i++)
+    {
+      this.$.links[i].addEventListener('click', () => { this._handlePushLocalStorage(i) })
+      console.log(data[i])
+    }
+  }
+
+  _craftProjectsDOM(_data)
   {
     const data = _data.projects
 
@@ -49,10 +62,13 @@ class HomeController
         image: document.createElement('img')
       }
 
+      this.$.links.push(projectDOM.link)
+
       // Add data
       projectDOM.title.innerText = data[i].title
       projectDOM.category.innerText = data[i].category
       projectDOM.image.setAttribute('src', data[i].thumbnail)
+      projectDOM.link.setAttribute('href', '/project.html')
 
       // Add class
       projectDOM.previewItem.classList.add('projectsPreviews__item')
@@ -68,5 +84,11 @@ class HomeController
       this.$.projectsPreviews.appendChild(projectDOM.previewItem)
       this.$.projectsTitles.appendChild(projectDOM.title)
     }
+
+  }
+
+  _handlePushLocalStorage(_projectIndex)
+  {
+    localStorage.setItem('projectIndex', _projectIndex)
   }
 }

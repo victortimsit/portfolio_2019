@@ -10,3 +10,10 @@ section {
   height: 100%;
   object-fit: cover;
 }
+.sticky {
+  position: fixed;
+  top: 29px;
+  width: 65vw;
+  left: 50%;
+  transform: translateX(-50%);
+}

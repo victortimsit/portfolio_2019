@@ -7,6 +7,10 @@
   src: url("../../assets/fonts/Inter-UI-Bold.otf");
 }
 @font-face {
+  font-family: "Black";
+  src: url("../../assets/fonts/Inter-UI-Black.otf");
+}
+@font-face {
   font-family: "SemiBold";
   src: url("../../assets/fonts/Inter-UI-SemiBold.otf");
 }
@@ -245,8 +249,9 @@ body {
   padding: 50px 6vw;
 }
 h1 {
-  font-size: 40px;
-  font-family: SemiBold;
+  font-size: 90px;
+  font-family: Black;
+  text-transform: uppercase;
 }
 h2 {
   margin-bottom: 10px;
@@ -339,6 +344,8 @@ aside .tips--close.visible {
   left: 0;
   top: 0;
   z-index: -1;
+  transition: transform 150ms ease;
+  will-change: transform;
 }
 .background__image {
   width: 110%;
@@ -353,9 +360,9 @@ aside .tips--close.visible {
 }
 .background__gradient {
   width: 112%;
-  height: 106%;
+  height: 108%;
   margin-left: -6%;
-  margin-top: -3%;
+  margin-top: -4%;
   position: absolute;
   left: 0;
   top: 0;
@@ -364,8 +371,10 @@ aside .tips--close.visible {
   background: linear-gradient(180deg, rgba(0,28,32,0) 0%, #001c20 96.69%);
 }
 .background__gradient--radial {
-  background: radial-gradient(454.42px at 50% 50%, rgba(0,28,32,0.67) 0%, #001c20 100%);
-  opacity: 0.6;
+  background: radial-gradient(470px at 50% 50%, rgba(0,28,32,0.85) 0%, #001c20 100%);
+  opacity: 0.9;
+  transition: opacity 150ms ease;
+  will-change: opacity;
 }
 .content {
   width: 65vw;
@@ -382,6 +391,13 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.sticky {
+  position: fixed;
+  top: 29px;
+  width: 65vw;
+  left: 50%;
+  transform: translateX(-50%);
 }
 footer {
   text-align: center;
@@ -603,14 +619,15 @@ header li.active {
   height: calc(100vh - 50px);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   text-align: center;
+  will-change: transform;
 }
 .hero__title {
   margin-bottom: 50px;
-  width: 400px;
-  font-family: SemiBold;
+  width: 5em;
+  word-break: break-word;
 }
 .hero__category {
   margin-bottom: 10px;
@@ -626,6 +643,8 @@ header li.active {
   font-family: SemiBold;
   opacity: 0.8;
   line-height: 1.6;
+  will-change: transform;
+  transition: transform 150ms ease;
 }
 .button {
   border: 2px solid #749ea3;
