@@ -31,7 +31,7 @@ class ScrollProject
       sectionHeight: this.$.sections[0].offsetHeight
     }
 
-    console.log(this.params.sectionHeight)
+    // console.log(this.params.sectionHeight)
     
     this._listener()
   }

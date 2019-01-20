@@ -21,11 +21,12 @@ class Router
 
     this.cached = {}
 
+    this.openedProjectIndex = Number
+
     this._listeners()
     this._checkUrl()
     this._disabledLinks()
-    // this._pushState(this.initalResponse, '/')
-    this._runController('')
+    this._runController('/')
   }
 
   _listeners()
@@ -45,6 +46,8 @@ class Router
   _handleLinks(_event, _link)
   {
     _event.preventDefault()
+
+    if(_link.dataset.index) this.openedProjectIndex = _link.dataset.index
   
     const path = _link.getAttribute('href')
 
@@ -95,13 +98,14 @@ class Router
 
   _craftAjaxDOM(_path)
   { 
+    let fromPath = _path
     // Ajax request
-    this._getPage('pages' + _path + '.html', 'body', '.view', _path)
+    if(_path.includes('projects/')) fromPath = '/project'
+    this._getPage('pages' + fromPath + '.html', 'body', '.view', _path)
   }
 
   _pushState(_response, _path)
   {
-    console.log(_response)
     window.history.pushState({ DOM: _response.DOM, documentTitle: _response.title },"", _path)
   }
 
@@ -147,12 +151,16 @@ class Router
 
   _runController(_path = '/')
   {
+    if(_path.includes('projects/')) _path = '/project'
+
     switch (_path) {
       case '/':
-        // console.log('run home controller')
+        console.log('run home controller')
+        new ScrollBar()
         break
-      case '/project1':
+      case '/project':
         // console.log('run project1 controller')
+        new ProjectController(this.openedProjectIndex)
         break
       case '/project2':
         // console.log('run project2 controller')
@@ -193,6 +201,7 @@ class Router
   {
     if(_state)
     {
+      console.log('cursor wait')
       document.body.style.cursor = 'wait'
   
       for(let i = 0; i < this.$.links.length; i++)
@@ -202,6 +211,7 @@ class Router
     }
     else
     {
+      console.log('cursor')
       document.body.style.cursor = 'auto'
   
       for(let i = 0; i < this.$.links.length; i++)

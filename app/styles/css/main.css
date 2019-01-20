@@ -467,7 +467,6 @@ header li.active {
 }
 .projectsPreviews__image {
   height: 34vw;
-  cursor: pointer;
 }
 .projectsPreviews__image img {
   width: 100%;

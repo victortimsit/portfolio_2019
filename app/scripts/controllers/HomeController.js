@@ -29,7 +29,6 @@ class HomeController
       this._craftProjectsDOM(data)
       // this._listeners(data)
 
-      new ScrollBar()
       // new Octagon()
       new Router()
     }
@@ -68,7 +67,8 @@ class HomeController
       projectDOM.title.innerText = data[i].title
       projectDOM.category.innerText = data[i].category
       projectDOM.image.setAttribute('src', data[i].thumbnail)
-      projectDOM.link.setAttribute('href', '/project')
+      projectDOM.link.setAttribute('href', '/projects/' + this._toCamelCase(data[i].title))
+      projectDOM.link.setAttribute('data-index', i)
 
       // Add class
       projectDOM.previewItem.classList.add('projectsPreviews__item')
@@ -90,5 +90,13 @@ class HomeController
   _handlePushLocalStorage(_projectIndex)
   {
     localStorage.setItem('projectIndex', _projectIndex)
+  }
+
+  _toCamelCase(_string)
+  {
+    return _string
+      .replace(/\s(.)/g, function($1) { return $1.toUpperCase() })
+      .replace(/\s/g, '')
+      .replace(/^(.)/, function($1) { return $1.toLowerCase() })
   }
 }
