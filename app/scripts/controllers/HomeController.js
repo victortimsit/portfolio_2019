@@ -27,10 +27,11 @@ class HomeController
       const data = request.response
 
       this._craftProjectsDOM(data)
-      this._listeners(data)
+      // this._listeners(data)
 
       new ScrollBar()
-      new Octagon()
+      // new Octagon()
+      new Router()
     }
   }
 
@@ -41,7 +42,6 @@ class HomeController
     for(let i = 0; i < this.$.links.length; i++)
     {
       this.$.links[i].addEventListener('click', () => { this._handlePushLocalStorage(i) })
-      console.log(data[i])
     }
   }
 
@@ -68,7 +68,7 @@ class HomeController
       projectDOM.title.innerText = data[i].title
       projectDOM.category.innerText = data[i].category
       projectDOM.image.setAttribute('src', data[i].thumbnail)
-      projectDOM.link.setAttribute('href', '/project.html')
+      projectDOM.link.setAttribute('href', '/project')
 
       // Add class
       projectDOM.previewItem.classList.add('projectsPreviews__item')

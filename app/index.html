@@ -12,75 +12,82 @@
     <!--endbuild-->
   </head>
   <body>
-    <div class="projects">
-      <div class="leftSide">
-        <header>
-          <ul>
-            <li class="active">Projects</li>
-            <li>About</li>
-          </ul>
-        </header>
-        <div class="projectsTitles">
-            <div class="projectsTitles__tab">
-                <div class="indicator"></div>
-                <ul class="projectsTitles__list">
-                  <!-- <li>Project number one</li> -->
-                </ul>
-            </div>
-        </div>
-        <div class="contact">
-          <a href="mailto:victortimsit.contact@gmail.com">victortimsit.contact@gmail.com</a>
-        </div>
-      </div>
-      <div class="rightSide">
-        <ul class="projectsPreviews">
-          <!-- <li class="projectsPreviews__item">
-            <div class="projectsPreviews__category">School project</div>
-            <a href="https://www.google.fr" target="_blank">
-              <div class="projectsPreviews__image">
-                <img src="https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/keyboardGame.jpg" alt="keyboard game">
+    <div class="view">
+      <div class="projects">
+        <div class="leftSide">
+          <header>
+            <ul>
+              <li class="active">Projects</li>
+              <li>About</li>
+            </ul>
+          </header>
+          <div class="projectsTitles">
+              <div class="projectsTitles__tab">
+                  <div class="indicator"></div>
+                  <ul class="projectsTitles__list">
+                    <!-- <li>Project number one</li> -->
+                  </ul>
               </div>
-            </a>
-          </li> -->
-        </ul>
-      </div>
-      <aside>
-        <div class="tips tips--open visible">
-          <div class="tips__arrow"></div>
-          <p>Hold to see details</p>
-        </div>
-        <div class="tips tips--close">
-          <div class="tips__arrow"></div>
-          <p>Scroll to close details</p>
-        </div>
-      </aside>
-      <div class="octagon">
-        <div class="octagon__container octagon__container--scale">
-          <div class="octagon__container octagon__container--rotate">
-            <div class="octagon__part"></div>
-            <div class="octagon__part"></div>
-            <div class="octagon__part"></div>
-            <div class="octagon__part"></div>
-            <div class="octagon__text octagon__text--1">
-              <p>Click to</p>
-              <p>Hold to</p>
-            </div>
-            <div class="octagon__text octagon__text--2">
-              <p>discover</p>
-              <p>see details</p>
-            </div>
+          </div>
+          <div class="contact">
+            <a class="external" href="mailto:victortimsit.contact@gmail.com">victortimsit.contact@gmail.com</a>
           </div>
         </div>
-        <div class="cursor">
-          <div class="cursor__circle"></div>
+        <div class="rightSide">
+          <ul class="projectsPreviews">
+            <!-- <li class="projectsPreviews__item">
+              <div class="projectsPreviews__category">School project</div>
+              <a href="https://www.google.fr" target="_blank">
+                <div class="projectsPreviews__image">
+                  <img src="https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/keyboardGame.jpg" alt="keyboard game">
+                </div>
+              </a>
+            </li> -->
+          </ul>
+        </div>
+        <aside>
+          <div class="tips tips--open visible">
+            <div class="tips__arrow"></div>
+            <p>Hold to see details</p>
+          </div>
+          <div class="tips tips--close">
+            <div class="tips__arrow"></div>
+            <p>Scroll to close details</p>
+          </div>
+        </aside>
+        <div class="octagon">
+          <div class="octagon__container octagon__container--scale">
+            <div class="octagon__container octagon__container--rotate">
+              <div class="octagon__part"></div>
+              <div class="octagon__part"></div>
+              <div class="octagon__part"></div>
+              <div class="octagon__part"></div>
+              <div class="octagon__text octagon__text--1">
+                <p>Click to</p>
+                <p>Hold to</p>
+              </div>
+              <div class="octagon__text octagon__text--2">
+                <p>discover</p>
+                <p>see details</p>
+              </div>
+            </div>
+          </div>
+          <div class="cursor">
+            <div class="cursor__circle"></div>
+          </div>
         </div>
       </div>
     </div>
     <!--build:js scripts/main.min.js -->
     <script src="scripts/controllers/HomeController.js"></script>
+    <script src="scripts/Router.js"></script>
     <script src="scripts/modules/Octagon.js"></script>
     <script src="scripts/modules/ScrollBar.js"></script>
     <script src="scripts/script.js"></script>
+
+    <!-- Projects scripts -->
+    <script src="scripts/controllers/ProjectController.js"></script>
+    <script src="scripts/modules/ScrollProject.js"></script>
     <!--endbuild-->
   </body>
 </html>

@@ -123,6 +123,4 @@ class ScrollProject
     console.log(this.params.sectionHeight)
   }
 }
-
-new ScrollProject()
-new ProjectController()
+// new ProjectController()

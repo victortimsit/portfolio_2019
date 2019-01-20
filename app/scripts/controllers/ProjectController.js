@@ -26,16 +26,8 @@ class ProjectController
 
       // this._craftProjectsDOM(data)
       // this._listeners(data)
-      this._addHash(data)
       // this._initData(data)
     }
-  }
-
-  _addHash(_data)
-  {
-    const hash = _data.projects[this.params.projectIndex].title.replace(/\s/g, '')
-
-    document.location.hash = hash
   }
 
   // init data function
