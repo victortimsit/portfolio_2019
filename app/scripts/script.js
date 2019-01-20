@@ -1,1 +1,1 @@
-new HomeController()
+new IndexController()

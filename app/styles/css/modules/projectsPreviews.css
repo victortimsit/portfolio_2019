@@ -16,6 +16,9 @@
 .projectsPreviews__image {
   height: 34vw;
 }
+.projectsPreviews__image.opened {
+  transform: translateX(-309px) translateY(-154px) scale(3);
+}
 .projectsPreviews__image img {
   width: 100%;
   height: 100%;

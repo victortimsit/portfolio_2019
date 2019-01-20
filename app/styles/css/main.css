@@ -247,6 +247,7 @@ body {
   color: #749ea3;
   background-color: #001c20;
   padding: 50px 6vw;
+  overflow-x: hidden;
 }
 h1 {
   font-size: 90px;
@@ -467,6 +468,9 @@ header li.active {
 }
 .projectsPreviews__image {
   height: 34vw;
+}
+.projectsPreviews__image.opened {
+  transform: translateX(-309px) translateY(-154px) scale(3);
 }
 .projectsPreviews__image img {
   width: 100%;
