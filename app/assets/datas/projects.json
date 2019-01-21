@@ -4,47 +4,62 @@
       {
         "category": "Agency",
         "title": "Project number one",
-        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/keyboardGame.jpg"
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/keyboardGame.jpg",
+        "description": "Ceci est un paragraphe décrivant la nature du projet, ses enjeux, ses objectifs, ainsi que ses conditions de réalisation et ses particularités",
+        "content": 
+        [
+          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/keyboardGame.jpg"],
+          ["p", "test paragraphe dans fiche projet"],
+          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/keyboardGame.jpg"]
+        ]
       },
       {
         "category": "School",
         "title": "Project number two",
-        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/lamontgolfiere.jpg"
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/lamontgolfiere.jpg",
+        "description": "Ceci est un paragraphe décrivant la nature du projet, ses enjeux, ses objectifs, ainsi que ses conditions de réalisation et ses particularités"
       },
       {
         "category": "Agency",
         "title": "Project number three",
-        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/player.jpg"
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/player.jpg",
+        "description": "Ceci est un paragraphe décrivant la nature du projet, ses enjeux, ses objectifs, ainsi que ses conditions de réalisation et ses particularités"
       },
       {
         "category": "Agency",
         "title": "Project number four",
-        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/keyboardGame.jpg"
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/keyboardGame.jpg",
+        "description": "Ceci est un paragraphe décrivant la nature du projet, ses enjeux, ses objectifs, ainsi que ses conditions de réalisation et ses particularités"
       },
       {
         "category": "School",
         "title": "Project number five",
-        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/lamontgolfiere.jpg"
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/lamontgolfiere.jpg",
+        "description": "Ceci est un paragraphe décrivant la nature du projet, ses enjeux, ses objectifs, ainsi que ses conditions de réalisation et ses particularités"
       },
       {
         "category": "Agency",
         "title": "Project number six",
-        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/player.jpg"
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/player.jpg",
+        "description": "Ceci est un paragraphe décrivant la nature du projet, ses enjeux, ses objectifs, ainsi que ses conditions de réalisation et ses particularités"
       },
       {
         "category": "Agency",
         "title": "Project number seven",
-        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/keyboardGame.jpg"
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/keyboardGame.jpg",
+        "description": "Ceci est un paragraphe décrivant la nature du projet, ses enjeux, ses objectifs, ainsi que ses conditions de réalisation et ses particularités"
       },
       {
         "category": "School",
         "title": "Project number eight",
-        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/lamontgolfiere.jpg"
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/lamontgolfiere.jpg",
+        "description": "Ceci est un paragraphe décrivant la nature du projet, ses enjeux, ses objectifs, ainsi que ses conditions de réalisation et ses particularités"
       },
       {
         "category": "Agency",
         "title": "Project number nine",
-        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/player.jpg"
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/player.jpg",
+        "description": "Ceci est un paragraphe décrivant la nature du projet, ses enjeux, ses objectifs, ainsi que ses conditions de réalisation et ses particularités"
       }
     ]
 }
