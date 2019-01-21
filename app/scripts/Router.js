@@ -23,8 +23,8 @@ class Router
 
     this.openedProjectIndex = Number
 
-    // this._listeners() // DISABLED ROUTER
-    // this._checkUrl()
+    this._listeners() // DISABLED ROUTER
+    this._checkUrl()
     this._disabledLinks()
     this._runController('/')
   }
@@ -51,7 +51,7 @@ class Router
   
     const path = _link.getAttribute('href')
 
-    // this._craftAjaxDOM(path)
+    this._craftAjaxDOM(path)
   }
 
   _checkUrl()

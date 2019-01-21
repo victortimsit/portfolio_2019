@@ -6,6 +6,7 @@ class IndexController
     {
       projectsTitles: document.querySelector('.projectsTitles__list'),
       projectsPreviews: document.querySelector('.projectsPreviews'),
+      projectItem: document.querySelector('.projectsPreviews__item'),
       links: []
     }
 
@@ -34,62 +35,33 @@ class IndexController
     }
   }
 
-  _listeners(_data)
-  {
-    const data = _data.projects
-
-    for(let i = 0; i < this.$.links.length; i++)
-    {
-      this.$.links[i].addEventListener('click', () => { this._handlePushLocalStorage(i) })
-    }
-  }
-
   _craftProjectsDOM(_data)
   {
     const data = _data.projects
 
+    // Remove node model
+    this.$.projectItem.remove()
+
     for(let i = 0; i < data.length; i++)
     {
-      // Create project DOM
-      const projectDOM = 
-      {
-        title: document.createElement('li'),
-        previewItem: document.createElement('li'),
-        category: document.createElement('div'),
-        link: document.createElement('a'),
-        previewImage: document.createElement('div'),
-        image: document.createElement('img')
-      }
+      const item = {}
+      
+      item.node = this.$.projectItem.cloneNode(true)
+      
+      item.category = item.node.querySelector('.projectsPreviews__category')
+      item.link = item.node.querySelector('a')
+      item.img = item.link.querySelector('img')
+      item.title = document.createElement('li')
 
-      this.$.links.push(projectDOM.link)
+      item.category.innerText = data[i].category
+      item.link.setAttribute('href', '/projects/' + this._toCamelCase(data[i].title))
+      item.link.setAttribute('data-index', i)
+      item.img.setAttribute('src', data[i].thumbnail)
+      item.title.innerText = data[i].title
 
-      // Add data
-      projectDOM.title.innerText = data[i].title
-      projectDOM.category.innerText = data[i].category
-      projectDOM.image.setAttribute('src', data[i].thumbnail)
-      projectDOM.link.setAttribute('href', '/projects/' + this._toCamelCase(data[i].title))
-      projectDOM.link.setAttribute('data-index', i)
-
-      // Add class
-      projectDOM.previewItem.classList.add('projectsPreviews__item')
-      projectDOM.category.classList.add('projectsPreviews__category')
-      projectDOM.previewImage.classList.add('projectsPreviews__image')
-
-      // AppendChild
-      projectDOM.previewItem.appendChild(projectDOM.category)
-      projectDOM.previewItem.appendChild(projectDOM.link)
-      projectDOM.link.appendChild(projectDOM.previewImage)
-      projectDOM.previewImage.appendChild(projectDOM.image)
-
-      this.$.projectsPreviews.appendChild(projectDOM.previewItem)
-      this.$.projectsTitles.appendChild(projectDOM.title)
+      this.$.projectsPreviews.appendChild(item.node)
+      this.$.projectsTitles.appendChild(item.title)
     }
-
-  }
-
-  _handlePushLocalStorage(_projectIndex)
-  {
-    localStorage.setItem('projectIndex', _projectIndex)
   }
 
   _toCamelCase(_string)
