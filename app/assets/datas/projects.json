@@ -6,6 +6,7 @@
         "title": "Project number one",
         "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/keyboardGame.jpg",
         "description": "Ceci est un paragraphe décrivant la nature du projet, ses enjeux, ses objectifs, ainsi que ses conditions de réalisation et ses particularités",
+        "url": "https://google.fr",
         "content": 
         [
           ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/keyboardGame.jpg"],
