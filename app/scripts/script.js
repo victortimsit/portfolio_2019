@@ -1,1 +1,2 @@
-new IndexController()
+// new IndexController()
+new Router()

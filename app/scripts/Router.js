@@ -4,7 +4,8 @@ class Router
   {
     this.$ =
     {
-      links: document.querySelectorAll('a:not(.external)'), // Not if external link
+      // links: document.querySelectorAll('a:not(.external)'), // Not if external link
+      links: [],
       content: document.querySelector('.view'),
     }
 
@@ -13,20 +14,20 @@ class Router
       documentTitle: document.title
     }
 
-    this.initalResponse = 
-    {
-      DOM: this.$.content.innerHTML,
-      title: this.datas.documentTitle
-    }
+    // this.initalResponse = 
+    // {
+    //   DOM: this.$.content.innerHTML,
+    //   title: this.datas.documentTitle
+    // }
 
     this.cached = {}
 
     this.openedProjectIndex = Number
 
-    this._listeners() // DISABLED ROUTER
+    this._listeners()
     this._checkUrl()
-    this._disabledLinks()
-    this._runController('/')
+    // this._disabledLinks()
+    // this._runController('/')
   }
 
   _listeners()
@@ -58,21 +59,24 @@ class Router
   {
     const pathname = window.location.pathname
     let validSrc = false
-
+    
     for(let i = 0; i < this.$.links.length; i++)
     {
       const src = this.$.links[i].getAttribute('href')
-
+      
       if(src == pathname)
       {
         this._craftAjaxDOM(pathname)
         validSrc = true
-
+        
         break
       }
     }
-
-    if(!validSrc) this._pushState(this.initalResponse, '/')
+    
+    if(!validSrc) // if route go home
+    {
+      this._httpRequest()
+    } 
   }
 
   _dontLeave()
@@ -149,6 +153,69 @@ class Router
     }
   }
 
+  _httpRequest()
+  {
+    const requestURL = 'https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/datas/projects.json'
+    const request = new XMLHttpRequest()
+
+    request.open('GET', requestURL)
+    request.responseType = 'json'
+    request.send()
+
+    request.onload = () => {
+      const data = request.response
+
+      this._craftProjectsDOM(data)
+
+      // new Router()
+    }
+  }
+
+  _craftProjectsDOM(_data)
+  {
+    const data = _data.projects
+
+    const $ = 
+    {
+      projectsTitles: document.querySelector('.projectsTitles__list'),
+      projectsPreviews: document.querySelector('.projectsPreviews'),
+      projectItem: document.querySelector('.projectsPreviews__item'),
+    }
+
+    // Remove node model
+    $.projectItem.remove()
+
+    for(let i = 0; i < data.length; i++)
+    {
+      const item = {}
+      
+      item.node = $.projectItem.cloneNode(true)
+      
+      item.category = item.node.querySelector('.projectsPreviews__category')
+      item.link = item.node.querySelector('a')
+      item.img = item.link.querySelector('img')
+      item.title = document.createElement('li')
+
+      this.$.links.push(item.link)
+
+      item.category.innerText = data[i].category
+      item.link.setAttribute('href', '/projects/' + this._toCamelCase(data[i].title))
+      item.link.setAttribute('data-index', i)
+      item.img.setAttribute('src', data[i].thumbnail)
+      item.title.innerText = data[i].title
+
+      $.projectsPreviews.appendChild(item.node)
+      $.projectsTitles.appendChild(item.title)
+    }
+
+    const DOM = document.querySelector('.view').innerHTML
+    const documentTitle = document.title
+
+    this._disabledLinks()
+    this._runController('/')
+    this._pushState({ DOM: DOM, title: documentTitle }, '/')
+  }
+
   _runController(_path = '/')
   {
     if(_path.includes('projects/')) _path = '/project'
@@ -183,8 +250,6 @@ class Router
 
       this.cached.images.push(cachedImage)
     }
-
-    console.log(this.cached.images)
   }
 
   _pullImage()
@@ -219,5 +284,13 @@ class Router
         this.$.links[i].style.cursor = 'auto'
       }
     }
+  }
+
+  _toCamelCase(_string)
+  {
+    return _string
+      .replace(/\s(.)/g, function($1) { return $1.toUpperCase() })
+      .replace(/\s/g, '')
+      .replace(/^(.)/, function($1) { return $1.toLowerCase() })
   }
 }
