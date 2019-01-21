@@ -458,9 +458,6 @@ header li.active {
   margin-bottom: 50px;
   transition: transform 300ms ease;
 }
-.projectsPreviews__item.opened {
-  transform: translateX(-31.4vw);
-}
 .projectsPreviews__category {
   margin-bottom: 6px;
   opacity: 0.6;
@@ -468,9 +465,6 @@ header li.active {
 }
 .projectsPreviews__image {
   height: 34vw;
-}
-.projectsPreviews__image.opened {
-  transform: translateX(-309px) translateY(-154px) scale(3);
 }
 .projectsPreviews__image img {
   width: 100%;

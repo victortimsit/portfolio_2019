@@ -13,6 +13,7 @@ class OpenedTransitions
     }
 
     this.openedProjectPreview
+    this.currentScale
 
     this._listeners()
   }
@@ -31,8 +32,9 @@ class OpenedTransitions
 
   _handleProjectOpened(_currentPreview, _isResize = false)
   {
-    this.openedProjectPreview = _currentPreview
+    // this.openedProjectPreview = _currentPreview
     this.bool.projectOpened = true
+
 
     if(!_isResize) _currentPreview.style.transition = 'transform 300ms ease'
 
@@ -53,6 +55,8 @@ class OpenedTransitions
     width * scaleYRatio < windowWidth ? scaleRatio = scaleXRatio : scaleRatio = scaleYRatio
 
     _currentPreview.style.transform = `translate(${-translateXRatio}px, ${-translateYRatio + window.scrollY}px) scale(${scaleRatio})`
+
+    // this.currentScale = scaleRatio
   }
 
   _handleProjectClosed(_currentPreview)
@@ -67,5 +71,8 @@ class OpenedTransitions
   _disabledTransition(_element)
   {
     _element.style.transition = 'none'
+    // this.openedProjectPreview.classList.add('activePreview')
+    // console.log(this.currentTransform.scale)
+    // this.openedProjectPreview.style.transform = `translate(-50%, -50%) scale(${this.currentScale})`
   }
 }

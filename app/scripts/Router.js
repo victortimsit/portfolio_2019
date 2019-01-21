@@ -105,6 +105,7 @@ class Router
     let fromPath = _path
     // Ajax request
     if(_path.includes('projects/')) fromPath = '/project'
+    // this._getPage('pages' + fromPath + '.html', 'body', 'body', _path)
     this._getPage('pages' + fromPath + '.html', 'body', '.view', _path)
   }
 
