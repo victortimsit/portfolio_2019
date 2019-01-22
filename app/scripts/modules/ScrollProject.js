@@ -12,7 +12,8 @@ class ScrollProject
       description: document.querySelector('.description'),
       hero: document.querySelector('.hero'),
       footer: document.querySelector('footer'),
-      sections: document.querySelectorAll('section'),
+      // sections: document.querySelectorAll('section'),
+      fixedSection: document.querySelector('.section--fixed'),
       sectionsImage: document.querySelectorAll('.section__image'),
       content: document.querySelector('.content'),
     }
@@ -27,8 +28,8 @@ class ScrollProject
       scaleBackground: { ending: .8, scroll: 1/2 },
       scaleHero: { ending: .8, scroll: 1/3 },
       opacityRadial: { ending: 1, scroll: 1/4 },
-      sectionOffset: this.$.sections[0].offsetTop,
-      sectionHeight: this.$.sections[0].offsetHeight
+      sectionOffset: this.$.fixedSection.offsetTop,
+      sectionHeight: this.$.fixedSection.offsetHeight
     }
 
     // console.log(this.params.sectionHeight)
@@ -42,11 +43,11 @@ class ScrollProject
     window.addEventListener('resize', () => { this._handleUpdateParams() })
   }
 
-  _initSectionsStyle()
-  {
-    this.$.sections[0].style.height = `${this.params.sectionHeight}px`
-    this.$.sectionsImage[0].style.height = `${this.params.sectionHeight}px`
-  }
+  // _initSectionsStyle()
+  // {
+  //   this.$.sections[0].style.height = `${this.params.sectionHeight}px`
+  //   this.$.sectionsImage[0].style.height = `${this.params.sectionHeight}px`
+  // }
 
   _handleScroll(_event)
   {
@@ -61,7 +62,7 @@ class ScrollProject
     this._scaleHero(ratio.hero)
     this._opacityRadialGradient(ratio.radial)
     this._translateDescription()
-    // this._stickySection()
+    this._stickySection()
   }
 
   _scaleBackground(_ratio)
@@ -100,27 +101,47 @@ class ScrollProject
     // console.log(window.scrollY)
   }
 
+  // _stickySection()
+  // {
+  //   if(this.params.sectionOffset != this.$.fixedSection.offsetTop) this.params.sectionOffset = this.$.fixedSection.offsetTop
+
+  //   if(window.scrollY >= this.params.sectionOffset - ((window.innerHeight - this.params.sectionHeight) / 2))
+  //   // if(window.scrollY >= this.params.sectionOffset - (window.innerHeight))
+  //   {
+  //     this.$.sectionsImage[0].classList.add('sticky')
+  //     // this._initSectionsStyle()
+  //     console.log('add sticky')
+  //   }
+  //   else
+  //   {
+  //     this.$.sectionsImage[0].classList.remove('sticky')
+  //     console.log('remove sticky')
+  //   }
+  // }
+
   _stickySection()
   {
-    console.log(this.params.sectionOffset)
-    if(window.scrollY >= this.params.sectionOffset)
+    if(this.params.sectionOffset != this.$.fixedSection.offsetTop) this.params.sectionOffset = this.$.fixedSection.offsetTop
+
+    this.$.sectionsImage[0].classList.add('sticky')
+    if(window.scrollY <= this.params.sectionOffset - ((window.innerHeight - this.params.sectionHeight) / 2))
     {
-      this.$.sectionsImage[0].classList.add('sticky')
-      this._initSectionsStyle()
-      console.log('add sticky')
-    }
+      this.$.sectionsImage[0].style.transform = `translateY(${this.params.sectionOffset - window.scrollY}px)`
+    }  
     else
     {
-      this.$.sectionsImage[0].classList.remove('sticky')
-      console.log('remove sticky')
+      this.$.sectionsImage[0].style.transform = `translateY(${(window.innerHeight - this.params.sectionHeight) / 2}px)`
     }
+    
+    console.log(this.$.fixedSection.offsetTop)
+    console.log(window.scrollY)
   }
 
   _handleUpdateParams()
   {
-    this.params.sectionHeight = this.$.sections[0].offsetHeight
-    this.params.sectionOffset = this.$.sections[0].offsetTop
-    console.log(this.params.sectionHeight)
+    this.params.sectionHeight = this.$.fixedSection.offsetHeight
+    this.params.sectionOffset = this.$.fixedSection.offsetTop
+    // console.log(this.params.sectionHeight)
   }
 }
 // new ProjectController()

@@ -9,7 +9,9 @@ class ProjectController
       category: document.querySelector('.hero__category'),
       title: document.querySelector('.hero__title'),
       backgroundImage: document.querySelector('.background__image img'),
-      descriptionParagraph: document.querySelector('.description__paragraph')
+      description: document.querySelector('.description'),
+      descriptionParagraph: document.querySelector('.description__paragraph'),
+      content: document.querySelector('.content')
     } 
 
     this.params = 
@@ -18,7 +20,7 @@ class ProjectController
     }
 
     window.scrollTo(0, 0)
-    new ScrollProject()
+    
     this._sendRequest()
   }
 
@@ -49,11 +51,57 @@ class ProjectController
     this.$.backgroundImage.src = _data.thumbnail
     this.$.descriptionParagraph.innerText = _data.description
 
-    // Build description
-    
-
     // set dynamic dom
-    // if(_data.content)
+    if(_data.url)
+    {
+      const button = document.createElement('a')
+      button.innerText = "Live view"
+      button.classList.add('button')
+      button.setAttribute('href', _data.url)
+      button.setAttribute('target', "_blank")
+      this.$.description.appendChild(button)
+    }
+
+    if(_data.content)
+    {
+      const key = 0
+      const data = 1
+
+      for(let i = 0; i < _data.content.length; i++)
+      {
+        const section = document.createElement('section')
+
+        if(_data.content[i][key] == 'img') 
+        {
+          const div = document.createElement('div')
+          const img = document.createElement('img')
+
+          img.src = _data.content[i][data]
+
+          div.classList.add('section__image')
+          if(i == 0) section.classList.add('section--fixed') // Fixed first image
+
+          div.appendChild(img)
+          section.appendChild(div)
+
+          this.$.content.appendChild(section)
+        }
+        else if(_data.content[i][key] == 'p')
+        {
+          const p = document.createElement('p')
+
+          p.classList.add('section__p')
+
+          p.innerText = _data.content[i][data]
+
+          section.appendChild(p)
+
+          this.$.content.appendChild(section)
+        }
+      }
+    }
+    
+    new ScrollProject()
   }
   // init data function
 }
