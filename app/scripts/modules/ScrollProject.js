@@ -29,10 +29,13 @@ class ScrollProject
       scaleHero: { ending: .8, scroll: 1/3 },
       opacityRadial: { ending: 1, scroll: 1/4 },
       sectionOffset: this.$.fixedSection.offsetTop,
-      sectionHeight: this.$.fixedSection.offsetHeight
+      sectionHeight: this.$.fixedSection.offsetHeight,
+      rotateSticky: { ending: .8, ratio: 0, oldScrollY: 0 }
     }
 
     // console.log(this.params.sectionHeight)
+    this.$.sectionsImage[0].classList.add('sticky')
+    // this.$.sectionsImage[1].style.opacity = '0'
     
     this._listener()
   }
@@ -101,6 +104,19 @@ class ScrollProject
     // console.log(window.scrollY)
   }
 
+  _rotateSticky(_currentTranslateY)
+  {
+    const ratio = (window.scrollY - this.params.rotateSticky.oldScrollY) / this.params.sectionHeight
+    // const ratio = window.scrollY / (this.params.sectionHeight)
+    const scaleSubstraction = (1 - this.params.rotateSticky.ending) * ratio
+    let scaleValue = 1 - scaleSubstraction
+    console.log(this.params.rotateSticky.oldScrollY)
+
+    if(scaleValue <= this.params.rotateSticky.ending) scaleValue = this.params.rotateSticky.ending
+    if(this.params.rotateSticky.oldScrollY != 0) this.$.sectionsImage[0].style.transform = `translateY(${_currentTranslateY}px) scale(${scaleValue})`
+    if(this.params.rotateSticky.oldScrollY == 0) this.params.rotateSticky.oldScrollY = window.scrollY
+  }
+
   // _stickySection()
   // {
   //   if(this.params.sectionOffset != this.$.fixedSection.offsetTop) this.params.sectionOffset = this.$.fixedSection.offsetTop
@@ -123,18 +139,20 @@ class ScrollProject
   {
     if(this.params.sectionOffset != this.$.fixedSection.offsetTop) this.params.sectionOffset = this.$.fixedSection.offsetTop
 
-    this.$.sectionsImage[0].classList.add('sticky')
     if(window.scrollY <= this.params.sectionOffset - ((window.innerHeight - this.params.sectionHeight) / 2))
     {
       this.$.sectionsImage[0].style.transform = `translateY(${this.params.sectionOffset - window.scrollY}px)`
     }  
-    else
+    else // active sticky
     {
-      this.$.sectionsImage[0].style.transform = `translateY(${(window.innerHeight - this.params.sectionHeight) / 2}px)`
+      const translateY = (window.innerHeight - this.params.sectionHeight) / 2
+      this.$.sectionsImage[0].style.transform = `translateY(${translateY}px)`
+
+      this._rotateSticky(translateY)
     }
     
-    console.log(this.$.fixedSection.offsetTop)
-    console.log(window.scrollY)
+    // console.log(this.$.fixedSection.offsetTop)
+    // console.log(window.scrollY)
   }
 
   _handleUpdateParams()

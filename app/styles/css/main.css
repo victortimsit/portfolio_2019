@@ -345,7 +345,7 @@ aside .tips--close.visible {
   left: 0;
   top: 0;
   z-index: -1;
-  transition: transform 150ms ease;
+  transition: transform 0ms ease;
   will-change: transform;
 }
 .background__image {
@@ -374,7 +374,7 @@ aside .tips--close.visible {
 .background__gradient--radial {
   background: radial-gradient(470px at 50% 50%, rgba(0,28,32,0.85) 0%, #001c20 100%);
   opacity: 0.9;
-  transition: opacity 150ms ease;
+  transition: opacity 0ms ease;
   will-change: opacity;
 }
 .content {
@@ -387,6 +387,7 @@ section {
 .section__image {
   width: 65vw;
   height: 39vw;
+  z-index: -1;
 }
 .section__image img {
   width: 100%;
@@ -406,7 +407,7 @@ section {
   position: fixed;
   top: 0;
   width: 65vw;
-  transform: translateX(-50%) translateY(100vh);
+  transform: translateY(100vh);
 }
 footer {
   text-align: center;
@@ -649,7 +650,7 @@ header li.active {
   opacity: 0.8;
   line-height: 1.6;
   will-change: transform;
-  transition: transform 150ms ease;
+  transition: transform 0ms ease;
 }
 .button {
   border: 2px solid #749ea3;
