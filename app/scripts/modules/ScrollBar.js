@@ -32,6 +32,7 @@ class ScrollBar
     {
         window.addEventListener('scroll', () => { this._handleScroll() })
         window.addEventListener('resize', () => { this._initParams(); this._initStyles() })
+        
     }
 
     _parseWords(_text)
@@ -73,12 +74,22 @@ class ScrollBar
         this.params.wordScrollOffset = this.params.documentScrollEnding / (this.params.itemLength - 1)
         this.params.wordsHalfIn = Math.floor(this.params.visibleWords / 2)
         this.params.wordsHalfOut = Math.ceil(this.params.visibleWords / 2)
+        // this.params.currentWords = [0, 1, 2]
+        this.params.oldScrollY = 0
     }
     
     _initStyles()
     {
         this.$.tab.style.height = `${this.params.visibleItemsHeight}px`
         this.$.list.style.transform = `translateY(${this.params.initialOffset}px)`
+        
+        for(let i = 0; i < this.$.items.length; i++)
+        {
+            if(i != 0) this.$.items[i].style.transform = `scale(.8)`
+            if(i == 1) this.$.items[i].style.transform = `scale(.9)`
+            this.$.items[i].style.transformOrigin = 'right'
+            
+        }
     }
 
     _craftScrollBarDOM()
@@ -106,35 +117,90 @@ class ScrollBar
         //Words variables
         let wordRatio = window.scrollY / (this.params.wordScrollOffset * this.params.wordsHalfIn)
         let currentWordIndex = Math.floor(window.scrollY / this.params.wordScrollOffset)
+        let wordScrollRatio = this.params.wordScrollOffset * currentWordIndex
 
-        if(wordRatio >= 1)
-        {
-            wordRatio = (this.params.wordScrollOffset * this.params.wordsHalfIn) / window.scrollY
-        }
+        // this.params.oldScrollY = 0
 
-        if(window.scrollY >= currentWordIndex * this.params.wordScrollOffset)
+        for(let i = 0; i < this.$.items.length; i++)
         {
-            //Calculer le current scroll de chaque mot
+            const currentScrollY = window.scrollY - (this.params.wordScrollOffset * i)
+            if(i == 5) console.log(currentScrollY)
+            wordRatio = (window.scrollY/*+ (this.params.wordScrollOffset * (i))*/) / ((this.params.wordScrollOffset * i)/* * this.params.wordsHalfIn*/) /*- .5*/
+
+            if(wordRatio >= 1 && wordRatio >= 0)
+            {
+                if(i == 2)
+                {
+                    // console.log('supp a 2')
+                    wordScrollRatio = this.params.wordScrollOffset * i
+                    wordRatio = i - ((/*(*/window.scrollY /*+ (this.params.wordScrollOffset * (i))) - wordScrollRatio*/) / ((this.params.wordScrollOffset * i)/* * this.params.wordsHalfIn*/))
+                    // console.log(currentScrollY)
+                }
+
+                if(i != 2)
+                {
+                    // console.log(this.params.oldScrollY)
+                    wordScrollRatio = this.params.wordScrollOffset * i
+                    wordRatio = 1 - ((currentScrollY/*(*//*window.scrollY*/ /*+ (this.params.wordScrollOffset * (i))) - wordScrollRatio*/) / ((this.params.wordScrollOffset * i - this.params.wordScrollOffset  * (i - 2)/*ici réglage de la molette*/) /* * this.params.wordsHalfIn*/))
+                    
+                    // console.log(this.params.wordScrollOffset)
+                }
+                // if(i == 3)
+                // {
+                //     // console.log(this.params.oldScrollY)
+                //     wordScrollRatio = this.params.wordScrollOffset * i
+                //     wordRatio = 1 - ((currentScrollY/*(*//*window.scrollY*/ /*+ (this.params.wordScrollOffset * (i))) - wordScrollRatio*/) / ((this.params.wordScrollOffset * i - this.params.wordScrollOffset  * (i - 2)/*ici réglage de la molette*/) /* * this.params.wordsHalfIn*/))
+                    
+                //     // console.log(this.params.wordScrollOffset)
+                // }
+                // if(i == 4)
+                // {
+                //     // console.log(this.params.oldScrollY)
+                //     wordScrollRatio = this.params.wordScrollOffset * i
+                //     wordRatio = 1 - ((currentScrollY/*(*//*window.scrollY*/ /*+ (this.params.wordScrollOffset * (i))) - wordScrollRatio*/) / ((this.params.wordScrollOffset * i - this.params.wordScrollOffset * (i - 2)/*ici réglage de la molette*/) /* * this.params.wordsHalfIn*/))
+                    
+                //     // console.log(this.params.wordScrollOffset)
+                // }
+                // if(i == 5)
+                // {
+                //     // console.log(this.params.oldScrollY)
+                //     wordScrollRatio = this.params.wordScrollOffset * i
+                //     wordRatio = 1 - ((currentScrollY/*(*//*window.scrollY*/ /*+ (this.params.wordScrollOffset * (i))) - wordScrollRatio*/) / ((this.params.wordScrollOffset * i - this.params.wordScrollOffset * (i - 2)/*ici réglage de la molette*/) /* * this.params.wordsHalfIn*/))
+                    
+                //     console.log(this.params.wordScrollOffset)
+                // }
+                // if(i == 6)
+                // {
+                //     // console.log(this.params.oldScrollY)
+                //     wordScrollRatio = this.params.wordScrollOffset * i
+                //     wordRatio = 1 - ((currentScrollY/*(*//*window.scrollY*/ /*+ (this.params.wordScrollOffset * (i))) - wordScrollRatio*/) / ((this.params.wordScrollOffset * i - this.params.wordScrollOffset * (i - 2)/*ici réglage de la molette*/) /* * this.params.wordsHalfIn*/))
+                    
+                //     console.log(this.params.wordScrollOffset)
+                // }
+            }
+
+            // const currentScale = .8 + (.2 * wordRatio)
+            const currentScale = .8 + (.5 * wordRatio)
+            const currentOpacity = .1 + (.9 * wordRatio)
+            const currentFontWeight = 100 + (900 * wordRatio)
+            // if(i == 3)console.log(wordRatio)
+            
+
+            // if(wordRatio >= 0 && i == 2) this.$.items[2].style.transform = `scale(${currentScale})`
+            // if(wordRatio >= 0 && i == 3) this.$.items[3].style.transform = `scale(${currentScale})`
+            // if(wordRatio >= 0 && i == 4) this.$.items[4].style.transform = `scale(${currentScale})`
+            // if(wordRatio >= 0 && i == 5) this.$.items[5].style.transform = `scale(${currentScale})`
+            // if(wordRatio >= 0 && i == 6) this.$.items[6].style.transform = `scale(${currentScale})`
+            if(wordRatio >= 0) this.$.items[i].style.transform = `scale(${currentScale})`
+            if(wordRatio >= 0) this.$.items[i].style.opacity = `${currentOpacity}`
+            if(wordRatio >= 0) this.$.items[i].style.fontWeight = `${currentFontWeight}`
+            // if(wordRatio >= 0 && i == 4) this.$.items[4].style.transform = `scale(${currentScale})`
+            // this.$.items[i].style.transform = `scale(${currentScale})`
         }
-        // test
-        // console.log
-        // (
-        //     '%c' + this.params.wordScrollOffset * this.params.wordsHalfIn, 
-        //     'color: white; font-size: 20px; font-weight: bold'
-        // )
-        // console.log
-        // (
-        //     '%c' + window.scrollY, 
-        //     'color: orange; font-size: 20px; font-weight: bold'
-        // )
-        // console.log
-        // (
-        //     '%c' + currentWordIndex * this.params.wordScrollOffset, 
-        //     'color: green; font-size: 20px; font-weight: bold'
-        // )
 
         this.$.tab.style.transform = `translateY(${Math.round(scrollRatio)}px)`
         this.$.list.style.transform = `translateY(${this.params.initialOffset + Math.round(-tabScrollRatio)}px)`
+        
         
     }
 }

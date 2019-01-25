@@ -67,9 +67,12 @@ class ProjectController
       const key = 0
       const data = 1
 
+      // Oubli pas de check si ça existe
+      const section = document.createElement('section')
+      const imgsContainer = document.createElement('div')
+
       for(let i = 0; i < _data.content.length; i++)
       {
-        const section = document.createElement('section')
 
         if(_data.content[i][key] == 'img') 
         {
@@ -82,12 +85,14 @@ class ProjectController
           if(i == 0) section.classList.add('section--fixed') // Fixed first image
 
           div.appendChild(img)
-          section.appendChild(div)
+          imgsContainer.appendChild(div)
+          section.appendChild(imgsContainer)
 
           this.$.content.appendChild(section)
         }
         else if(_data.content[i][key] == 'p')
         {
+          const section = document.createElement('section')
           const p = document.createElement('p')
 
           p.classList.add('section__p')
