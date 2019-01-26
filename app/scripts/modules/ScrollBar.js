@@ -153,9 +153,12 @@ class ScrollBar
             }
 
     
-            const currentScale = .8 + (.5 * wordRatio)
-            const currentOpacity = .1 + (.9 * wordRatio)
+            const currentScale = .8 + (.6 * wordRatio)
+            const currentOpacity = .2 + (.8 * wordRatio)
             const currentFontWeight = 100 + (900 * wordRatio)
+            // const currentScale = .8 + (.6 * wordRatio)
+            // const currentOpacity = .1 + (.9 * wordRatio)
+            // const currentFontWeight = 100 + (900 * wordRatio)
 
             
             if(wordRatio >= 0) this.$.items[i].style.transform = `scale(${currentScale})`
