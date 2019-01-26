@@ -472,7 +472,6 @@ header li.active {
   top: 50%;
   opacity: 0.4;
   transform: translateY(-50%);
-  display: none;
 }
 .projectsPreviews {
   padding-top: 80px;
