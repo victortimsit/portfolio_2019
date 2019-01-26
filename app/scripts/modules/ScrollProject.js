@@ -2,8 +2,6 @@ class ScrollProject
 {
   constructor()
   {
-    // console.log(localStorage.getItem('projectTitle'))
-    // document.location.hash = localStorage.getItem('projectTitle')
     this.$ = 
     {
       backgroundImage: document.querySelector('.background'),
@@ -19,9 +17,6 @@ class ScrollProject
       content: document.querySelector('.content'),
     }
 
-    // console.log(this.$.sections[0].offsetTop - 50)
-    // console.log(this.$.content.offsetTop -50)
-
     this.params = 
     {
       documentScrollEnding: document.body.offsetHeight - window.innerHeight,
@@ -32,10 +27,8 @@ class ScrollProject
       sectionOffset: this.$.fixedSection.offsetTop,
       sectionHeight: this.$.fixedSection.offsetHeight / this.$.sectionsImage.length,
       scaleSticky: { ending: .9, ratio: 0, oldScrollY: 0, imageNumber: this.$.sectionsImage.length }
-      
     }
 
-    // console.log(this.params.sectionHeight)
     this.$.imagesContainer.classList.add('sticky')
 
     for(let i = 0; i < this.$.sectionsImage.length; i++)

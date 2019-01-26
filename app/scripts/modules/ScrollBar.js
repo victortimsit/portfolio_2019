@@ -25,6 +25,7 @@ class ScrollBar
         this._craftScrollBarDOM()
         this._initParams()
         this._initStyles()
+        this._handleScroll()
         this._listeners()
     }
 
@@ -85,10 +86,23 @@ class ScrollBar
         
         for(let i = 0; i < this.$.items.length; i++)
         {
-            if(i != 0) this.$.items[i].style.transform = `scale(.8)`
-            if(i == 1) this.$.items[i].style.transform = `scale(.9)`
-            this.$.items[i].style.transformOrigin = 'right'
+            // if(i != 0) this.$.items[i].style.transform = `scale(.8)`
+            // if(i < 3)
+            // {
+            //     if(i == 0) this.$.items[i].style.transform = `scale(1.4)`
+            //     if(i == 1) this.$.items[i].style.transform = `scale(1.4)`
+
+            //     if(i == 0) this.$.items[i].style.opacity = `1`
+            //     if(i == 1) this.$.items[i].style.opacity = `.6`
+            //     if(i == 2) this.$.items[i].style.opacity = `.2`
+            // } 
+            // else
+            // {
+            //     this.$.items[i].style.opacity= '.1'
+            // }
+            this.$.items[i].style.transform= 'scale(.8)'
             this.$.items[i].style.opacity= '.1'
+            this.$.items[i].style.transformOrigin = 'right'
             
         }
     }
@@ -166,7 +180,7 @@ class ScrollBar
             if(wordRatio >= 0) this.$.items[i].style.fontWeight = `${currentFontWeight}`
         }
 
-        this.$.tab.style.transform = `translateY(${Math.round(scrollRatio)}px)`
+        // this.$.tab.style.transform = `translateY(${Math.round(scrollRatio)}px)`
         this.$.list.style.transform = `translateY(${this.params.initialOffset + Math.round(-tabScrollRatio)}px)`
     }
 }
