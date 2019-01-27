@@ -1,14 +1,15 @@
 .projectsPreviews {
   padding-top: 80px;
+  perspective: 800px;
 }
 .projectsPreviews__item {
   margin-bottom: 50px;
-  transition: transform 300ms ease;
 }
 .projectsPreviews__category {
   margin-bottom: 6px;
   opacity: 0.6;
   font-size: 12px;
+  height: 16px;
 }
 .projectsPreviews__image {
   height: 34vw;
@@ -18,4 +19,8 @@
   height: 100%;
   object-fit: cover;
   pointer-events: none;
+}
+.view.loading .projectsPreviews a {
+  display: block;
+  background-color: $loadingDOM;
 }

@@ -6,3 +6,9 @@ header li.active {
   text-decoration: underline;
   opacity: 1;
 }
+.view.loading header li {
+  background-color: $loadingDOM;
+}
+.view.loading header li a {
+  opacity: 0;
+}

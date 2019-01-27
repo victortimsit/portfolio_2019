@@ -1,3 +1,9 @@
 .contact {
   opacity: 0.6;
 }
+.view.loading .contact {
+  background-color: $loadingDOM;
+}
+.view.loading .contact a {
+  opacity: 0;
+}

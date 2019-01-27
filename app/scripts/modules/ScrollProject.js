@@ -115,7 +115,7 @@ class ScrollProject
 
     if(this.params.scaleSticky.oldScrollY != 0 && window.scrollY - this.params.scaleSticky.oldScrollY > this.params.sectionHeight / this.$.sectionsImage.length)
     {
-      console.log('update image')
+      // console.log('update image')
       this.$.sectionsImage[0].classList.add('left')
       this.$.sectionsImage[1].classList.remove('right')
     }

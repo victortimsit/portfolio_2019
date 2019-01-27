@@ -259,6 +259,18 @@ h2 {
   font-size: 16px;
   font-family: SemiBold;
 }
+.view.loading {
+  pointer-events: none;
+}
+.view.loading li:not(.projectsPreviews__item) {
+  background: #00272c;
+}
+.view.loading a {
+  background: #00272c;
+}
+.view.loading img {
+  opacity: 0;
+}
 .projects {
   display: flex;
 }
@@ -456,6 +468,12 @@ header li.active {
   text-decoration: underline;
   opacity: 1;
 }
+.view.loading header li {
+  background-color: #00272c;
+}
+.view.loading header li a {
+  opacity: 0;
+}
 .projectsTitles {
   flex: 1;
   margin: 50px 0;
@@ -467,6 +485,11 @@ header li.active {
   text-align: right;
   overflow-y: hidden;
   flex: 1;
+}
+.view.loading .projectsTitles__list li {
+  width: 100%;
+  height: 20px;
+  margin-bottom: 10px;
 }
 .indicator {
   width: 100%;
@@ -480,15 +503,16 @@ header li.active {
 }
 .projectsPreviews {
   padding-top: 80px;
+  perspective: 800px;
 }
 .projectsPreviews__item {
   margin-bottom: 50px;
-  transition: transform 300ms ease;
 }
 .projectsPreviews__category {
   margin-bottom: 6px;
   opacity: 0.6;
   font-size: 12px;
+  height: 16px;
 }
 .projectsPreviews__image {
   height: 34vw;
@@ -499,8 +523,18 @@ header li.active {
   object-fit: cover;
   pointer-events: none;
 }
+.view.loading .projectsPreviews a {
+  display: block;
+  background-color: #00272c;
+}
 .contact {
   opacity: 0.6;
+}
+.view.loading .contact {
+  background-color: #00272c;
+}
+.view.loading .contact a {
+  opacity: 0;
 }
 .octagon {
   width: 204px;

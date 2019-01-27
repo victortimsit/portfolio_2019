@@ -17,3 +17,15 @@ h2 {
   font-size: 16px;
   font-family: SemiBold;
 }
+.view.loading {
+  pointer-events: none;
+}
+.view.loading li:not(.projectsPreviews__item) {
+  background: $loadingDOM;
+}
+.view.loading a {
+  background: $loadingDOM;
+}
+.view.loading img {
+  opacity: 0;
+}

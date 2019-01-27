@@ -12,12 +12,12 @@
     <!--endbuild-->
   </head>
   <body>
-    <div class="view">
+    <div class="view loading">
       <div class="projects">
         <div class="leftSide">
           <header>
             <ul>
-              <li class="active">Projects</li>
+              <li class="active"><a href="/">Projects</a></li>
               <li><a href="/about">About</a></li>
             </ul>
           </header>
@@ -25,7 +25,9 @@
               <div class="projectsTitles__tab">
                   <div class="indicator"></div>
                   <ul class="projectsTitles__list">
-                    <!-- <li>Project number one</li> -->
+                    <li></li>
+                    <li></li>
+                    <li></li>
                   </ul>
               </div>
           </div>
@@ -43,9 +45,25 @@
                 </div>
               </a>
             </li>
+            <li class="projectsPreviews__item">
+              <div class="projectsPreviews__category"></div>
+              <a href="" target="_blank">
+                <div class="projectsPreviews__image">
+                  <img src="" alt="">
+                </div>
+              </a>
+            </li>
+            <li class="projectsPreviews__item">
+              <div class="projectsPreviews__category"></div>
+              <a href="" target="_blank">
+                <div class="projectsPreviews__image">
+                  <img src="" alt="">
+                </div>
+              </a>
+            </li>
           </ul>
         </div>
-        <aside>
+        <!-- <aside>
           <div class="tips tips--open visible">
             <div class="tips__arrow"></div>
             <p>Hold to see details</p>
@@ -54,7 +72,7 @@
             <div class="tips__arrow"></div>
             <p>Scroll to close details</p>
           </div>
-        </aside>
+        </aside> -->
         <div class="octagon">
           <div class="octagon__container octagon__container--scale">
             <div class="octagon__container octagon__container--rotate">
@@ -80,6 +98,7 @@
     </div>
     <!--build:js scripts/main.min.js -->
     <script src="scripts/Router.js"></script>
+    <script src="scripts/modules/DOMLoader.js"></script>
     <script src="scripts/modules/ScrollBar.js"></script>
     <script src="scripts/modules/OpenedTransition.js"></script>
     <script src="scripts/controllers/HomeController.js"></script>

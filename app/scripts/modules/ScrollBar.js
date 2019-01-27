@@ -8,6 +8,7 @@ class ScrollBar
             list: document.querySelector('.projectsTitles__list'),
             tab: document.querySelector('.projectsTitles__tab'),
             items: document.querySelectorAll('.projectsTitles__list li'),
+            projectsItems: document.querySelectorAll('.projectsPreviews__item')
             // about: document.querySelector('.about'),
         }
 
@@ -32,7 +33,7 @@ class ScrollBar
     _listeners()
     {
         window.addEventListener('scroll', () => { this._handleScroll() })
-        window.addEventListener('resize', () => { this._initParams(); this._initStyles() })
+        window.addEventListener('resize', () => { this._initParams() })
         
     }
 
@@ -86,24 +87,9 @@ class ScrollBar
         
         for(let i = 0; i < this.$.items.length; i++)
         {
-            // if(i != 0) this.$.items[i].style.transform = `scale(.8)`
-            // if(i < 3)
-            // {
-            //     if(i == 0) this.$.items[i].style.transform = `scale(1.4)`
-            //     if(i == 1) this.$.items[i].style.transform = `scale(1.4)`
-
-            //     if(i == 0) this.$.items[i].style.opacity = `1`
-            //     if(i == 1) this.$.items[i].style.opacity = `.6`
-            //     if(i == 2) this.$.items[i].style.opacity = `.2`
-            // } 
-            // else
-            // {
-            //     this.$.items[i].style.opacity= '.1'
-            // }
             this.$.items[i].style.transform= 'scale(.8)'
             this.$.items[i].style.opacity= '.1'
             this.$.items[i].style.transformOrigin = 'right'
-            
         }
     }
 
@@ -146,38 +132,29 @@ class ScrollBar
 
             if(wordRatio >= 1 && wordRatio >= 0)
             {
-                // if(i == 2)
-                // {
-                //     wordScrollRatio = this.params.wordScrollOffset * i
-                //     wordRatio = i - (window.scrollY / ((this.params.wordScrollOffset * i)))
-                // }
-
-                // if(i != 2)
-                // {
-                //     wordScrollRatio = this.params.wordScrollOffset * i
-                //     wordRatio = 1 - (currentScrollY / ((this.params.wordScrollOffset * i - this.params.wordScrollOffset  * (i - 2)/*ici réglage de la molette*/)))
-    
-                // }
                 wordScrollRatio = this.params.wordScrollOffset * i
                 wordRatio = 1 - (currentScrollYTest / (this.params.wordScrollOffset * 2))
-                
-                // if(i == 2) console.log(this.params.wordScrollOffset * 2)
-                if(i == 2) console.log(wordRatio)
-                // wordRatio = 1 - (currentScrollY / ((this.params.wordScrollOffset * i - this.params.wordScrollOffset  * (i - 2)/*ici réglage de la molette*/)))
             }
 
     
             const currentScale = .8 + (.6 * wordRatio)
+            // const currentProjectScale = 1.2 + (-1 * wordRatio) // Crazy mode
+            const currentProjectScale = .8 + (.2 * wordRatio) // Crazy mode
+    
+            // const currentProjectScale = 1
+            const currentRotation = 200 + ((-200) * wordRatio) // Crazy mode
             const currentOpacity = .2 + (.8 * wordRatio)
             const currentFontWeight = 100 + (900 * wordRatio)
-            // const currentScale = .8 + (.6 * wordRatio)
-            // const currentOpacity = .1 + (.9 * wordRatio)
-            // const currentFontWeight = 100 + (900 * wordRatio)
 
-            
-            if(wordRatio >= 0) this.$.items[i].style.transform = `scale(${currentScale})`
-            if(wordRatio >= 0) this.$.items[i].style.opacity = `${currentOpacity}`
-            if(wordRatio >= 0) this.$.items[i].style.fontWeight = `${currentFontWeight}`
+            if(wordRatio >= 0)
+            {
+                this.$.items[i].style.transform = `scale(${currentScale})`
+                this.$.items[i].style.opacity = `${currentOpacity}`
+                this.$.items[i].style.fontWeight = `${currentFontWeight}`
+
+                // this.$.projectsItems[i].style.transform = `scale(${currentProjectScale}) rotate(${currentRotation}deg)` // Crazy mode
+                // this.$.projectsItems[i].style.transform = `scale(${currentProjectScale})`
+            }
         }
 
         // this.$.tab.style.transform = `translateY(${Math.round(scrollRatio)}px)`

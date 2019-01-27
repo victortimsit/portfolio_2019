@@ -2,10 +2,11 @@
   // background yellow
   // padding-top calc(100vh - (40vw + 120px))
   padding-top 80px
+  perspective 800px
 
   &__item
     margin-bottom 50px
-    transition transform 300ms ease
+    // transition transform 300ms ease
 
     // &.opened
     //   transform translateX(-31.4vw)
@@ -14,6 +15,8 @@
     margin-bottom 6px
     opacity .6
     font-size 12px
+    height 16px
+
 
   &__image
     height 34vw
@@ -32,4 +35,11 @@
       height 100%
       object-fit cover
       pointer-events none
+      
+.view.loading
+  & .projectsPreviews
+    & a
+      display block
+      background-color $loadingDOM
+
 

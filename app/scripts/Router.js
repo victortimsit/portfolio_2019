@@ -11,7 +11,8 @@ class Router
 
     this.datas = 
     {
-      documentTitle: document.title
+      documentTitle: document.title,
+      img: []
     }
 
     // this.initalResponse = 
@@ -176,21 +177,34 @@ class Router
   {
     const data = _data.projects
 
+    let count = 0
+    let items = []
+
     const $ = 
     {
       projectsTitles: document.querySelector('.projectsTitles__list'),
+      projectsTitlesItems: document.querySelectorAll('.projectsTitles__list li'),
       projectsPreviews: document.querySelector('.projectsPreviews'),
-      projectItem: document.querySelector('.projectsPreviews__item'),
+      projectItems: document.querySelectorAll('.projectsPreviews__item'),
     }
 
     // Remove node model
-    $.projectItem.remove()
+    // for(let i = 0; i < $.projectItems.length; i++)
+    // {
+    //   $.projectItems[i].remove()
+    // }
+    // for(let i = 0; i < $.projectsTitlesItems.length; i++)
+    // {
+    //   $.projectsTitlesItems[i].remove()
+    // }
 
     for(let i = 0; i < data.length; i++)
     {
+      document.body.style.opacity = '1'
+      
       const item = {}
       
-      item.node = $.projectItem.cloneNode(true)
+      item.node = $.projectItems[0].cloneNode(true)
       
       item.category = item.node.querySelector('.projectsPreviews__category')
       item.link = item.node.querySelector('a')
@@ -198,6 +212,7 @@ class Router
       item.title = document.createElement('li')
 
       this.$.links.push(item.link)
+      this.datas.img.push(item.img)
 
       item.category.innerText = data[i].category
       item.link.setAttribute('href', '/projects/' + this._toCamelCase(data[i].title))
@@ -205,13 +220,41 @@ class Router
       item.img.setAttribute('src', data[i].thumbnail)
       item.title.innerText = data[i].title
 
-      $.projectsPreviews.appendChild(item.node)
-      $.projectsTitles.appendChild(item.title)
+      items.push(item)
+
+      item.img.addEventListener('load', () => 
+			{
+        console.log(this.datas.img.length)
+        console.log('loaded ' + i)
+        item.img.classList.add('loaded')
+        count++
+        if(this.datas.img.length == count) this._initProjects($.projectsPreviews, $.projectsTitles, $.projectItems, $.projectsTitlesItems, items, data)
+      })
+    }
+  }
+
+  _initProjects(_previews, _titles, _projectItems, _projectTitlesItems, _items, _data)
+  {
+    // Remove node model
+    for(let i = 0; i < _projectItems.length; i++)
+    {
+      _projectItems[i].remove()
+    }
+    for(let i = 0; i < _projectTitlesItems.length; i++)
+    {
+      _projectTitlesItems[i].remove()
     }
 
+    for(let i = 0; i < _items.length; i++)
+    {
+      _previews.appendChild(_items[i].node)
+      _titles.appendChild(_items[i].title)
+    }
+
+    this.$.content.classList.remove('loading')
     const DOM = document.querySelector('.view').innerHTML
     const documentTitle = document.title
-
+    
     this._disabledLinks()
     this._runController('/')
     this._pushState({ DOM: DOM, title: documentTitle }, '/')
