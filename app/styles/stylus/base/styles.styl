@@ -1,3 +1,6 @@
+// *
+//   outline 1px yellow solid
+
 body
   line-height 1.4
   font-family Regular
@@ -7,6 +10,9 @@ body
   padding 50px 6vw
   overflow-x hidden
   // opacity 0
+  @media screen and (max-width: $mobile)
+    color $white
+    // background-color black
 
 h1
   font-size 90px
@@ -21,6 +27,7 @@ h2
 
 .view.loading
   pointer-events none
+  // cursor wait
   li:not(.projectsPreviews__item)
     background $loadingDOM
 

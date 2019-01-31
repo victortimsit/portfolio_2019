@@ -1,6 +1,20 @@
 .contact {
   opacity: 0.6;
 }
+@media screen and (max-width: $mobile) {
+  .contact {
+    right: 8vw;
+    bottom: 26px;
+    position: fixed;
+  }
+  .contact a {
+    visibility: hidden;
+  }
+  .contact a::after {
+    content: 'send email';
+    visibility: visible;
+  }
+}
 .view.loading .contact {
   background-color: $loadingDOM;
 }

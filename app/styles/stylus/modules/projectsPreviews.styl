@@ -3,10 +3,16 @@
   // padding-top calc(100vh - (40vw + 120px))
   padding-top 80px
   perspective 800px
+  @media screen and (max-width: $mobile)
+    padding-top 0
 
   &__item
     margin-bottom 50px
-    // transition transform 300ms ease
+    transition transform 150ms ease
+    transform-origin left
+    &:hover img
+      // opacity .8
+      transform scale(1.05)
 
     // &.opened
     //   transform translateX(-31.4vw)
@@ -20,6 +26,9 @@
 
   &__image
     height 34vw
+    overflow hidden
+    @media screen and (max-width: $mobile)
+      height 52.8vw
     // cursor pointer
     // transition width 300ms, height 300ms, transform 300ms
     // transition scale 300ms, transform 300ms
@@ -35,6 +44,7 @@
       height 100%
       object-fit cover
       pointer-events none
+      transition transform 300ms ease
       
 .view.loading
   & .projectsPreviews

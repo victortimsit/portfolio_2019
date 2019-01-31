@@ -8,7 +8,8 @@ class ScrollBar
             list: document.querySelector('.projectsTitles__list'),
             tab: document.querySelector('.projectsTitles__tab'),
             items: document.querySelectorAll('.projectsTitles__list li'),
-            projectsItems: document.querySelectorAll('.projectsPreviews__item')
+            projectsItems: document.querySelectorAll('.projectsPreviews__item'),
+            projectsPreviews: document.querySelector('.projectsPreviews')
             // about: document.querySelector('.about'),
         }
 
@@ -20,11 +21,14 @@ class ScrollBar
             visibleWords: 5,
         }
 
+        this.sounds = {}
+
         // const aboutText = this.$.about.innerText
 
         // this._parseWords(aboutText)
         this._craftScrollBarDOM()
         this._initParams()
+        // this._initSounds()
         this._initStyles()
         this._handleScroll()
         this._listeners()
@@ -36,6 +40,32 @@ class ScrollBar
         window.addEventListener('resize', () => { this._initParams() })
         
     }
+
+    skewEffect()
+	{
+		const newPixel = this.params.deltaY
+		
+		const diff = newPixel - this.params.currentPixel
+		
+		const speed = diff * 0.1
+		
+        console.log(speed)
+		// if(speed < 15 && speed > -15) this.testTitle.style.transform = `skewY(${-speed}deg)`
+        if(speed < 15 && speed > -15) console.log(speed)
+        if(speed < 15 && speed > -15) {
+            for(let i = 0; i < this.$.projectsItems.length; i++)
+            {
+
+                this.$.projectsItems[i].style.transform = `scaleY(${1 - speed / 50})`
+            }
+            // this.$.projectsPreviews.style.transform = `translateZ(${-speed * 10}px)`
+        }
+
+		this.params.currentPixel = newPixel
+
+		// setTimeout(() => { this.skewEffect() }, 30)
+		window.requestAnimationFrame(() => { this.skewEffect() })
+	}
 
     _parseWords(_text)
     {
@@ -64,20 +94,33 @@ class ScrollBar
 
     _initParams()
     {
-        this.params.itemHeight = this.$.items[0].offsetHeight
-        this.params.visibleItemsHeight = this.params.itemHeight * this.params.visibleWords
+        
+        this.params.itemMarginTop = parseInt(getComputedStyle(this.$.items[0]).marginTop)
+        this.params.itemHeight = this.$.items[0].offsetHeight + this.params.itemMarginTop
+        this.params.visibleItemsHeight = (this.params.itemHeight * this.params.visibleWords) - this.params.itemMarginTop
         this.params.scrollbarHeight = this.$.scrollbar.offsetHeight
         this.params.listScrollEnding = this.$.scrollbar.offsetHeight - this.params.visibleItemsHeight
+        console.log(this.params.visibleItemsHeight)
         this.params.documentScrollEnding = document.body.offsetHeight - window.innerHeight
-        this.params.listHeight = this.$.list.offsetHeight
-        this.params.initialOffset = (this.params.visibleWords - (this.params.visibleWords % 2)) / 2 * this.params.itemHeight
+        this.params.listHeight = this.$.list.offsetHeight + this.params.itemMarginTop * 2
+        this.params.initialOffset = ((this.params.visibleWords - (this.params.visibleWords % 2)) / 2 * this.params.itemHeight) - this.params.itemMarginTop
+
+        // this.params.tabScrollEnding = this.params.listHeight + this.params.initialOffset - this.params.visibleItemsHeight
         this.params.tabScrollEnding = this.params.listHeight + this.params.initialOffset - this.params.visibleItemsHeight + this.params.initialOffset
         this.params.itemLength = this.$.items.length
         this.params.wordScrollOffset = this.params.documentScrollEnding / (this.params.itemLength - 1)
         this.params.wordsHalfIn = Math.floor(this.params.visibleWords / 2)
         this.params.wordsHalfOut = Math.ceil(this.params.visibleWords / 2)
-        // this.params.currentWords = [0, 1, 2]
         this.params.oldScrollY = 0
+        this.params.deltaY = 0
+        this.params.currentPixel = window.scrollY
+        this.params.tic = true
+        this.params.oldIndex = 0
+    }
+
+    _initSounds()
+    {
+        this.sounds.tic = new Audio('../assets/sounds/tic.mp3')
     }
     
     _initStyles()
@@ -121,6 +164,8 @@ class ScrollBar
         let wordScrollRatio = this.params.wordScrollOffset * currentWordIndex
 
         // this.params.oldScrollY = 0
+        // console.log(window.scrollY - this.params.oldScrollY)
+        
 
         for(let i = 0; i < this.$.items.length; i++)
         {
@@ -137,27 +182,38 @@ class ScrollBar
             }
 
     
-            const currentScale = .8 + (.6 * wordRatio)
+            // const currentScale = .8 + (.6 * wordRatio)
+            const currentScale = .8 + (.8 * wordRatio)
             // const currentProjectScale = 1.2 + (-1 * wordRatio) // Crazy mode
-            const currentProjectScale = .8 + (.2 * wordRatio) // Crazy mode
+            // const currentProjectScale = .8 + (.2 * wordRatio) // Crazy mode
     
             // const currentProjectScale = 1
-            const currentRotation = 200 + ((-200) * wordRatio) // Crazy mode
+            // const currentRotation = 200 + ((-200) * wordRatio) // Crazy mode
             const currentOpacity = .2 + (.8 * wordRatio)
-            const currentFontWeight = 100 + (900 * wordRatio)
+            // const currentFontWeight = 100 + (900 * wordRatio)
+            // const currentFontWeight = 200 + (600 * wordRatio)
 
             if(wordRatio >= 0)
             {
                 this.$.items[i].style.transform = `scale(${currentScale})`
                 this.$.items[i].style.opacity = `${currentOpacity}`
-                this.$.items[i].style.fontWeight = `${currentFontWeight}`
-
-                // this.$.projectsItems[i].style.transform = `scale(${currentProjectScale}) rotate(${currentRotation}deg)` // Crazy mode
-                // this.$.projectsItems[i].style.transform = `scale(${currentProjectScale})`
             }
+            // console.log(this.params.oldIndex)
+            // console.log(currentWordIndex)
+            if(this.params.oldIndex != currentWordIndex && this.sounds.tic)
+            {
+                this.sounds.tic.currentTime = 0
+                this.sounds.tic.play()
+            } 
+                
+
+            this.params.oldIndex = currentWordIndex
         }
 
         // this.$.tab.style.transform = `translateY(${Math.round(scrollRatio)}px)`
         this.$.list.style.transform = `translateY(${this.params.initialOffset + Math.round(-tabScrollRatio)}px)`
+
+        this.params.oldScrollY = window.scrollY
+        this.params.deltaY = window.scrollY
     }
 }

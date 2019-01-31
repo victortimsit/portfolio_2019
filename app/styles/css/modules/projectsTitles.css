@@ -4,11 +4,17 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  font-size: 14px;
+  font-weight: bold;
 }
 .projectsTitles__tab {
   text-align: right;
   overflow-y: hidden;
+  position: relative;
   flex: 1;
+}
+.projectsTitles li {
+  margin: 10px 0;
 }
 .view.loading .projectsTitles__list li {
   width: 100%;
@@ -21,7 +27,9 @@
   background: $fonts;
   position: absolute;
   top: 50%;
-  opacity: 0.4;
+  opacity: 1;
   transform: translateY(-50%);
+  background-color: #f00;
+  outline: none;
   display: none;
 }

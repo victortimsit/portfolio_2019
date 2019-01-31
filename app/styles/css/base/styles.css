@@ -7,6 +7,11 @@ body {
   padding: 50px 6vw;
   overflow-x: hidden;
 }
+@media screen and (max-width: $mobile) {
+  body {
+    color: $white;
+  }
+}
 h1 {
   font-size: 90px;
   font-family: Black;

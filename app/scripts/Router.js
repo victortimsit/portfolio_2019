@@ -7,6 +7,8 @@ class Router
       // links: document.querySelectorAll('a:not(.external)'), // Not if external link
       links: [],
       content: document.querySelector('.view'),
+      loader: document.querySelector('.loader'),
+      loaderFill: document.querySelector('.loader__fill')
     }
 
     this.datas = 
@@ -15,26 +17,44 @@ class Router
       img: []
     }
 
-    // this.initalResponse = 
-    // {
-    //   DOM: this.$.content.innerHTML,
-    //   title: this.datas.documentTitle
-    // }
+    this.params = 
+    {
+      loaderWidth: this.$.loader.offsetWidth,
+      loaderHeight: this.$.loader.offsetHeight,
+    }
 
+    // this.bool =
+    // {
+    //   cursorActive: false
+    // }
+    
     this.cached = {}
 
     this.openedProjectIndex = Number
 
     this._listeners()
     this._checkUrl()
-    // this._disabledLinks()
-    // this._runController('/')
   }
 
   _listeners()
   {
     window.addEventListener('visibilitychange', () => { this._dontLeave() })
     window.addEventListener('popstate', (event) => { this._handlePopState(event) })
+    window.addEventListener('mousemove', (event) => { this._loaderTranslate(event) })
+  }
+
+  _loaderTranslate(_event)
+  {
+    const mouse = { x: _event.clientX, y: _event.clientY }
+
+    // if(this.bool.cursorActive)
+    // {
+    //   this.$.loader.style.transform = `translate(${mouse.x - 10}px, ${mouse.y - 10}px)`
+    // } 
+    // else
+    // {
+      this.$.loader.style.transform = `translate(${mouse.x - (this.params.loaderWidth / 2)}px, ${mouse.y - this.params.loaderHeight * 4}px)`
+    // }
   }
 
   _disabledLinks()
@@ -188,21 +208,12 @@ class Router
       projectItems: document.querySelectorAll('.projectsPreviews__item'),
     }
 
-    // Remove node model
-    // for(let i = 0; i < $.projectItems.length; i++)
-    // {
-    //   $.projectItems[i].remove()
-    // }
-    // for(let i = 0; i < $.projectsTitlesItems.length; i++)
-    // {
-    //   $.projectsTitlesItems[i].remove()
-    // }
-
     for(let i = 0; i < data.length; i++)
     {
       document.body.style.opacity = '1'
       
       const item = {}
+      let loaderRatio = 0 
       
       item.node = $.projectItems[0].cloneNode(true)
       
@@ -224,11 +235,15 @@ class Router
 
       item.img.addEventListener('load', () => 
 			{
-        console.log(this.datas.img.length)
-        console.log('loaded ' + i)
         item.img.classList.add('loaded')
+
         count++
+
+        loaderRatio = 1 / (this.datas.img.length / count)
+
         if(this.datas.img.length == count) this._initProjects($.projectsPreviews, $.projectsTitles, $.projectItems, $.projectsTitlesItems, items, data)
+
+        this.$.loaderFill.style.transform = `scaleX(${loaderRatio})`
       })
     }
   }
@@ -252,6 +267,7 @@ class Router
     }
 
     this.$.content.classList.remove('loading')
+    // this.bool.cursorActive = true
     const DOM = document.querySelector('.view').innerHTML
     const documentTitle = document.title
     

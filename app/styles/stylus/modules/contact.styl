@@ -2,6 +2,15 @@
   // color green
   opacity .6
 
+  @media screen and (max-width: $mobile)
+    right 8vw
+    bottom 26px
+    position fixed
+    a
+      visibility hidden
+      &::after
+        content 'send email'
+        visibility visible
 .view.loading
   .contact
     background-color $loadingDOM

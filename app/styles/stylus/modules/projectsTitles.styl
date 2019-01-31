@@ -6,12 +6,18 @@
   display flex
   align-items center // center rolling words
   justify-content flex-end
+  font-size 14px
+  font-weight bold
 
   &__tab
     text-align right
     overflow-y hidden
+    position relative
 
     flex 1
+
+  li
+    margin 10px 0
 
 .view.loading
   & .projectsTitles__list
@@ -30,6 +36,8 @@
   background $fonts
   position absolute
   top 50%
-  opacity .4
+  opacity 1
   transform translateY(-50%)
+  background-color red
+  outline none
   display none

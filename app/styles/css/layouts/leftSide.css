@@ -6,3 +6,15 @@
   flex-direction: column;
   justify-content: space-between;
 }
+@media screen and (max-width: $mobile) {
+  .leftSide {
+    height: 200px;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    padding: 8vw;
+    background-color: $background;
+    background: linear-gradient(180deg, #001c20 0%, rgba(0,28,32,0) 100%);
+    z-index: 10;
+  }
+}
