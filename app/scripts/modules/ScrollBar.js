@@ -198,6 +198,11 @@ class ScrollBar
                 this.$.items[i].style.transform = `scale(${currentScale})`
                 this.$.items[i].style.opacity = `${currentOpacity}`
             }
+            else
+            {
+                this.$.items[i].style.transform = `scale(.8)`
+                this.$.items[i].style.opacity = `.2`
+            }
             // console.log(this.params.oldIndex)
             // console.log(currentWordIndex)
             if(this.params.oldIndex != currentWordIndex && this.sounds.tic)

@@ -15,6 +15,9 @@ class ScrollProject
       sectionsImage: document.querySelectorAll('.section__image'),
       imagesContainer: document.querySelector('.section--fixed div'),
       content: document.querySelector('.content'),
+      scrollIndicator: document.querySelector('.scrollIndicator'),
+      scrollIndicatorBody: document.querySelector('.scrollArrow__body'),
+      scrollIndicatorLabel: document.querySelector('.scrollIndicator p')
     }
 
     this.params = 
@@ -26,7 +29,9 @@ class ScrollProject
       opacityRadial: { ending: 1, scroll: 1/4 },
       sectionOffset: this.$.fixedSection.offsetTop,
       sectionHeight: this.$.fixedSection.offsetHeight / this.$.sectionsImage.length,
-      scaleSticky: { ending: .9, ratio: 0, oldScrollY: 0, imageNumber: this.$.sectionsImage.length }
+      scaleSticky: { ending: .9, ratio: 0, oldScrollY: 0, imageNumber: this.$.sectionsImage.length },
+      scrollIndicator: { height: this.$.scrollIndicatorBody.offsetHeight },
+      description: { marginTop: parseInt(getComputedStyle(this.$.description).marginTop), offsetTop: this.$.description.offsetTop }
     }
 
     this.$.imagesContainer.classList.add('sticky')
@@ -66,6 +71,7 @@ class ScrollProject
     this._opacityRadialGradient(ratio.radial)
     this._translateDescription()
     this._stickySection()
+    this._scrollIndicator()
   }
 
   _scaleBackground(_ratio)
@@ -76,6 +82,27 @@ class ScrollProject
     if(scaleRatio <= this.params.scaleBackground.ending) scaleRatio = this.params.scaleBackground.ending
 
     this.$.backgroundImage.style.transform = `scale(${scaleRatio})`
+  }
+
+  _scrollIndicator()
+  {
+    if(window.scrollY <= this.params.description.offsetTop - window.innerHeight)
+    {
+      const scrollDistance = this.params.description.marginTop - 100
+      const scale = window.scrollY / scrollDistance // 160 = margin top of description
+      const translate = (window.scrollY / scrollDistance) * this.params.scrollIndicator.height // 160 = margin top of description
+      
+      if(scale <= 1) 
+      {
+        this.$.scrollIndicator.classList.remove('hidden')
+        this.$.scrollIndicatorBody.style.transform = `scaleY(${1-scale})`
+        this.$.scrollIndicatorLabel.style.transform = `translateY(${translate}px)`
+      }
+      else
+      {
+        this.$.scrollIndicator.classList.add('hidden')
+      }
+    }
   }
 
   _scaleHero(_ratio)

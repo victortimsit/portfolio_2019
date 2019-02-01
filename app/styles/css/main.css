@@ -243,7 +243,7 @@ a {
 body {
   line-height: 1.4;
   font-family: Regular;
-  font-size: 14px;
+  font-size: 16px;
   color: #749ea3;
   background-color: #001c20;
   padding: 50px 6vw;
@@ -775,6 +775,7 @@ header li.active {
 .description {
   width: 43vw;
   margin: 0 auto;
+  margin-top: 200px;
   text-align: center;
   font-size: 18px;
   font-family: SemiBold;
@@ -815,4 +816,51 @@ header li.active {
   opacity: 1;
   width: 80px;
   height: 4px;
+}
+.scrollIndicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  opacity: 0.6;
+  transition: opacity 300ms, visibility 300ms, transform 300ms;
+}
+.scrollIndicator p {
+  margin-bottom: 10px;
+}
+.scrollIndicator .scrollArrow__body {
+  width: 1px;
+  height: 100px;
+  transform-origin: bottom;
+  background-color: #749ea3;
+}
+.scrollIndicator .scrollArrow::before {
+  content: '';
+  width: 1px;
+  height: 10px;
+  background-color: #749ea3;
+  transform: translate(-146%, 0%) rotate(45deg);
+  position: absolute;
+  transform-origin: bottom;
+  bottom: 0;
+  left: 50%;
+}
+.scrollIndicator .scrollArrow::after {
+  content: '';
+  width: 1px;
+  height: 10px;
+  background-color: #749ea3;
+  transform: translate(-78%, 4%) rotate(-45deg);
+  position: absolute;
+  transform-origin: bottom;
+  bottom: 0;
+  left: 50%;
+}
+.scrollIndicator.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) scale(0.8);
 }

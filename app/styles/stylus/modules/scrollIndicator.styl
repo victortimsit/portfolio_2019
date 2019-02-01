@@ -1,0 +1,43 @@
+$scrollIndicatorDuration = 300ms
+.scrollIndicator
+  display flex
+  flex-direction column
+  align-items center
+  position fixed
+  left 50%
+  bottom 10px
+  transform translateX(-50%)
+  opacity .6
+  transition opacity $scrollIndicatorDuration, visibility $scrollIndicatorDuration, transform $scrollIndicatorDuration
+  p
+    margin-bottom 10px
+  .scrollArrow
+    &__body
+      width 1px
+      height 100px
+      transform-origin bottom
+      background-color $fonts
+    &::before
+      content ''
+      width 1px 
+      height 10px
+      background-color $fonts
+      transform translate(-146%, 0%) rotate(45deg)
+      position absolute
+      transform-origin bottom
+      bottom 0
+      left 50%
+    &::after
+      content ''
+      width 1px 
+      height 10px
+      background-color $fonts
+      transform translate(-78%, 4%) rotate(-45deg)
+      position absolute
+      transform-origin bottom
+      bottom 0
+      left 50%
+  &.hidden
+    opacity 0
+    visibility hidden
+    transform translateX(-50%) scale(.8)

@@ -1,0 +1,47 @@
+.scrollIndicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  opacity: 0.6;
+  transition: opacity 300ms, visibility 300ms, transform 300ms;
+}
+.scrollIndicator p {
+  margin-bottom: 10px;
+}
+.scrollIndicator .scrollArrow__body {
+  width: 1px;
+  height: 100px;
+  transform-origin: bottom;
+  background-color: $fonts;
+}
+.scrollIndicator .scrollArrow::before {
+  content: '';
+  width: 1px;
+  height: 10px;
+  background-color: $fonts;
+  transform: translate(-146%, 0%) rotate(45deg);
+  position: absolute;
+  transform-origin: bottom;
+  bottom: 0;
+  left: 50%;
+}
+.scrollIndicator .scrollArrow::after {
+  content: '';
+  width: 1px;
+  height: 10px;
+  background-color: $fonts;
+  transform: translate(-78%, 4%) rotate(-45deg);
+  position: absolute;
+  transform-origin: bottom;
+  bottom: 0;
+  left: 50%;
+}
+.scrollIndicator.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) scale(0.8);
+}
