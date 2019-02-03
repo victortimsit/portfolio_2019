@@ -2,8 +2,8 @@
   "projects":
     [
       {
-        "category": "Agency",
-        "title": "Project number one",
+        "category": "School",
+        "title": "Retro audio player",
         "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/player.jpg",
         "description": "Ceci est un paragraphe décrivant la nature du projet, ses enjeux, ses objectifs, ainsi que ses conditions de réalisation et ses particularités",
         "contributors": ["Didier Bourdon", "Dieter Rams", "Raymound Lewis"],
