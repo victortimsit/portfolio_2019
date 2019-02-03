@@ -14,6 +14,8 @@
           ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/keyboardGame.jpg", "Ceci est la description de l'image"],
           ["img", "https://picsum.photos/800", "Description numéro 2 de l'image"],
           ["img", "https://picsum.photos/1000", "Description numéro 3 de l'image"],
+          ["img", "https://picsum.photos/500", "Description numéro 4 de l'image"],
+          ["img", "https://picsum.photos/600", "Description numéro 5 de l'image"],
           ["p", "test paragraphe dans fiche projet"]
         ]
       },
