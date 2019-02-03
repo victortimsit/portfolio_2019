@@ -264,6 +264,12 @@ h2 {
   font-size: 16px;
   font-family: SemiBold;
 }
+h3 {
+  font-size: 16px;
+  font-family: Bold;
+  margin-bottom: 5px;
+  opacity: 0.8;
+}
 .view.loading {
   pointer-events: none;
 }
@@ -443,6 +449,11 @@ section {
   text-align: center;
   font-size: 14px;
   font-family: 'Regular';
+}
+.section__description {
+  height: 39vw;
+  width: 120px;
+  font-family: 'Bold';
 }
 .section--fixed {
   width: 65vw;
@@ -830,6 +841,7 @@ header li.active {
 }
 .scrollIndicator p {
   margin-bottom: 10px;
+  animation: scrollIndicator 1s ease both infinite;
 }
 .scrollIndicator .scrollArrow__body {
   width: 1px;
@@ -863,4 +875,59 @@ header li.active {
   opacity: 0;
   visibility: hidden;
   transform: translateX(-50%) scale(0.8);
+}
+@-moz-keyframes scrollIndicator {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes scrollIndicator {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-o-keyframes scrollIndicator {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes scrollIndicator {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.humanResources p {
+  opacity: 0.5;
+}
+.humanResources__role {
+  margin-bottom: 50px;
+}
+.humanResources.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+.date {
+  position: fixed;
+  bottom: 50px;
+  right: 8vw;
+  font-family: Bold;
+}
+.date h3 {
+  opacity: 0.8;
+}
+.date.hidden {
+  opacity: 0;
+  visibility: hidden;
 }

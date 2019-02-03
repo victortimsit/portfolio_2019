@@ -11,6 +11,7 @@
 }
 .scrollIndicator p {
   margin-bottom: 10px;
+  animation: scrollIndicator 1s ease both infinite;
 }
 .scrollIndicator .scrollArrow__body {
   width: 1px;
@@ -44,4 +45,36 @@
   opacity: 0;
   visibility: hidden;
   transform: translateX(-50%) scale(0.8);
+}
+@-moz-keyframes scrollIndicator {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes scrollIndicator {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-o-keyframes scrollIndicator {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes scrollIndicator {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
 }

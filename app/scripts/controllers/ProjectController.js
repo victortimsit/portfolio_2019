@@ -44,7 +44,6 @@ class ProjectController
 
   _craftProjectsDOM(_data)
   {
-    console.log(_data)
     // Set hero data
     this.$.category.innerText = _data.category
     this.$.title.innerText = _data.title
@@ -65,11 +64,14 @@ class ProjectController
     if(_data.content)
     {
       const key = 0
-      const data = 1
+      const path = 1
+      const description = 2
 
       // Oubli pas de check si ça existe
       const section = document.createElement('section')
+      const pSection = document.createElement('section')
       const imgsContainer = document.createElement('div')
+      const descriptionContainer = document.createElement('div')
 
       for(let i = 0; i < _data.content.length; i++)
       {
@@ -78,17 +80,24 @@ class ProjectController
         {
           const div = document.createElement('div')
           const img = document.createElement('img')
+          const p = document.createElement('p')
 
-          img.src = _data.content[i][data]
+          p.classList.add('section__description')
+
+          img.src = _data.content[i][path]
+          p.innerText = _data.content[i][description]
 
           div.classList.add('section__image')
           if(i == 0) section.classList.add('section--fixed') // Fixed first image
 
           div.appendChild(img)
           imgsContainer.appendChild(div)
+          descriptionContainer.appendChild(p)
           section.appendChild(imgsContainer)
+          pSection.appendChild(descriptionContainer)
 
           this.$.content.appendChild(section)
+          this.$.content.appendChild(pSection)
         }
         else if(_data.content[i][key] == 'p')
         {
@@ -97,7 +106,7 @@ class ProjectController
 
           p.classList.add('section__p')
 
-          p.innerText = _data.content[i][data]
+          p.innerText = _data.content[i][path]
 
           section.appendChild(p)
 

@@ -25,6 +25,11 @@ section {
   font-size: 14px;
   font-family: 'Regular';
 }
+.section__description {
+  height: 39vw;
+  width: 120px;
+  font-family: 'Bold';
+}
 .section--fixed {
   width: 65vw;
   height: 39vw;
