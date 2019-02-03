@@ -14,6 +14,7 @@ class ScrollProject
       fixedSection: document.querySelector('.section--fixed'),
       sectionsImage: document.querySelectorAll('.section__image'),
       sectionsParagraph: document.querySelectorAll('.section__p'),
+      sectionsDescriptions: document.querySelectorAll('.section__description'),
       imagesContainer: document.querySelector('.section--fixed div'),
       content: document.querySelector('.content'),
       scrollIndicator: document.querySelector('.scrollIndicator'),
@@ -23,21 +24,8 @@ class ScrollProject
       date: document.querySelector('.date'),
     }
 
-    this.params = 
-    {
-      documentScrollEnding: document.body.offsetHeight - window.innerHeight,
-      radialInitialOpacity: parseFloat(getComputedStyle(this.$.radialGradient).opacity),
-      scaleBackground: { ending: .8, scroll: 1/2 },
-      scaleHero: { ending: .8, scroll: 1/3 },
-      opacityRadial: { ending: 1, scroll: 1/4 },
-      sectionOffset: this.$.fixedSection.offsetTop,
-      // sectionHeight: this.$.fixedSection.offsetHeight / this.$.sectionsImage.length,
-      sectionHeight: this.$.fixedSection.offsetHeight,
-      scaleSticky: { ending: .9, ratio: 0, oldScrollY: 0, imageNumber: this.$.sectionsImage.length },
-      scrollIndicator: { height: this.$.scrollIndicatorBody.offsetHeight },
-      description: { marginTop: parseInt(getComputedStyle(this.$.description).marginTop), offsetTop: this.$.description.offsetTop, height: this.$.description.offsetHeight  }
-    }
-    console.log(this.params.sectionOffset)
+    this._initParams()
+
     this.$.imagesContainer.classList.add('sticky')
 
     for(let i = 0; i < this.$.sectionsImage.length; i++)
@@ -48,10 +36,30 @@ class ScrollProject
     this._listener()
   }
 
+  _initParams()
+  {
+    this.params = 
+    {
+      documentScrollEnding: document.body.offsetHeight - window.innerHeight,
+      radialInitialOpacity: parseFloat(getComputedStyle(this.$.radialGradient).opacity),
+      scaleBackground: { ending: .8, scroll: 1/2 },
+      scaleHero: { ending: .8, scroll: 1/3 },
+      opacityRadial: { ending: 1, scroll: 1/4 },
+      sectionOffset: this.$.fixedSection.offsetTop,
+      // sectionHeight: this.$.fixedSection.offsetHeight / this.$.sectionsImage.length,
+      sectionHeight: this.$.fixedSection.offsetHeight,
+      sectionMarginTop: parseInt(getComputedStyle(this.$.fixedSection).marginTop),
+      scaleSticky: { ending: .9, ratio: 0, oldScrollY: 0, imageNumber: this.$.sectionsImage.length, count: 1, oldCurrentScroll: 0 },
+      scrollIndicator: { height: this.$.scrollIndicatorBody.offsetHeight },
+      description: { marginTop: parseInt(getComputedStyle(this.$.description).marginTop), offsetTop: this.$.description.offsetTop, height: this.$.description.offsetHeight },
+      sectionsDescription: { height: this.$.sectionsDescriptions[0].offsetHeight }
+    }
+  }
+
   _listener()
   {
     window.addEventListener('scroll', (event) => { this._handleScroll(event) })
-    window.addEventListener('resize', () => { this._handleUpdateParams() })
+    window.addEventListener('resize', () => { this._initParams() })
   }
 
   // _initSectionsStyle()
@@ -91,7 +99,7 @@ class ScrollProject
   {
     if(window.scrollY <= this.params.description.offsetTop - window.innerHeight)
     {
-      const scrollDistance = this.params.description.marginTop - 100
+      const scrollDistance = this.params.description.marginTop - this.params.sectionMarginTop
       const scale = window.scrollY / scrollDistance // 160 = margin top of description
       const translate = (window.scrollY / scrollDistance) * this.params.scrollIndicator.height // 160 = margin top of description
       
@@ -149,80 +157,67 @@ class ScrollProject
 
   _scaleSticky(_currentTranslateY)
   {
-    // console.log(window.scrollY - this.params.scaleSticky.oldScrollY)
-    // const ratio = (window.scrollY - this.params.scaleSticky.oldScrollY) / this.params.sectionHeight
-    const ratio = (window.scrollY - this.params.scaleSticky.oldScrollY) / ((this.params.sectionHeight + 100) * 2) // 100 = margin
-    // const ratio = window.scrollY / (this.params.sectionHeight)
+
+    // const ratio = (window.scrollY - this.params.scaleSticky.oldScrollY) / ((this.params.sectionHeight * (this.params.scaleSticky.imageNumber) + this.params.sectionMarginTop)) // 100 = margin
+    const ratio = (window.scrollY - this.params.scaleSticky.oldScrollY) / ((this.params.sectionsDescription.height * (this.params.scaleSticky.imageNumber) + this.params.sectionMarginTop)) // 100 = margin
+
     const scaleSubstraction = (1 - this.params.scaleSticky.ending) * ratio
     let scaleValue = 1 - scaleSubstraction
-    // console.log(this.params.scaleSticky.oldScrollY)
 
-    // if(this.params.scaleSticky.oldScrollY != 0 && window.scrollY - this.params.scaleSticky.oldScrollY > this.params.sectionHeight / this.$.sectionsImage.length)
-    if(this.params.scaleSticky.oldScrollY != 0 && window.scrollY - this.params.scaleSticky.oldScrollY > this.params.sectionHeight + 100) // this.params.sectionHeight = description height
+    if(this.params.scaleSticky.oldScrollY != 0 
+      && window.scrollY - this.params.scaleSticky.oldScrollY > (this.params.sectionsDescription.height * this.params.scaleSticky.count + this.params.sectionMarginTop)
+      && window.scrollY - this.params.scaleSticky.oldScrollY < (this.params.sectionsDescription.height * (this.params.scaleSticky.count + 1) + this.params.sectionMarginTop) // this.params.sectionHeight = description height
+      && this.params.scaleSticky.count < this.params.scaleSticky.imageNumber
+      && this.params.scaleSticky.oldCurrentScrollY < window.scrollY)
     {
-      // console.log('update image')
-      this.$.sectionsImage[0].classList.add('left')
-      this.$.sectionsImage[1].classList.remove('right')
+      this.$.sectionsImage[this.params.scaleSticky.count - 1].classList.add('left')
+      this.$.sectionsImage[this.params.scaleSticky.count].classList.remove('right')
+
+      this.params.scaleSticky.count++
     }
-    else
+    else if(
+      this.params.scaleSticky.oldScrollY != 0 
+      && window.scrollY - this.params.scaleSticky.oldScrollY < (this.params.sectionsDescription.height + this.params.sectionMarginTop) * (this.params.scaleSticky.count - 1)
+      && this.params.scaleSticky.count > 1
+      && this.params.scaleSticky.oldCurrentScrollY > window.scrollY)
     {
-      this.$.sectionsImage[0].classList.remove('left')
-      this.$.sectionsImage[1].classList.add('right')
+      this.$.sectionsImage[this.params.scaleSticky.count - 1].classList.add('right')
+      this.$.sectionsImage[this.params.scaleSticky.count - 2].classList.remove('left')
+
+      this.params.scaleSticky.count--
     }
 
     if(scaleValue <= this.params.scaleSticky.ending) scaleValue = this.params.scaleSticky.ending
     if(this.params.scaleSticky.oldScrollY != 0) this.$.imagesContainer.style.transform = `translateY(${_currentTranslateY}px) scale(${scaleValue})`
     if(this.params.scaleSticky.oldScrollY == 0) this.params.scaleSticky.oldScrollY = window.scrollY
+
+    this.params.scaleSticky.oldCurrentScrollY = window.scrollY
   }
 
-  // _stickySection()
-  // {
-  //   if(this.params.sectionOffset != this.$.fixedSection.offsetTop) this.params.sectionOffset = this.$.fixedSection.offsetTop
-
-  //   if(window.scrollY <= this.params.sectionOffset - ((window.innerHeight - (this.params.sectionHeight * this.params.scaleSticky.imageNumber)) / 2))
-  //   {
-  //     this.$.imagesContainer.style.transform = `translateY(${this.params.sectionOffset - window.scrollY}px)` // scroll image container
-  //   } 
-  //   else // active sticky
-  //   {
-  //     const translateY = (window.innerHeight - (this.params.sectionHeight * this.params.scaleSticky.imageNumber)) / 2
-  //     this.$.imagesContainer.style.transform = `translateY(${translateY}px)`
-
-  //     this._scaleSticky(translateY)
-  //   }
-  // }
   _stickySection()
   {
     const imgContainerOffset = (window.innerHeight - (this.params.sectionHeight)) / 2 // relative to window
     const scrollY = window.scrollY
-    console.log(imgContainerOffset)
 
     if(this.params.sectionOffset != this.$.fixedSection.offsetTop) this.params.sectionOffset = this.$.fixedSection.offsetTop
 
-    // if(window.scrollY >= this.params.sectionOffset - ((window.innerHeight - (this.params.sectionHeight * this.params.scaleSticky.imageNumber)) / 2)
-    // && window.scrollY <= this.params.sectionOffset + this.params.sectionHeight * this.params.scaleSticky.imageNumber)// active sticky
     if(window.scrollY >= this.params.sectionOffset - imgContainerOffset
-      && window.scrollY <= this.params.sectionOffset + ((this.params.sectionHeight) * 2))
+      && window.scrollY <= this.params.sectionOffset + ((this.params.sectionsDescription.height) * this.params.scaleSticky.imageNumber) - imgContainerOffset)
     {
-      const translateY = (window.innerHeight - (this.params.sectionHeight)) / 2
+      const translateY = imgContainerOffset
       this.$.imagesContainer.style.transform = `translateY(${translateY}px)`
 
       this._scaleSticky(translateY)
     }
-    else if(window.scrollY <= this.params.sectionOffset + ((this.params.sectionHeight) * 2)) // before sitcky
+    else if(window.scrollY <= this.params.sectionOffset + ((this.params.sectionsDescription.height) * this.params.scaleSticky.imageNumber) - imgContainerOffset) // before sitcky
     {
       this.$.imagesContainer.style.transform = `translateY(${this.params.sectionOffset - scrollY}px)` // scroll image container
     }
     else
     {
-      console.log(this.params.sectionOffset)
-      this.$.imagesContainer.style.transform = `translateY(${this.params.sectionOffset + imgContainerOffset + (this.params.sectionHeight) * 2 - scrollY}px) scale(${this.params.scaleSticky.ending})`
+      this.$.imagesContainer.style.transform = `translateY(${this.params.sectionOffset/* + imgContainerOffset */+ (this.params.sectionsDescription.height) * this.params.scaleSticky.imageNumber - scrollY}px) scale(${this.params.scaleSticky.ending})`
     }
-  }
-
-  _handleUpdateParams()
-  {
-    this.params.sectionHeight = this.$.fixedSection.offsetHeight
-    this.params.sectionOffset = this.$.fixedSection.offsetTop
+    console.log(this.params.sectionOffset + ((this.params.sectionsDescription.height) * this.params.scaleSticky.imageNumber) + imgContainerOffset)
+    console.log(window.scrollY)
   }
 }

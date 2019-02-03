@@ -50,6 +50,8 @@ class ProjectController
     this.$.backgroundImage.src = _data.thumbnail
     this.$.descriptionParagraph.innerText = _data.description
 
+    this.$.title.style.backgroundImage = `url("${_data.thumbnail}")`
+
     // set dynamic dom
     if(_data.url)
     {

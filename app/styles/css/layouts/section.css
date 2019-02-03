@@ -6,8 +6,9 @@ section {
   height: 100%;
   position: absolute;
   flex-shrink: 0;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s;
   will-change: transform;
+  opacity: 1;
 }
 .section__image img {
   width: 100%;
@@ -15,18 +16,23 @@ section {
   object-fit: cover;
 }
 .section__image.right {
-  transform: translateX(100%);
+  transform: translateY(0%) scale(1.04);
+  opacity: 0;
 }
 .section__image.left {
-  transform: translateX(-100%);
+  opacity: 0;
+  transform: translateY(0%) scale(0.96);
 }
 .section__p {
-  text-align: center;
-  font-size: 14px;
   font-family: 'Regular';
+  margin: 0 auto;
+  font-size: 38px;
+  font-family: SemiBold;
+  opacity: 0.8;
+  line-height: 1.6;
 }
 .section__description {
-  height: 39vw;
+  height: 60vw;
   width: 120px;
   font-family: 'Bold';
 }

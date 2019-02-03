@@ -7,6 +7,8 @@
   z-index: -1;
   transition: transform $projectScrollTransitionDuration ease;
   will-change: transform;
+  overflow: hidden;
+  filter: blur(16px);
 }
 .background__image {
   width: 110%;
@@ -21,7 +23,7 @@
 }
 .background__gradient {
   width: 112%;
-  height: 108%;
+  height: 112%;
   margin-left: -6%;
   margin-top: -4%;
   position: absolute;
@@ -29,10 +31,10 @@
   top: 0;
 }
 .background__gradient--linear {
-  background: linear-gradient(180deg, rgba(0,28,32,0) 0%, $background 96.69%);
+  background: linear-gradient(180deg, $backgroundLinear 0%, $background 96.69%);
 }
 .background__gradient--radial {
-  background: radial-gradient(470px at 50% 50%, rgba(0,28,32,0.85) 0%, $background 100%);
+  background: radial-gradient(470px at 50% 50%, $backgroundRadial 0%, $background 100%);
   opacity: 0.9;
   transition: opacity $projectScrollTransitionDuration ease;
   will-change: opacity;

@@ -8,8 +8,9 @@ section
     flex-shrink 0
     
 
-    transition transform .3s ease
+    transition transform .3s ease, opacity .3s
     will-change transform
+    opacity 1
 
     & img
       width 100%
@@ -17,16 +18,23 @@ section
       object-fit cover
 
     &.right
-      transform translateX(100%)
+      transform translateY(0%) scale(1.04)
+      opacity 0
     &.left
-      transform translateX(-100%)
+      opacity 0
+      transform translateY(0%) scale(.96)
   &__p
-    text-align center
-    font-size 14px
     font-family 'Regular'
+    // width 43vw
+    margin 0 auto
+    font-size 38px;
+    font-family SemiBold
+    opacity 0.8
+    line-height 1.6
 
   &__description
-    height 39vw
+    // height 39vw
+    height 60vw
     width 120px
     font-family 'Bold'
 

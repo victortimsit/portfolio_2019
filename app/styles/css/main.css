@@ -244,8 +244,8 @@ body {
   line-height: 1.4;
   font-family: Regular;
   font-size: 16px;
-  color: #749ea3;
-  background-color: #001c20;
+  color: #e2ede1;
+  background-color: #000;
   padding: 50px 6vw;
   overflow-x: hidden;
 }
@@ -255,9 +255,14 @@ body {
   }
 }
 h1 {
-  font-size: 90px;
+  font-size: 60px;
   font-family: Black;
-  text-transform: uppercase;
+  font-size: 60px;
+  color: rgba(255,255,255,0.1);
+  background-size: 100%;
+  opacity: 0.8;
+  -webkit-background-clip: text;
+  background-attachment: fixed;
 }
 h2 {
   margin-bottom: 10px;
@@ -274,10 +279,10 @@ h3 {
   pointer-events: none;
 }
 .view.loading li:not(.projectsPreviews__item) {
-  background: #00272c;
+  background: #111;
 }
 .view.loading a {
-  background: #00272c;
+  background: #111;
 }
 .view.loading img {
   opacity: 0;
@@ -300,7 +305,7 @@ h3 {
     top: 0;
     left: 0;
     padding: 8vw;
-    background-color: #001c20;
+    background-color: #000;
     background: linear-gradient(180deg, #001c20 0%, rgba(0,28,32,0) 100%);
     z-index: 10;
   }
@@ -347,7 +352,7 @@ aside .tips__arrow::before {
   height: 8px;
   position: absolute;
   left: 50%;
-  background-color: #749ea3;
+  background-color: #e2ede1;
   transform: translate(-50%, 0px) rotate(45deg);
 }
 aside .tips__arrow::after {
@@ -356,7 +361,7 @@ aside .tips__arrow::after {
   height: 8px;
   position: absolute;
   left: 50%;
-  background-color: #749ea3;
+  background-color: #e2ede1;
   transform: translate(-50%, 5px) rotate(-45deg);
 }
 aside .tips.visible {
@@ -389,6 +394,8 @@ aside .tips--close.visible {
   z-index: -1;
   transition: transform 0ms ease;
   will-change: transform;
+  overflow: hidden;
+  filter: blur(16px);
 }
 .background__image {
   width: 110%;
@@ -403,7 +410,7 @@ aside .tips--close.visible {
 }
 .background__gradient {
   width: 112%;
-  height: 108%;
+  height: 112%;
   margin-left: -6%;
   margin-top: -4%;
   position: absolute;
@@ -411,10 +418,10 @@ aside .tips--close.visible {
   top: 0;
 }
 .background__gradient--linear {
-  background: linear-gradient(180deg, rgba(0,28,32,0) 0%, #001c20 96.69%);
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, #000 96.69%);
 }
 .background__gradient--radial {
-  background: radial-gradient(470px at 50% 50%, rgba(0,28,32,0.85) 0%, #001c20 100%);
+  background: radial-gradient(470px at 50% 50%, rgba(0,0,0,0.85) 0%, #000 100%);
   opacity: 0.9;
   transition: opacity 0ms ease;
   will-change: opacity;
@@ -431,8 +438,9 @@ section {
   height: 100%;
   position: absolute;
   flex-shrink: 0;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s;
   will-change: transform;
+  opacity: 1;
 }
 .section__image img {
   width: 100%;
@@ -440,18 +448,23 @@ section {
   object-fit: cover;
 }
 .section__image.right {
-  transform: translateX(100%);
+  transform: translateY(0%) scale(1.04);
+  opacity: 0;
 }
 .section__image.left {
-  transform: translateX(-100%);
+  opacity: 0;
+  transform: translateY(0%) scale(0.96);
 }
 .section__p {
-  text-align: center;
-  font-size: 14px;
   font-family: 'Regular';
+  margin: 0 auto;
+  font-size: 38px;
+  font-family: SemiBold;
+  opacity: 0.8;
+  line-height: 1.6;
 }
 .section__description {
-  height: 39vw;
+  height: 60vw;
   width: 120px;
   font-family: 'Bold';
 }
@@ -510,7 +523,7 @@ header li.active {
     left: 0;
     width: 100vw;
     padding: 20px 8vw;
-    background-color: #001c20;
+    background-color: #000;
   }
   header ul {
     display: flex;
@@ -520,7 +533,7 @@ header li.active {
   }
 }
 .view.loading header li {
-  background-color: #00272c;
+  background-color: #111;
 }
 .view.loading header li a {
   opacity: 0;
@@ -551,7 +564,7 @@ header li.active {
 .indicator {
   width: 100%;
   height: 1px;
-  background: #749ea3;
+  background: #e2ede1;
   position: absolute;
   top: 50%;
   opacity: 1;
@@ -601,7 +614,7 @@ header li.active {
 }
 .view.loading .projectsPreviews a {
   display: block;
-  background-color: #00272c;
+  background-color: #111;
 }
 .contact {
   opacity: 0.6;
@@ -621,7 +634,7 @@ header li.active {
   }
 }
 .view.loading .contact {
-  background-color: #00272c;
+  background-color: #111;
 }
 .view.loading .contact a {
   opacity: 0;
@@ -683,7 +696,7 @@ header li.active {
   justify-content: space-between;
   align-items: center;
   padding: 4px 0;
-  color: #001c20;
+  color: #000;
 }
 .octagon__text--1 {
   transform: translate(-50%, -50%) rotate(-22.5deg);
@@ -764,7 +777,7 @@ header li.active {
   transition: transform 300ms linear, opacity 300ms ease;
 }
 .hero {
-  height: calc(100vh - 50px);
+  height: calc(100vh - 100px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -796,7 +809,7 @@ header li.active {
   transition: transform 0ms ease;
 }
 .button {
-  border: 2px solid #749ea3;
+  border: 2px solid #e2ede1;
   padding: 10px 50px;
   text-transform: uppercase;
   font-family: SemiBold;
@@ -806,7 +819,7 @@ header li.active {
   display: inline-block;
 }
 .loader {
-  background-color: rgba(116,158,163,0.5);
+  background-color: #3f3f3f;
   position: fixed;
   left: 0;
   top: 0;
@@ -817,7 +830,7 @@ header li.active {
 .loader__fill {
   width: 100%;
   height: 100%;
-  background-color: #749ea3;
+  background-color: #efefef;
   transform-origin: left;
   transform: scaleX(0);
   transition: transform 150ms;
@@ -847,13 +860,13 @@ header li.active {
   width: 1px;
   height: 100px;
   transform-origin: bottom;
-  background-color: #749ea3;
+  background-color: #e2ede1;
 }
 .scrollIndicator .scrollArrow::before {
   content: '';
   width: 1px;
   height: 10px;
-  background-color: #749ea3;
+  background-color: #e2ede1;
   transform: translate(-146%, 0%) rotate(45deg);
   position: absolute;
   transform-origin: bottom;
@@ -864,7 +877,7 @@ header li.active {
   content: '';
   width: 1px;
   height: 10px;
-  background-color: #749ea3;
+  background-color: #e2ede1;
   transform: translate(-78%, 4%) rotate(-45deg);
   position: absolute;
   transform-origin: bottom;
