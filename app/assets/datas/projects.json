@@ -2,16 +2,21 @@
   "projects":
     [
       {
-        "category": "Agency",
-        "title": "Project number one",
-        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/keyboardGame.jpg",
+        "category": "School",
+        "title": "Retro audio player",
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/player.jpg",
         "description": "Ceci est un paragraphe décrivant la nature du projet, ses enjeux, ses objectifs, ainsi que ses conditions de réalisation et ses particularités",
+        "contributors": ["Didier Bourdon", "Dieter Rams", "Raymound Lewis"],
+        "date": "February 2018",
         "url": "https://google.fr",
         "content": 
         [
-          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/keyboardGame.jpg"],
-          ["img", "https://picsum.photos/800"],
-          ["p", "test paragraphe dans fiche projet"]
+          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/keyboardGame.jpg", "Ceci est la description de l'image"],
+          ["img", "https://picsum.photos/800", "Description numéro 2 de l'image"],
+          ["img", "https://picsum.photos/1000", "Description numéro 3 de l'image"],
+          ["img", "https://picsum.photos/500", "Description numéro 4 de l'image"],
+          ["img", "https://picsum.photos/600", "Description numéro 5 de l'image"],
+          ["p", "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme du texte."]
         ]
       },
       {
