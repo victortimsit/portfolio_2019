@@ -47,6 +47,7 @@ section {
   width: 65vw;
   height: 39vw;
   display: flex;
+  overflow: hidden;
   transform: translateY(100vh);
   z-index: -1;
 }

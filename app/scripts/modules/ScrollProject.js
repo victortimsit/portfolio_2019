@@ -4,6 +4,7 @@ class ScrollProject
   {
     this.$ = 
     {
+      dynamicBackground: document.querySelector('.dynamicBackground'),
       backgroundImage: document.querySelector('.background'),
       linearGradient: document.querySelector('.background__gradient--linear'),
       radialGradient: document.querySelector('.background__gradient--radial'),
@@ -80,9 +81,11 @@ class ScrollProject
   {
     const ratio =
     {
-      background:  window.scrollY / (this.params.documentScrollEnding * this.params.scaleBackground.scroll),
+      // background:  window.scrollY / (this.params.documentScrollEnding * this.params.scaleBackground.scroll),
+      background:  window.scrollY / (window.innerHeight * this.params.scaleBackground.scroll),
       hero:  window.scrollY / (this.params.documentScrollEnding * this.params.scaleHero.scroll),
-      radial: window.scrollY / (this.params.documentScrollEnding * this.params.opacityRadial.scroll)
+      // radial: window.scrollY / (this.params.documentScrollEnding * this.params.opacityRadial.scroll)
+      radial: window.scrollY / (window.innerHeight * this.params.opacityRadial.scroll)
     }
     
     this._scaleBackground(ratio.background)
@@ -169,6 +172,7 @@ class ScrollProject
     const ratio = (window.scrollY - this.params.scaleSticky.oldScrollY) / ((this.params.sectionsDescription.height * (this.params.scaleSticky.imageNumber) + this.params.sectionMarginTop)) // 100 = margin
 
     const scaleSubstraction = (1 - this.params.scaleSticky.ending) * ratio
+    const scaleDynamicBackground = 1 * ratio
     let scaleValue = 1 - scaleSubstraction
 
     if(this.params.scaleSticky.oldScrollY != 0 
@@ -196,6 +200,7 @@ class ScrollProject
 
     if(scaleValue <= this.params.scaleSticky.ending) scaleValue = this.params.scaleSticky.ending
     if(this.params.scaleSticky.oldScrollY != 0) this.$.imagesContainer.style.transform = `translateY(${_currentTranslateY}px) scale(${scaleValue})`
+    this.$.dynamicBackground.style.opacity = scaleDynamicBackground
     if(this.params.scaleSticky.oldScrollY == 0) this.params.scaleSticky.oldScrollY = window.scrollY
 
     this.params.scaleSticky.oldCurrentScrollY = window.scrollY
@@ -223,6 +228,7 @@ class ScrollProject
     else
     {
       this.$.imagesContainer.style.transform = `translateY(${this.params.sectionOffset/* + imgContainerOffset */+ (this.params.sectionsDescription.height) * this.params.scaleSticky.imageNumber - scrollY}px) scale(${this.params.scaleSticky.ending})`
+      
     }
   }
 }
