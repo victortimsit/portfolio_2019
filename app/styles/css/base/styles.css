@@ -15,15 +15,13 @@ body {
 h1 {
   font-size: 60px;
   font-family: Black;
-  font-size: 60px;
-  color: rgba(255,255,255,0.1);
-  background-size: 100%;
-  opacity: 0.8;
+  color: $fonts;
+  opacity: 0.9;
   -webkit-background-clip: text;
   background-attachment: fixed;
 }
 h2 {
-  margin-bottom: 10px;
+  margin-bottom: 24px;
   font-size: 16px;
   font-family: SemiBold;
 }

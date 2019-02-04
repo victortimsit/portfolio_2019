@@ -26,7 +26,7 @@ class ScrollProject
 
     this._initParams()
 
-    this.$.imagesContainer.classList.add('sticky')
+    if(this.$.imagesContainer) this.$.imagesContainer.classList.add('sticky')
 
     for(let i = 0; i < this.$.sectionsImage.length; i++)
     {
@@ -45,14 +45,22 @@ class ScrollProject
       scaleBackground: { ending: .8, scroll: 1/2 },
       scaleHero: { ending: .8, scroll: 1/3 },
       opacityRadial: { ending: 1, scroll: 1/4 },
-      sectionOffset: this.$.fixedSection.offsetTop,
-      // sectionHeight: this.$.fixedSection.offsetHeight / this.$.sectionsImage.length,
-      sectionHeight: this.$.fixedSection.offsetHeight,
-      sectionMarginTop: parseInt(getComputedStyle(this.$.fixedSection).marginTop),
+      // sectionOffset: this.$.fixedSection.offsetTop,
+      // // sectionHeight: this.$.fixedSection.offsetHeight / this.$.sectionsImage.length,
+      // sectionHeight: this.$.fixedSection.offsetHeight,
+      // sectionMarginTop: parseInt(getComputedStyle(this.$.fixedSection).marginTop),
       scaleSticky: { ending: .9, ratio: 0, oldScrollY: 0, imageNumber: this.$.sectionsImage.length, count: 1, oldCurrentScroll: 0 },
       scrollIndicator: { height: this.$.scrollIndicatorBody.offsetHeight },
       description: { marginTop: parseInt(getComputedStyle(this.$.description).marginTop), offsetTop: this.$.description.offsetTop, height: this.$.description.offsetHeight },
-      sectionsDescription: { height: this.$.sectionsDescriptions[0].offsetHeight }
+      // sectionsDescription: { height: this.$.sectionsDescriptions[0].offsetHeight }
+    }
+
+    if(this.$.fixedSection) 
+    {
+      this.params.sectionOffset = this.$.fixedSection.offsetTop
+      this.params.sectionHeight = this.$.fixedSection.offsetHeight
+      this.params.sectionMarginTop = parseInt(getComputedStyle(this.$.fixedSection).marginTop)
+      this.params.sectionsDescription = { height: this.$.sectionsDescriptions[0].offsetHeight }
     }
   }
 
@@ -81,7 +89,7 @@ class ScrollProject
     this._scaleHero(ratio.hero)
     this._opacityRadialGradient(ratio.radial)
     this._translateDescription()
-    this._stickySection()
+    if(this.$.fixedSection) this._stickySection()
     this._scrollIndicator()
   }
 
@@ -106,26 +114,26 @@ class ScrollProject
       if(scale <= 1) 
       {
         this.$.scrollIndicator.classList.remove('hidden')
-        this.$.humanRessources.classList.remove('hidden')
-        this.$.date.classList.remove('hidden')
+        if(this.$.humanRessources) this.$.humanRessources.classList.remove('hidden')
+        if(this.$.date) this.$.date.classList.remove('hidden')
 
         this.$.scrollIndicatorBody.style.transform = `scaleY(${1-scale})`
-        this.$.humanRessources.style.opacity = `${1-scale}`
-        this.$.date.style.opacity = `${1-scale}`
+        if(this.$.humanRessources) this.$.humanRessources.style.opacity = `${1-scale}`
+        if(this.$.date) this.$.date.style.opacity = `${1-scale}`
         this.$.scrollIndicatorLabel.style.transform = `translateY(${translate}px)`
       }
       else
       {
         this.$.scrollIndicator.classList.add('hidden')
-        this.$.humanRessources.classList.add('hidden')
-        this.$.date.classList.add('hidden')
+        if(this.$.humanRessources) this.$.humanRessources.classList.add('hidden')
+        if(this.$.date) this.$.date.classList.add('hidden')
       }
     }
     else
     {
       this.$.scrollIndicator.classList.add('hidden')
-      this.$.humanRessources.classList.add('hidden')
-      this.$.date.classList.add('hidden')
+      if(this.$.humanRessources) this.$.humanRessources.classList.add('hidden')
+      if(this.$.date) this.$.date.classList.add('hidden')
     }
   }
 
@@ -152,7 +160,6 @@ class ScrollProject
   _translateDescription()
   {
     this.$.description.style.transform = `translateY(${-window.scrollY * .2}px)`
-    // console.log(window.scrollY)
   }
 
   _scaleSticky(_currentTranslateY)
@@ -217,7 +224,5 @@ class ScrollProject
     {
       this.$.imagesContainer.style.transform = `translateY(${this.params.sectionOffset/* + imgContainerOffset */+ (this.params.sectionsDescription.height) * this.params.scaleSticky.imageNumber - scrollY}px) scale(${this.params.scaleSticky.ending})`
     }
-    console.log(this.params.sectionOffset + ((this.params.sectionsDescription.height) * this.params.scaleSticky.imageNumber) + imgContainerOffset)
-    console.log(window.scrollY)
   }
 }

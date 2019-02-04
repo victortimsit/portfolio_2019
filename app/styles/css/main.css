@@ -244,8 +244,8 @@ body {
   line-height: 1.4;
   font-family: Regular;
   font-size: 16px;
-  color: #e2ede1;
-  background-color: #000;
+  color: #749ea3;
+  background-color: #001c20;
   padding: 50px 6vw;
   overflow-x: hidden;
 }
@@ -257,15 +257,13 @@ body {
 h1 {
   font-size: 60px;
   font-family: Black;
-  font-size: 60px;
-  color: rgba(255,255,255,0.1);
-  background-size: 100%;
-  opacity: 0.8;
+  color: #749ea3;
+  opacity: 0.9;
   -webkit-background-clip: text;
   background-attachment: fixed;
 }
 h2 {
-  margin-bottom: 10px;
+  margin-bottom: 24px;
   font-size: 16px;
   font-family: SemiBold;
 }
@@ -279,10 +277,10 @@ h3 {
   pointer-events: none;
 }
 .view.loading li:not(.projectsPreviews__item) {
-  background: #111;
+  background: $loadingDOM;
 }
 .view.loading a {
-  background: #111;
+  background: $loadingDOM;
 }
 .view.loading img {
   opacity: 0;
@@ -305,7 +303,7 @@ h3 {
     top: 0;
     left: 0;
     padding: 8vw;
-    background-color: #000;
+    background-color: #001c20;
     background: linear-gradient(180deg, #001c20 0%, rgba(0,28,32,0) 100%);
     z-index: 10;
   }
@@ -352,7 +350,7 @@ aside .tips__arrow::before {
   height: 8px;
   position: absolute;
   left: 50%;
-  background-color: #e2ede1;
+  background-color: #749ea3;
   transform: translate(-50%, 0px) rotate(45deg);
 }
 aside .tips__arrow::after {
@@ -361,7 +359,7 @@ aside .tips__arrow::after {
   height: 8px;
   position: absolute;
   left: 50%;
-  background-color: #e2ede1;
+  background-color: #749ea3;
   transform: translate(-50%, 5px) rotate(-45deg);
 }
 aside .tips.visible {
@@ -418,13 +416,22 @@ aside .tips--close.visible {
   top: 0;
 }
 .background__gradient--linear {
-  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, #000 96.69%);
+  background: linear-gradient(180deg, rgba(0,28,32,0) 0%, #001c20 96.69%);
 }
 .background__gradient--radial {
-  background: radial-gradient(470px at 50% 50%, rgba(0,0,0,0.85) 0%, #000 100%);
+  background: radial-gradient(470px at 50% 50%, rgba(0,28,32,0.85) 0%, #001c20 100%);
   opacity: 0.9;
   transition: opacity 0ms ease;
   will-change: opacity;
+}
+.dynamicBackground {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  left: 0;
+  top: 0;
+  opacity: 0;
 }
 .content {
   width: 65vw;
@@ -462,6 +469,7 @@ section {
   font-family: SemiBold;
   opacity: 0.8;
   line-height: 1.6;
+  transform: scale(0.9);
 }
 .section__description {
   height: 60vw;
@@ -478,13 +486,19 @@ section {
   width: 65vw;
   height: 39vw;
   display: flex;
-  overflow: hidden;
   transform: translateY(100vh);
   z-index: -1;
 }
 footer {
   text-align: center;
   margin-top: 200px;
+  position: relative;
+  z-index: 10;
+}
+footer a {
+  text-decoration: underline;
+  margin-top: 50px;
+  display: block;
 }
 .other {
   display: flex;
@@ -523,7 +537,7 @@ header li.active {
     left: 0;
     width: 100vw;
     padding: 20px 8vw;
-    background-color: #000;
+    background-color: #001c20;
   }
   header ul {
     display: flex;
@@ -533,7 +547,7 @@ header li.active {
   }
 }
 .view.loading header li {
-  background-color: #111;
+  background-color: $loadingDOM;
 }
 .view.loading header li a {
   opacity: 0;
@@ -545,7 +559,10 @@ header li.active {
   align-items: center;
   justify-content: flex-end;
   font-size: 14px;
-  font-weight: bold;
+  font-family: 'Black';
+  text-transform: lowercase;
+  pointer-events: none;
+  user-select: none;
 }
 .projectsTitles__tab {
   text-align: right;
@@ -564,7 +581,7 @@ header li.active {
 .indicator {
   width: 100%;
   height: 1px;
-  background: #e2ede1;
+  background: #749ea3;
   position: absolute;
   top: 50%;
   opacity: 1;
@@ -614,7 +631,7 @@ header li.active {
 }
 .view.loading .projectsPreviews a {
   display: block;
-  background-color: #111;
+  background-color: $loadingDOM;
 }
 .contact {
   opacity: 0.6;
@@ -634,7 +651,7 @@ header li.active {
   }
 }
 .view.loading .contact {
-  background-color: #111;
+  background-color: $loadingDOM;
 }
 .view.loading .contact a {
   opacity: 0;
@@ -696,7 +713,7 @@ header li.active {
   justify-content: space-between;
   align-items: center;
   padding: 4px 0;
-  color: #000;
+  color: #001c20;
 }
 .octagon__text--1 {
   transform: translate(-50%, -50%) rotate(-22.5deg);
@@ -755,7 +772,7 @@ header li.active {
 .cursor__circle {
   width: 100%;
   height: 100%;
-  background-color: #385a5f;
+  background-color: $cursor;
   border-radius: 50%;
   opacity: 0;
   visibility: hidden;
@@ -809,7 +826,7 @@ header li.active {
   transition: transform 0ms ease;
 }
 .button {
-  border: 2px solid #e2ede1;
+  border: 2px solid #749ea3;
   padding: 10px 50px;
   text-transform: uppercase;
   font-family: SemiBold;
@@ -819,18 +836,21 @@ header li.active {
   display: inline-block;
 }
 .loader {
-  background-color: #3f3f3f;
+  background-color: $loaderBackground;
   position: fixed;
   left: 0;
   top: 0;
   transform: translate(-100%, -100%);
   visibility: hidden;
   opacity: 0;
+  z-index: 99;
+  width: 80px;
+  height: 4px;
 }
 .loader__fill {
   width: 100%;
   height: 100%;
-  background-color: #efefef;
+  background-color: $loader;
   transform-origin: left;
   transform: scaleX(0);
   transition: transform 150ms;
@@ -838,8 +858,6 @@ header li.active {
 .view.loading .loader {
   visibility: visible;
   opacity: 1;
-  width: 80px;
-  height: 4px;
 }
 .scrollIndicator {
   display: flex;
@@ -860,13 +878,13 @@ header li.active {
   width: 1px;
   height: 100px;
   transform-origin: bottom;
-  background-color: #e2ede1;
+  background-color: #749ea3;
 }
 .scrollIndicator .scrollArrow::before {
   content: '';
   width: 1px;
   height: 10px;
-  background-color: #e2ede1;
+  background-color: #749ea3;
   transform: translate(-146%, 0%) rotate(45deg);
   position: absolute;
   transform-origin: bottom;
@@ -877,7 +895,7 @@ header li.active {
   content: '';
   width: 1px;
   height: 10px;
-  background-color: #e2ede1;
+  background-color: #749ea3;
   transform: translate(-78%, 4%) rotate(-45deg);
   position: absolute;
   transform-origin: bottom;
@@ -921,7 +939,7 @@ header li.active {
     opacity: 1;
   }
 }
-.humanResources p {
+.humanResources li {
   opacity: 0.5;
 }
 .humanResources__role {

@@ -30,6 +30,7 @@ section {
   font-family: SemiBold;
   opacity: 0.8;
   line-height: 1.6;
+  transform: scale(0.9);
 }
 .section__description {
   height: 60vw;
@@ -46,7 +47,6 @@ section {
   width: 65vw;
   height: 39vw;
   display: flex;
-  overflow: hidden;
   transform: translateY(100vh);
   z-index: -1;
 }

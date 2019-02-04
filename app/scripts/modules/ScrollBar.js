@@ -28,7 +28,7 @@ class ScrollBar
         // this._parseWords(aboutText)
         this._craftScrollBarDOM()
         this._initParams()
-        // this._initSounds()
+        this._initSounds()
         this._initStyles()
         this._handleScroll()
         this._listeners()
@@ -49,7 +49,6 @@ class ScrollBar
 		
 		const speed = diff * 0.1
 		
-        console.log(speed)
 		// if(speed < 15 && speed > -15) this.testTitle.style.transform = `skewY(${-speed}deg)`
         if(speed < 15 && speed > -15) console.log(speed)
         if(speed < 15 && speed > -15) {
@@ -100,7 +99,6 @@ class ScrollBar
         this.params.visibleItemsHeight = (this.params.itemHeight * this.params.visibleWords) - this.params.itemMarginTop
         this.params.scrollbarHeight = this.$.scrollbar.offsetHeight
         this.params.listScrollEnding = this.$.scrollbar.offsetHeight - this.params.visibleItemsHeight
-        console.log(this.params.visibleItemsHeight)
         this.params.documentScrollEnding = document.body.offsetHeight - window.innerHeight
         this.params.listHeight = this.$.list.offsetHeight + this.params.itemMarginTop * 2
         this.params.initialOffset = ((this.params.visibleWords - (this.params.visibleWords % 2)) / 2 * this.params.itemHeight) - this.params.itemMarginTop
@@ -120,7 +118,8 @@ class ScrollBar
 
     _initSounds()
     {
-        this.sounds.tic = new Audio('../assets/sounds/tic.mp3')
+        // this.sounds.tic = new Audio('../assets/sounds/tic.mp3')
+        this.sounds.tic = new Audio('../assets/sounds/Clic_vic_1.wav')
     }
     
     _initStyles()
@@ -163,15 +162,10 @@ class ScrollBar
         let currentWordIndex = Math.floor(window.scrollY / this.params.wordScrollOffset)
         let wordScrollRatio = this.params.wordScrollOffset * currentWordIndex
 
-        // this.params.oldScrollY = 0
-        // console.log(window.scrollY - this.params.oldScrollY)
-        
-
         for(let i = 0; i < this.$.items.length; i++)
         {
             const currentScrollY = window.scrollY - (this.params.wordScrollOffset * (i - 2)) 
             const currentScrollYTest = currentScrollY - (this.params.wordScrollOffset * 2)
-            // if(i == 3) console.log(currentScrollY)
             wordRatio = currentScrollY / (this.params.wordScrollOffset * 2)
             // wordRatio = currentScrollY / ((this.params.wordScrollOffset * i)
 
@@ -203,8 +197,6 @@ class ScrollBar
                 this.$.items[i].style.transform = `scale(.8)`
                 this.$.items[i].style.opacity = `.2`
             }
-            // console.log(this.params.oldIndex)
-            // console.log(currentWordIndex)
             if(this.params.oldIndex != currentWordIndex && this.sounds.tic)
             {
                 this.sounds.tic.currentTime = 0

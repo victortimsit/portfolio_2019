@@ -21,6 +21,7 @@ class Router
     {
       loaderWidth: this.$.loader.offsetWidth,
       loaderHeight: this.$.loader.offsetHeight,
+      validProjects: []
     }
 
     // this.bool =
@@ -33,7 +34,8 @@ class Router
     this.openedProjectIndex = Number
 
     this._listeners()
-    this._checkUrl()
+    // this._checkUrl()
+    this._httpRequest()
   }
 
   _listeners()
@@ -76,17 +78,20 @@ class Router
     this._craftAjaxDOM(path)
   }
 
-  _checkUrl()
+  _checkUrl(_data)
   {
     const pathname = window.location.pathname
     let validSrc = false
-    
-    for(let i = 0; i < this.$.links.length; i++)
+
+    for(let i = 0; i < this.params.validProjects.length; i++)
     {
-      const src = this.$.links[i].getAttribute('href')
-      
-      if(src == pathname)
+      const src = '/' + this.params.validProjects[i]
+      console.log(src)
+      console.log(pathname)
+      if(src === pathname)
       {
+        this.openedProjectIndex = i
+        console.log('CRAFT AJAX')
         this._craftAjaxDOM(pathname)
         validSrc = true
         
@@ -96,8 +101,12 @@ class Router
     
     if(!validSrc) // if route go home
     {
-      this._httpRequest()
+      console.log('goHOME')
+      // this._httpRequest()
+      // this._craftAjaxDOM('/')
+      this._craftProjectsDOM(_data)
     } 
+    // this._craftAjaxDOM('/retroAudioPlayer')
   }
 
   _dontLeave()
@@ -125,7 +134,14 @@ class Router
   { 
     let fromPath = _path
     // Ajax request
-    if(_path.includes('projects/')) fromPath = '/project'
+    console.log(_path)
+    console.log(this.params.validProjects)
+    
+    for(let i = 0; i < this.params.validProjects.length; i++)
+    {
+      if(_path == '/' + this.params.validProjects[i]) fromPath = '/project'
+    }
+    console.log(fromPath)
     // this._getPage('pages' + fromPath + '.html', 'body', 'body', _path)
     this._getPage('pages' + fromPath + '.html', 'body', '.view', _path)
   }
@@ -187,14 +203,21 @@ class Router
     request.onload = () => {
       const data = request.response
 
-      this._craftProjectsDOM(data)
+      // this._craftProjectsDOM(data)
+      
+      for(let i = 0; i < data.projects.length; i++)
+      {
+        this.params.validProjects.push(this._toCamelCase(data.projects[i].title))
+      }
 
+      this._checkUrl(data)
       // new Router()
     }
   }
 
   _craftProjectsDOM(_data)
   {
+    console.log('project dom')
     const data = _data.projects
 
     let count = 0
@@ -226,7 +249,8 @@ class Router
       this.datas.img.push(item.img)
 
       item.category.innerText = data[i].category
-      item.link.setAttribute('href', '/projects/' + this._toCamelCase(data[i].title))
+      // item.link.setAttribute('href', '/projectsTest/' + this._toCamelCase(data[i].title))
+      item.link.setAttribute('href', '/' + this._toCamelCase(data[i].title))
       item.link.setAttribute('data-index', i)
       item.img.setAttribute('src', data[i].thumbnail)
       item.title.innerText = data[i].title
@@ -267,7 +291,7 @@ class Router
     }
 
     this.$.content.classList.remove('loading')
-    // this.bool.cursorActive = true
+
     const DOM = document.querySelector('.view').innerHTML
     const documentTitle = document.title
     
@@ -278,22 +302,16 @@ class Router
 
   _runController(_path = '/')
   {
-    if(_path.includes('projects/')) _path = '/project'
-
+    console.log('RUN CONTROLLER')
+    console.log(parseInt(this.openedProjectIndex))
     switch (_path) {
       case '/':
-        console.log('run home controller')
         new HomeController()
         break
-      case '/project':
-        // console.log('run project1 controller')
+      case '/' + this.params.validProjects[this.openedProjectIndex]:
         new ProjectController(this.openedProjectIndex)
+        console.log('PROJECT CONTROLLER')
         break
-      case '/project2':
-        // console.log('run project2 controller')
-        break
-      default:
-        break;
     }
   }
 
