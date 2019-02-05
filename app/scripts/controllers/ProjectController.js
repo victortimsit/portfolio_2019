@@ -57,7 +57,6 @@ class ProjectController
     this.$.descriptionParagraph.innerText = _data.description
 
     this.$.title.style.backgroundImage = `url(${_data.thumbnail})` // Cette ligne fait tout capote ?????
-    console.log(_data)
     // set dynamic dom
     if(_data.url)
     {

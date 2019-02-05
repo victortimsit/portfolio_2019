@@ -18,12 +18,15 @@
 .projectsPreviews__category {
   margin-bottom: 6px;
   opacity: 0.6;
-  font-size: 12px;
+  font-size: 14px;
   height: 16px;
 }
 .projectsPreviews__image {
   height: 34vw;
   overflow: hidden;
+  position: relative;
+  background-color: $background;
+  transition: transform $pageTransitionDuration, opacity $pageTransitionDuration;
 }
 @media screen and (max-width: $mobile) {
   .projectsPreviews__image {
@@ -35,7 +38,11 @@
   height: 100%;
   object-fit: cover;
   pointer-events: none;
-  transition: transform 300ms ease;
+  transition: transform $pageTransitionDuration, opacity $pageTransitionDuration;
+}
+.projectsPreviews .background__gradient {
+  opacity: 0;
+  transition: opacity $pageTransitionDuration;
 }
 .view.loading .projectsPreviews a {
   display: block;

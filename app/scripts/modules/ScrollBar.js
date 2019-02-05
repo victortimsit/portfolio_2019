@@ -28,7 +28,7 @@ class ScrollBar
         // this._parseWords(aboutText)
         this._craftScrollBarDOM()
         this._initParams()
-        this._initSounds()
+        // this._initSounds()
         this._initStyles()
         this._handleScroll()
         this._listeners()
@@ -50,7 +50,7 @@ class ScrollBar
 		const speed = diff * 0.1
 		
 		// if(speed < 15 && speed > -15) this.testTitle.style.transform = `skewY(${-speed}deg)`
-        if(speed < 15 && speed > -15) console.log(speed)
+        // if(speed < 15 && speed > -15) console.log(speed)
         if(speed < 15 && speed > -15) {
             for(let i = 0; i < this.$.projectsItems.length; i++)
             {

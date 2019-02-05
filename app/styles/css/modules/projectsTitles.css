@@ -6,7 +6,6 @@
   justify-content: flex-end;
   font-size: 14px;
   font-family: 'Black';
-  text-transform: lowercase;
   pointer-events: none;
   user-select: none;
 }

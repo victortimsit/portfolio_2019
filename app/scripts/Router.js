@@ -75,7 +75,10 @@ class Router
   
     const path = _link.getAttribute('href')
 
-    this._craftAjaxDOM(path)
+    setTimeout(() => {
+      
+      this._craftAjaxDOM(path)
+    }, 300);
   }
 
   _checkUrl(_data)
@@ -86,12 +89,11 @@ class Router
     for(let i = 0; i < this.params.validProjects.length; i++)
     {
       const src = '/' + this.params.validProjects[i]
-      console.log(src)
-      console.log(pathname)
+
       if(src === pathname)
       {
         this.openedProjectIndex = i
-        console.log('CRAFT AJAX')
+
         this._craftAjaxDOM(pathname)
         validSrc = true
         
@@ -101,7 +103,7 @@ class Router
     
     if(!validSrc) // if route go home
     {
-      console.log('goHOME')
+
       // this._httpRequest()
       // this._craftAjaxDOM('/')
       this._craftProjectsDOM(_data)
@@ -126,7 +128,9 @@ class Router
       this._disabledLinks()
 
       // Run current controller
-      this._runController(_event.path[0].location.pathname)
+      console.log(window.location.pathname)
+      this._runController(window.location.pathname)
+      // this._runController(_event.path[0].location.pathname)
     }
   }
 
@@ -134,14 +138,12 @@ class Router
   { 
     let fromPath = _path
     // Ajax request
-    console.log(_path)
-    console.log(this.params.validProjects)
     
     for(let i = 0; i < this.params.validProjects.length; i++)
     {
       if(_path == '/' + this.params.validProjects[i]) fromPath = '/project'
     }
-    console.log(fromPath)
+
     // this._getPage('pages' + fromPath + '.html', 'body', 'body', _path)
     this._getPage('pages' + fromPath + '.html', 'body', '.view', _path)
   }
@@ -217,7 +219,6 @@ class Router
 
   _craftProjectsDOM(_data)
   {
-    console.log('project dom')
     const data = _data.projects
 
     let count = 0
@@ -302,15 +303,12 @@ class Router
 
   _runController(_path = '/')
   {
-    console.log('RUN CONTROLLER')
-    console.log(parseInt(this.openedProjectIndex))
     switch (_path) {
       case '/':
         new HomeController()
         break
       case '/' + this.params.validProjects[this.openedProjectIndex]:
         new ProjectController(this.openedProjectIndex)
-        console.log('PROJECT CONTROLLER')
         break
     }
   }

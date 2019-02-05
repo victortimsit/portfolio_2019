@@ -10,3 +10,8 @@
   will-change: transform;
   transition: transform $projectScrollTransitionDuration ease;
 }
+@media screen and (max-width: $mobile) {
+  .description {
+    width: auto;
+  }
+}

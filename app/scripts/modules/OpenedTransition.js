@@ -4,7 +4,11 @@ class OpenedTransitions
   {
     this.$ = 
     {
-      projectPreviews: document.querySelectorAll('.projectsPreviews__image')
+      projectPreviews: document.querySelectorAll('.projectsPreviews__image'),
+      projectPreviewsImage: document.querySelectorAll('.projectsPreviews__image img'),
+      projectPreviewsContainer: document.querySelector('.projectsPreviews'),
+      radialBackground: document.querySelectorAll('.projectsPreviews .background__gradient--radial'),
+      linearBackground: document.querySelectorAll('.projectsPreviews .background__gradient--linear')
     }
 
     this.bool = 
@@ -22,26 +26,40 @@ class OpenedTransitions
   {
     for(let i = 0; i < this.$.projectPreviews.length; i++)
     {
-      this.$.projectPreviews[i].addEventListener('click', () => { this._handleProjectOpened(this.$.projectPreviews[i]) })
-      this.$.projectPreviews[i].addEventListener('transitionend', () => { this._disabledTransition(this.$.projectPreviews[i]) })
+      this.$.projectPreviews[i].addEventListener('click', () => { this._handleProjectOpened(this.$.projectPreviews[i], i) })
+      // this.$.projectPreviews[i].addEventListener('transitionend', () => { this._disabledTransition(this.$.projectPreviews[i]) })
     }
 
-    window.addEventListener('scroll', () => { this._handleProjectClosed(this.openedProjectPreview) })
-    window.addEventListener('resize', () => { this._handleProjectOpened(this.openedProjectPreview, true) })
+    // window.addEventListener('scroll', () => { this._handleProjectClosed(this.openedProjectPreview) })
+    window.addEventListener('resize', () => { this._handleProjectOpened(this.openedProjectPreview, 0, true) })
   }
 
-  _handleProjectOpened(_currentPreview, _isResize = false)
+  _handleProjectOpened(_currentPreview, _index = 0, _isResize = false)
   {
     // this.openedProjectPreview = _currentPreview
     this.bool.projectOpened = true
 
+    let offsetTop = 0
+    let offsetLeft = 0
+    let width = 0
+    let height = 0
 
-    if(!_isResize) _currentPreview.style.transition = 'transform 300ms ease'
-
-    const offsetTop = _currentPreview.offsetTop
-    const offsetLeft = _currentPreview.offsetLeft
-    const width = _currentPreview.offsetWidth
-    const height = _currentPreview.offsetHeight
+    // if(!_isResize) _currentPreview.style.transition = 'transform 300ms ease'
+    
+    // If safari
+    if(navigator.userAgent.indexOf('Safari') != -1 
+      && navigator.userAgent.indexOf('Chrome') == -1 
+      && _currentPreview) 
+    {
+      offsetTop = _currentPreview.offsetTop // 50 = content margin
+    } 
+    else if(_currentPreview)
+    { 
+      offsetTop = _currentPreview.offsetTop + 50 
+      offsetLeft = this.$.projectPreviewsContainer.offsetLeft
+      width = _currentPreview.offsetWidth
+      height = _currentPreview.offsetHeight
+    }
     const windowWidth = window.innerWidth
     const windowHeight = window.innerHeight
 
@@ -54,7 +72,18 @@ class OpenedTransitions
 
     width * scaleYRatio < windowWidth ? scaleRatio = scaleXRatio : scaleRatio = scaleYRatio
 
-    _currentPreview.style.transform = `translate(${-translateXRatio}px, ${-translateYRatio + window.scrollY}px) scale(${scaleRatio})`
+    if(_currentPreview)
+    {
+      _currentPreview.style.zIndex = '10'
+      _currentPreview.style.transform = `translate(${-translateXRatio}px, ${-translateYRatio + window.scrollY}px) scale(${scaleRatio})`
+    }
+
+    if(!_isResize)
+    {
+      this.$.radialBackground[_index].style.opacity = '.9'
+      this.$.linearBackground[_index].style.opacity = '1'
+      this.$.projectPreviewsImage[_index].style.opacity = '0'
+    }
 
     // this.currentScale = scaleRatio
   }
@@ -63,16 +92,14 @@ class OpenedTransitions
   {
     if(_currentPreview)
     {
-      _currentPreview.style.transition = 'transform 300ms ease'
+      _currentPreview.style.zIndex = '0'
+      // _currentPreview.style.transition = 'transform 300ms ease'
       _currentPreview.style.transform = `translate(${0}px, ${0}px) scale(${1})`
     }
   }
 
   _disabledTransition(_element)
   {
-    _element.style.transition = 'none'
-    // this.openedProjectPreview.classList.add('activePreview')
-    // console.log(this.currentTransform.scale)
-    // this.openedProjectPreview.style.transform = `translate(-50%, -50%) scale(${this.currentScale})`
+    // _element.style.transition = 'none'
   }
 }

@@ -298,7 +298,7 @@ h3 {
 }
 @media screen and (max-width: 800px) {
   .leftSide {
-    height: 200px;
+    height: 100px;
     width: 100vw;
     top: 0;
     left: 0;
@@ -438,6 +438,11 @@ aside .tips--close.visible {
   width: 65vw;
   margin: 0 auto;
 }
+@media screen and (max-width: 800px) {
+  .content {
+    width: 100%;
+  }
+}
 section {
   margin: 100px 0;
 }
@@ -481,6 +486,12 @@ section {
   width: 65vw;
   height: 39vw;
 }
+@media screen and (max-width: 800px) {
+  .section--fixed {
+    width: 88vw;
+    height: 52.8vh;
+  }
+}
 .sticky {
   position: fixed;
   top: 0;
@@ -490,6 +501,12 @@ section {
   overflow: hidden;
   transform: translateY(100vh);
   z-index: -1;
+}
+@media screen and (max-width: 800px) {
+  .sticky {
+    width: 88vw;
+    height: 52.8vh;
+  }
 }
 footer {
   text-align: center;
@@ -534,12 +551,8 @@ header li.active {
 }
 @media screen and (max-width: 800px) {
   header {
-    position: fixed;
     bottom: 0;
     left: 0;
-    width: 100vw;
-    padding: 20px 8vw;
-    background-color: #001c20;
   }
   header ul {
     display: flex;
@@ -562,7 +575,6 @@ header li.active {
   justify-content: flex-end;
   font-size: 14px;
   font-family: 'Black';
-  text-transform: lowercase;
   pointer-events: none;
   user-select: none;
 }
@@ -612,12 +624,15 @@ header li.active {
 .projectsPreviews__category {
   margin-bottom: 6px;
   opacity: 0.6;
-  font-size: 12px;
+  font-size: 14px;
   height: 16px;
 }
 .projectsPreviews__image {
   height: 34vw;
   overflow: hidden;
+  position: relative;
+  background-color: #001c20;
+  transition: transform 300ms, opacity 300ms;
 }
 @media screen and (max-width: 800px) {
   .projectsPreviews__image {
@@ -629,7 +644,11 @@ header li.active {
   height: 100%;
   object-fit: cover;
   pointer-events: none;
-  transition: transform 300ms ease;
+  transition: transform 300ms, opacity 300ms;
+}
+.projectsPreviews .background__gradient {
+  opacity: 0;
+  transition: opacity 300ms;
 }
 .view.loading .projectsPreviews a {
   display: block;
@@ -808,12 +827,89 @@ header li.active {
   margin-bottom: 50px;
   width: 5em;
   word-break: break-word;
+  animation: initHero 300ms both;
 }
 .hero__category {
   margin-bottom: 10px;
   font-size: 14px;
   font-family: SemiBold;
   opacity: 0.6;
+  animation: initHero 500ms both;
+}
+.openedProject {
+  animation: init 300ms;
+}
+@-moz-keyframes init {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes init {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-o-keyframes init {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes init {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes initHero {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@-webkit-keyframes initHero {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@-o-keyframes initHero {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@keyframes initHero {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }
 .description {
   width: 43vw;
@@ -826,6 +922,11 @@ header li.active {
   line-height: 1.6;
   will-change: transform;
   transition: transform 0ms ease;
+}
+@media screen and (max-width: 800px) {
+  .description {
+    width: auto;
+  }
 }
 .button {
   border: 2px solid #749ea3;
