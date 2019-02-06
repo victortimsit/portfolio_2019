@@ -39,8 +39,14 @@ class ScrollBar
     _listeners()
     {
         window.addEventListener('scroll', () => { this._handleScroll() })
-        window.addEventListener('resize', () => { this._initParams(); this._initStyles(); this._handleScroll() })
-        
+        window.addEventListener('resize', () => { this._handleResize() })
+    }
+
+    _handleResize()
+    {
+        this._initParams()
+        this._initStyles()
+        this._handleScroll()
     }
 
     skewEffect()
@@ -183,53 +189,37 @@ class ScrollBar
 
     _handleScroll()
     {
-        if(this.params.listHeight != this.$.list.offsetHeight + this.params.itemMarginTop * 2)
-        {
-            this.params.listHeight = this.$.list.offsetHeight  + this.params.itemMarginTop * 2
-            this.params.tabScrollEnding = this.params.listHeight + this.params.initialOffset - this.params.visibleItemsHeight + this.params.initialOffset
-        } 
+        // if(this.params.listHeight != this.$.list.offsetHeight + this.params.itemMarginTop * 2)
+        // {
+        //     this.params.listHeight = this.$.list.offsetHeight  + this.params.itemMarginTop * 2
+        //     this.params.tabScrollEnding = this.params.listHeight + this.params.initialOffset - this.params.visibleItemsHeight + this.params.initialOffset
+        // } 
 
         // Prendre en compte le initial offset top dans le documentScrollEnding
         const documentScrollEnding = this.params.documentScrollEnding + this.params.initialOffsetY
-        // console.log(this.params.documentScrollEnding)
-        // console.log(this.params.initialOffsetY)
-        //Scroll bar variables
-        // let scrollRatio = (window.scrollY * this.params.listScrollEnding) / (this.params.documentScrollEnding)
+
         let tabScrollRatio = (window.scrollY * (this.params.tabScrollEnding)) / (this.params.documentScrollEnding)
-        // console.log(this.params.tabScrollEnding)
 
         //Words variables
         let wordRatio = window.scrollY / (this.params.wordScrollOffset * this.params.wordsHalfIn)
         let currentWordIndex = Math.floor(window.scrollY / this.params.wordScrollOffset)
-        // let wordScrollRatio = this.params.wordScrollOffset * currentWordIndex
 
         for(let i = 0; i < this.$.items.length; i++)
         {
             const currentScrollY = window.scrollY - (this.params.wordScrollOffset * (i - 2))
             const currentScrollYTest = currentScrollY - (this.params.wordScrollOffset * 2)
-            // const currentScrollYTest = window.scrollY - (this.params.wordScrollOffset * i)
-            // if(i == 0) console.log(currentScrollYTest)
+
             wordRatio = currentScrollY / (this.params.wordScrollOffset * 2)
-            // wordRatio = currentScrollYTest / (this.params.wordScrollOffset)
-            // wordRatio = currentScrollY / ((this.params.wordScrollOffset * i)
+
             
             if(wordRatio >= 1 && wordRatio >= 0)
             {
-              // console.log(currentScrollYTest)
-                // wordScrollRatio = this.params.wordScrollOffset * i
                 wordRatio = 1 - (currentScrollYTest / (this.params.wordScrollOffset * 2))
             }
 
-            // const currentScale = .8 + (.6 * wordRatio)
             const currentScale = .8 + (.8 * wordRatio)
-            // const currentProjectScale = 1.2 + (-1 * wordRatio) // Crazy mode
-            // const currentProjectScale = .8 + (.2 * wordRatio) // Crazy mode
-    
-            // const currentProjectScale = 1
-            // const currentRotation = 200 + ((-200) * wordRatio) // Crazy mode
             const currentOpacity = .2 + (.8 * wordRatio)
-            // const currentFontWeight = 100 + (900 * wordRatio)
-            // const currentFontWeight = 200 + (600 * wordRatio)
+
 
             if(wordRatio >= 0)
             {

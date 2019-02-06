@@ -24,10 +24,7 @@ class Router
       validProjects: []
     }
 
-    // this.bool =
-    // {
-    //   cursorActive: false
-    // }
+    this.controllers = {}
     
     this.cached = {}
 
@@ -69,15 +66,23 @@ class Router
 
   _handleLinks(_event, _link)
   {
+    console.log('CLICK')
+    let once = true
+
     _event.preventDefault()
 
     if(_link.dataset.index) this.openedProjectIndex = _link.dataset.index
   
     const path = _link.getAttribute('href')
 
+    _link.addEventListener('transitionend', () => 
+    { 
+      if(once) this._craftAjaxDOM(path)
+      once = false
+
+    })
     setTimeout(() => {
       
-      this._craftAjaxDOM(path)
     }, 300);
   }
 
@@ -128,9 +133,7 @@ class Router
       this._disabledLinks()
 
       // Run current controller
-      console.log(window.location.pathname)
       this._runController(window.location.pathname)
-      // this._runController(_event.path[0].location.pathname)
     }
   }
 
@@ -287,7 +290,7 @@ class Router
     const documentTitle = document.title
     
     this._disabledLinks()
-    // this._runController('/')
+    this.controllers.home._updateScrollBar()
     this._pushState({ DOM: DOM, title: documentTitle }, '/')
   }
 
@@ -316,10 +319,10 @@ class Router
   {
     switch (_path) {
       case '/':
-        new HomeController()
+        this.controllers.home = new HomeController()
         break
       case '/' + this.params.validProjects[this.openedProjectIndex]:
-        new ProjectController(this.openedProjectIndex)
+        this.controllers.project = new ProjectController(this.openedProjectIndex)
         break
     }
   }

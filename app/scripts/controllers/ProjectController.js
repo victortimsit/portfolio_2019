@@ -23,12 +23,35 @@ class ProjectController
       projectIndex: parseInt(_projectIndex),
     }
 
+    this.devices =
+    {
+      mobile: 
+      {
+        break: 800,
+        status: false
+      }
+    }
+
     window.scrollTo(0, 0)
     
     this._sendRequest()
+    this._checkDevice()
+    // this._listeners()
     this.$.view.classList.remove('loading')
   }
 
+  _listeners()
+  {
+    window.addEventListener('resize', () => { this._handleResize() })
+  }
+
+  _checkDevice()
+  {
+    if(window.innerWidth <= this.devices.mobile.break)
+    {
+      this.devices.mobile.status = true
+    }
+  }
   _sendRequest()
   {
     const requestURL = 'https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/datas/projects.json'
@@ -42,7 +65,15 @@ class ProjectController
       const data = request.response
 
       this._craftProjectsDOM(data.projects[this.params.projectIndex])
-      this._craftOtherProjectsDOM(data.projects, 3)
+
+      if(this.devices.mobile.status) 
+      { 
+        this._craftOtherProjectsDOM(data.projects, 1) 
+      }
+      else
+      {
+        this._craftOtherProjectsDOM(data.projects, 3)
+      }
       // this._listeners(data)
       // this._initData(data)
     }

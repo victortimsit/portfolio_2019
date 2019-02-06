@@ -296,16 +296,15 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  z-index: 20;
 }
 @media screen and (max-width: 800px) {
   .leftSide {
-    height: 100px;
+    height: 220px;
     width: 100vw;
     top: 0;
     left: 0;
     padding: 8vw;
-    background-color: #001c20;
-    background: linear-gradient(180deg, #001c20 0%, rgba(0,28,32,0) 100%);
     z-index: 10;
   }
 }
@@ -602,6 +601,7 @@ header li.active {
   transform: translateY(-50%);
   background-color: #f00;
   outline: none;
+  display: none;
 }
 .projectsPreviews {
   perspective: 800px;
@@ -968,7 +968,6 @@ header li.active {
   transition: opacity 1s;
 }
 .projectsPreviews {
-  transform: translateY(0px);
   transition: transform 1s;
 }
 .loader.loading {
@@ -1118,4 +1117,13 @@ header li.active {
 .date.hidden {
   opacity: 0;
   visibility: hidden;
+}
+.topGradient {
+  width: 100vw;
+  height: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, #001c20 0%, rgba(0,28,32,0) 100%);
 }

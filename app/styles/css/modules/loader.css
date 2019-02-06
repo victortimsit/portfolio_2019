@@ -29,7 +29,6 @@
   transition: opacity 1s;
 }
 .projectsPreviews {
-  transform: translateY(0px);
   transition: transform 1s;
 }
 .loader.loading {

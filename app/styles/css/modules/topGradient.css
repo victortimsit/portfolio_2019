@@ -1,0 +1,9 @@
+.topGradient {
+  width: 100vw;
+  height: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, #001c20 0%, rgba(0,28,32,0) 100%);
+}

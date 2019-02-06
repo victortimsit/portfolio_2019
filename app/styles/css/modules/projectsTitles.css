@@ -33,4 +33,5 @@
   transform: translateY(-50%);
   background-color: #f00;
   outline: none;
+  display: none;
 }
