@@ -42,7 +42,7 @@ class Router
   {
     window.addEventListener('visibilitychange', () => { this._dontLeave() })
     window.addEventListener('popstate', (event) => { this._handlePopState(event) })
-    window.addEventListener('mousemove', (event) => { this._loaderTranslate(event) })
+    // window.addEventListener('mousemove', (event) => { this._loaderTranslate(event) })
   }
 
   _loaderTranslate(_event)
@@ -263,14 +263,32 @@ class Router
         item.img.classList.add('loaded')
 
         count++
+        console.log(count)
 
         loaderRatio = 1 / (this.datas.img.length / count)
 
-        if(this.datas.img.length == count) this._initProjects($.projectsPreviews, $.projectsTitles, $.projectItems, $.projectsTitlesItems, items, data)
+        // if(this.datas.img.length == count) this._initProjects($.projectsPreviews, $.projectsTitles, $.projectItems, $.projectsTitlesItems, items, data)
+
+        if(this.datas.img.length == count) this._removeLoader()
 
         this.$.loaderFill.style.transform = `scaleX(${loaderRatio})`
       })
+      
+      this._initProjects($.projectsPreviews, $.projectsTitles, $.projectItems, $.projectsTitlesItems, items, data)
     }
+  }
+
+  _removeLoader()
+  {
+    this.$.content.classList.remove('loading')
+    this.$.loader.classList.remove('loading')
+
+    const DOM = document.querySelector('.view').innerHTML
+    const documentTitle = document.title
+    
+    this._disabledLinks()
+    // this._runController('/')
+    this._pushState({ DOM: DOM, title: documentTitle }, '/')
   }
 
   _initProjects(_previews, _titles, _projectItems, _projectTitlesItems, _items, _data)
@@ -291,14 +309,7 @@ class Router
       _titles.appendChild(_items[i].title)
     }
 
-    this.$.content.classList.remove('loading')
-
-    const DOM = document.querySelector('.view').innerHTML
-    const documentTitle = document.title
-    
-    this._disabledLinks()
     this._runController('/')
-    this._pushState({ DOM: DOM, title: documentTitle }, '/')
   }
 
   _runController(_path = '/')

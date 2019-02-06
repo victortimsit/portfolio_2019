@@ -1,5 +1,4 @@
 .projectsPreviews {
-  padding-top: 80px;
   perspective: 800px;
 }
 @media screen and (max-width: $mobile) {

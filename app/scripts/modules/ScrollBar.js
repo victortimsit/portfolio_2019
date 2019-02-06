@@ -1,3 +1,4 @@
+// Problème au resize 
 class ScrollBar
 {
     constructor()
@@ -9,7 +10,8 @@ class ScrollBar
             tab: document.querySelector('.projectsTitles__tab'),
             items: document.querySelectorAll('.projectsTitles__list li'),
             projectsItems: document.querySelectorAll('.projectsPreviews__item'),
-            projectsPreviews: document.querySelector('.projectsPreviews')
+            projectsPreviews: document.querySelector('.projectsPreviews'),
+            projectsPreviewsImage: document.querySelector('.projectsPreviews__image')
             // about: document.querySelector('.about'),
         }
 
@@ -37,7 +39,7 @@ class ScrollBar
     _listeners()
     {
         window.addEventListener('scroll', () => { this._handleScroll() })
-        window.addEventListener('resize', () => { this._initParams() })
+        window.addEventListener('resize', () => { this._initParams(); this._initStyles(); this._handleScroll() })
         
     }
 
@@ -94,13 +96,22 @@ class ScrollBar
     _initParams()
     {
         
+        this.params.projectsPreviews = {}
+        this.params.projectsPreviews.offsetTop = 73
+        this.params.projectsPreviews.imageHeight = this.$.projectsPreviewsImage.offsetHeight
+        this.params.initialOffsetY = (window.innerHeight / 2 - this.params.projectsPreviews.offsetTop) - (this.params.projectsPreviews.imageHeight  / 2)
+
         this.params.itemMarginTop = parseInt(getComputedStyle(this.$.items[0]).marginTop)
         this.params.itemHeight = this.$.items[0].offsetHeight + this.params.itemMarginTop
         this.params.visibleItemsHeight = (this.params.itemHeight * this.params.visibleWords) - this.params.itemMarginTop
         this.params.scrollbarHeight = this.$.scrollbar.offsetHeight
         this.params.listScrollEnding = this.$.scrollbar.offsetHeight - this.params.visibleItemsHeight
-        this.params.documentScrollEnding = document.body.offsetHeight - window.innerHeight
-        this.params.listHeight = this.$.list.offsetHeight + this.params.itemMarginTop * 2
+        this.params.documentScrollEnding = document.body.offsetHeight - window.innerHeight /*+ this.params.initialOffsetY * 2*/ 
+        // this.params.documentScrollEnding = document.body.offsetHeight - window.innerHeight + this.params.initialOffsetY * 2 // after loading init
+        // console.log( document.body.offsetHeight - window.innerHeight)
+        // this.params.listHeight = this.$.list.offsetHeight + this.params.itemMarginTop * 2 // after loading init
+        this.params.listHeight = this.$.list.offsetHeight  + this.params.itemMarginTop * 2
+        console.log(this.params.listHeight)
         this.params.initialOffset = ((this.params.visibleWords - (this.params.visibleWords % 2)) / 2 * this.params.itemHeight) - this.params.itemMarginTop
 
         // this.params.tabScrollEnding = this.params.listHeight + this.params.initialOffset - this.params.visibleItemsHeight
@@ -114,6 +125,8 @@ class ScrollBar
         this.params.currentPixel = window.scrollY
         this.params.tic = true
         this.params.oldIndex = 0
+
+        // console.log(this.params.documentScrollEnding)
     }
 
     _initSounds()
@@ -123,7 +136,7 @@ class ScrollBar
     }
     
     _initStyles()
-    {
+    {   
         this.$.tab.style.height = `${this.params.visibleItemsHeight}px`
         this.$.list.style.transform = `translateY(${this.params.initialOffset}px)`
         
@@ -133,6 +146,23 @@ class ScrollBar
             this.$.items[i].style.opacity= '.1'
             this.$.items[i].style.transformOrigin = 'right'
         }
+
+        // Padding top projects previews
+        // const halfWindowHeight = window.innerHeight / 2
+        // const paddingTop = (halfWindowHeight - this.params.projectsPreviews.offsetTop) - (this.params.projectsPreviews.imageHeight  / 2)
+        // console.log(this.params.projectsPreviews.offsetTop)
+
+        // console.log(this.$.projectsPreviews)
+        // this.params.initialOffsetY = paddingTop
+        this.$.projectsPreviews.style.paddingTop = `${this.params.initialOffsetY}px`
+        this.$.projectsPreviews.style.paddingBottom = `${this.params.initialOffsetY}px`
+
+        // this.$.scrollbar.style.transition = 'opacity 3s ease'
+        // setTimeout(() => {
+            
+            // this.$.scrollbar.style.transform= 'translateY(0px)'
+            // this.$.scrollbar.style.opacity = '1'
+        // }, 200);
     }
 
     _craftScrollBarDOM()
@@ -153,29 +183,43 @@ class ScrollBar
 
     _handleScroll()
     {
+        if(this.params.listHeight != this.$.list.offsetHeight + this.params.itemMarginTop * 2)
+        {
+            this.params.listHeight = this.$.list.offsetHeight  + this.params.itemMarginTop * 2
+            this.params.tabScrollEnding = this.params.listHeight + this.params.initialOffset - this.params.visibleItemsHeight + this.params.initialOffset
+        } 
+
+        // Prendre en compte le initial offset top dans le documentScrollEnding
+        const documentScrollEnding = this.params.documentScrollEnding + this.params.initialOffsetY
+        // console.log(this.params.documentScrollEnding)
+        // console.log(this.params.initialOffsetY)
         //Scroll bar variables
-        let scrollRatio = (window.scrollY * this.params.listScrollEnding) / this.params.documentScrollEnding
-        let tabScrollRatio = (window.scrollY * this.params.tabScrollEnding) / this.params.documentScrollEnding
+        // let scrollRatio = (window.scrollY * this.params.listScrollEnding) / (this.params.documentScrollEnding)
+        let tabScrollRatio = (window.scrollY * (this.params.tabScrollEnding)) / (this.params.documentScrollEnding)
+        // console.log(this.params.tabScrollEnding)
 
         //Words variables
         let wordRatio = window.scrollY / (this.params.wordScrollOffset * this.params.wordsHalfIn)
         let currentWordIndex = Math.floor(window.scrollY / this.params.wordScrollOffset)
-        let wordScrollRatio = this.params.wordScrollOffset * currentWordIndex
+        // let wordScrollRatio = this.params.wordScrollOffset * currentWordIndex
 
         for(let i = 0; i < this.$.items.length; i++)
         {
-            const currentScrollY = window.scrollY - (this.params.wordScrollOffset * (i - 2)) 
+            const currentScrollY = window.scrollY - (this.params.wordScrollOffset * (i - 2))
             const currentScrollYTest = currentScrollY - (this.params.wordScrollOffset * 2)
+            // const currentScrollYTest = window.scrollY - (this.params.wordScrollOffset * i)
+            // if(i == 0) console.log(currentScrollYTest)
             wordRatio = currentScrollY / (this.params.wordScrollOffset * 2)
+            // wordRatio = currentScrollYTest / (this.params.wordScrollOffset)
             // wordRatio = currentScrollY / ((this.params.wordScrollOffset * i)
-
+            
             if(wordRatio >= 1 && wordRatio >= 0)
             {
-                wordScrollRatio = this.params.wordScrollOffset * i
+              // console.log(currentScrollYTest)
+                // wordScrollRatio = this.params.wordScrollOffset * i
                 wordRatio = 1 - (currentScrollYTest / (this.params.wordScrollOffset * 2))
             }
 
-    
             // const currentScale = .8 + (.6 * wordRatio)
             const currentScale = .8 + (.8 * wordRatio)
             // const currentProjectScale = 1.2 + (-1 * wordRatio) // Crazy mode
@@ -202,11 +246,10 @@ class ScrollBar
                 this.sounds.tic.currentTime = 0
                 this.sounds.tic.play()
             } 
-                
 
             this.params.oldIndex = currentWordIndex
         }
-
+        // console.log(this.params.documentScrollEnding)
         // this.$.tab.style.transform = `translateY(${Math.round(scrollRatio)}px)`
         this.$.list.style.transform = `translateY(${this.params.initialOffset + Math.round(-tabScrollRatio)}px)`
 

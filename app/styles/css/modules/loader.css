@@ -1,24 +1,79 @@
 .loader {
-  background-color: $loaderBackground;
   position: fixed;
-  left: 0;
-  top: 0;
-  transform: translate(-100%, -100%);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   visibility: hidden;
   opacity: 0;
   z-index: 99;
-  width: 80px;
-  height: 4px;
+  width: 20vw;
+  height: 2px;
+  outline: 1px solid $fonts;
+  transition-delay: 100ms;
 }
 .loader__fill {
   width: 100%;
   height: 100%;
-  background-color: $loader;
+  background-color: $fonts;
   transform-origin: left;
-  transform: scaleX(0);
+  transform: scaleX(0.1);
   transition: transform 150ms;
+  animation: initLoader 300ms;
 }
-.view.loading .loader {
+.projects {
+  transition: transform 1s, opacity 1s;
+  transition-delay: 100ms;
+}
+.projectsTitles {
+  opacity: 1;
+  transition: opacity 1s;
+}
+.projectsPreviews {
+  transform: translateY(0px);
+  transition: transform 1s;
+}
+.loader.loading {
   visibility: visible;
   opacity: 1;
+}
+.loading .projects {
+  opacity: 0;
+}
+.loading .projectsPreviews {
+  transform: translateY(200px);
+}
+.loading .projectsTitles {
+  opacity: 0;
+}
+@-moz-keyframes initLoader {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(0.1);
+  }
+}
+@-webkit-keyframes initLoader {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(0.1);
+  }
+}
+@-o-keyframes initLoader {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(0.1);
+  }
+}
+@keyframes initLoader {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(0.1);
+  }
 }
