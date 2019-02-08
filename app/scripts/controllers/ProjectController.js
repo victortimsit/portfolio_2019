@@ -38,6 +38,8 @@ class ProjectController
     this._checkDevice()
     // this._listeners()
     this.$.view.classList.remove('loading')
+    
+    document.body.className = 'project'
   }
 
   _listeners()
@@ -66,14 +68,8 @@ class ProjectController
 
       this._craftProjectsDOM(data.projects[this.params.projectIndex])
 
-      if(this.devices.mobile.status) 
-      { 
-        this._craftOtherProjectsDOM(data.projects, 1) 
-      }
-      else
-      {
-        this._craftOtherProjectsDOM(data.projects, 3)
-      }
+      this._craftOtherProjectsDOM(data.projects, 3)
+    
       // this._listeners(data)
       // this._initData(data)
     }

@@ -1,8 +1,15 @@
 .humanResources
+  // // bottom 50px
+  // @media screen and (max-width: $mobile)
+  //   bottom 8vw
   li
     opacity .5
+    @media screen and (max-width: $mobile)
+      font-size 12px
   &__role
     margin-bottom 50px
+    @media screen and (max-width: $mobile)
+      margin-bottom 30px
   &.hidden
     opacity 0
     visibility hidden
@@ -11,9 +18,14 @@
   position fixed
   bottom 50px
   right 8vw
+  // margin-bottom -12px
   font-family Bold
+  @media screen and (max-width: $mobile)
+    bottom 8vw
+    margin-bottom -5px
   h3
     opacity .8
   &.hidden
     opacity 0
     visibility hidden
+

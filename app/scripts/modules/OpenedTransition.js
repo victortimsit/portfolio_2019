@@ -54,12 +54,11 @@ class OpenedTransitions
       && navigator.userAgent.indexOf('Chrome') == -1 
       && _currentPreview) 
     {
+      // Safari
       offsetTop = _currentPreview.offsetTop // 50 = content margin
-      console.log('safari')
     } 
     else if(_currentPreview)
     { 
-      console.log('chrome')
       offsetTop = _currentPreview.offsetTop + 50 
     }
 

@@ -6,7 +6,7 @@ class Router
     {
       // links: document.querySelectorAll('a:not(.external)'), // Not if external link
       links: [],
-      content: document.querySelector('.view'),
+      content: document.querySelector('.container'),
       loader: document.querySelector('.loader'),
       loaderFill: document.querySelector('.loader__fill')
     }
@@ -66,7 +66,6 @@ class Router
 
   _handleLinks(_event, _link)
   {
-    console.log('CLICK')
     let once = true
 
     _event.preventDefault()
@@ -168,6 +167,7 @@ class Router
     if(this.cached.DOM && this.cached.url == _url)
     { 
       document.body.style.cursor = 'auto'
+      
       to.title = this.cached.title
       to.DOM.innerHTML = this.cached.DOM 
 
@@ -266,7 +266,6 @@ class Router
         item.img.classList.add('loaded')
 
         count++
-        console.log(count)
 
         loaderRatio = 1 / (this.datas.img.length / count)
 

@@ -1,7 +1,8 @@
 .leftSide {
   width: 20vw;
-  height: calc(100% - 100px);
+  height: 100%;
   position: fixed;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -9,11 +10,24 @@
 }
 @media screen and (max-width: $mobile) {
   .leftSide {
-    height: 220px;
     width: 100vw;
     top: 0;
+    bottom: auto;
     left: 0;
-    padding: 8vw;
+    height: auto;
+    padding: 0 8vw;
     z-index: 10;
+  }
+}
+.openedProject .leftSide {
+  height: auto;
+  bottom: 50px;
+  top: auto;
+}
+@media screen and (max-width: $mobile) {
+  .openedProject .leftSide {
+    width: 20vw;
+    bottom: 8vw;
+    padding: 0 6vw;
   }
 }

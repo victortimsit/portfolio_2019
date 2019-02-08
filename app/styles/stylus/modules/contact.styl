@@ -1,19 +1,50 @@
 .contact
   // color green
-  opacity .6
-  transition opacity 300ms
+  // opacity .6
+  // transition opacity 300ms
+  opacity 0.01
+  transform translateY(-200%)
+  transition transform 300ms, opacity 300ms
+  position fixed
+  bottom 50px
+  z-index 100
+  &.active
+    opacity .6
+    transform translateY(0%)
 
   @media screen and (max-width: $mobile)
-    right 8vw
-    bottom 26px
+    width 100px
+    right 6vw
+    top 6vw
+    bottom auto
     position fixed
     a
       visibility hidden
       &::after
         content 'send email'
         visibility visible
+        position absolute
+        right 0
+        top 0
 .view.loading
   .contact
     background-color $loadingDOM
     a
       opacity 0
+
+
+body.project
+  .contact
+    top 50px
+    right 8vw
+    @media screen and (max-width: $mobile)
+      top 6vw
+      right 6vw
+    a
+      visibility hidden
+      &::after
+        content 'send email'
+        visibility visible
+        position absolute
+        right 0
+        top 0

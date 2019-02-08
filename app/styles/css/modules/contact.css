@@ -1,11 +1,21 @@
 .contact {
+  opacity: 0.01;
+  transform: translateY(-200%);
+  transition: transform 300ms, opacity 300ms;
+  position: fixed;
+  bottom: 50px;
+  z-index: 100;
+}
+.contact.active {
   opacity: 0.6;
-  transition: opacity 300ms;
+  transform: translateY(0%);
 }
 @media screen and (max-width: $mobile) {
   .contact {
-    right: 8vw;
-    bottom: 26px;
+    width: 100px;
+    right: 6vw;
+    top: 6vw;
+    bottom: auto;
     position: fixed;
   }
   .contact a {
@@ -14,6 +24,9 @@
   .contact a::after {
     content: 'send email';
     visibility: visible;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 }
 .view.loading .contact {
@@ -21,4 +34,24 @@
 }
 .view.loading .contact a {
   opacity: 0;
+}
+body.project .contact {
+  top: 50px;
+  right: 8vw;
+}
+@media screen and (max-width: $mobile) {
+  body.project .contact {
+    top: 6vw;
+    right: 6vw;
+  }
+}
+body.project .contact a {
+  visibility: hidden;
+}
+body.project .contact a::after {
+  content: 'send email';
+  visibility: visible;
+  position: absolute;
+  right: 0;
+  top: 0;
 }

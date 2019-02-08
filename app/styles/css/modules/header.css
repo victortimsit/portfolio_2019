@@ -1,6 +1,13 @@
+header {
+  opacity: 0.01;
+  transform: translateY(-200%);
+  transition: transform 300ms, opacity 300ms;
+  position: fixed;
+  z-index: 100;
+}
 header li {
   margin-bottom: 6px;
-  opacity: 0.5;
+  opacity: 0.6;
 }
 header li.active {
   text-decoration: underline;
@@ -8,8 +15,7 @@ header li.active {
 }
 @media screen and (max-width: $mobile) {
   header {
-    bottom: 0;
-    left: 0;
+    top: 6vw;
   }
   header ul {
     display: flex;
@@ -18,9 +24,13 @@ header li.active {
     margin-right: 20px;
   }
 }
-.view.loading header li {
+header.active {
+  opacity: 1;
+  transform: translateY(0px);
+}
+.container.loading header li {
   background-color: $loadingDOM;
 }
-.view.loading header li a {
+.container.loading header li a {
   opacity: 0;
 }

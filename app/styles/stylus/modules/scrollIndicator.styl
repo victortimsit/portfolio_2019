@@ -12,6 +12,8 @@ $scrollIndicatorDuration = 300ms
   p
     margin-bottom 10px
     animation scrollIndicator 1s ease both infinite 
+    @media screen and (max-width: $mobile)
+      font-size 12px
   .scrollArrow
     &__body
       width 1px
@@ -23,7 +25,7 @@ $scrollIndicatorDuration = 300ms
       width 1px 
       height 10px
       background-color $fonts
-      transform translate(-146%, 0%) rotate(45deg)
+      transform translate(-128%, 3%) rotate(45deg)
       position absolute
       transform-origin bottom
       bottom 0

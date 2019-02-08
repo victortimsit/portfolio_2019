@@ -1,8 +1,18 @@
 .humanResources li {
   opacity: 0.5;
 }
+@media screen and (max-width: $mobile) {
+  .humanResources li {
+    font-size: 12px;
+  }
+}
 .humanResources__role {
   margin-bottom: 50px;
+}
+@media screen and (max-width: $mobile) {
+  .humanResources__role {
+    margin-bottom: 30px;
+  }
 }
 .humanResources.hidden {
   opacity: 0;
@@ -13,6 +23,12 @@
   bottom: 50px;
   right: 8vw;
   font-family: Bold;
+}
+@media screen and (max-width: $mobile) {
+  .date {
+    bottom: 8vw;
+    margin-bottom: -5px;
+  }
 }
 .date h3 {
   opacity: 0.8;

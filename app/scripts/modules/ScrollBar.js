@@ -5,6 +5,8 @@ class ScrollBar
     {
         this.$ = 
         {
+            header: document.querySelector('header'),
+            contact: document.querySelector('.contact'),
             scrollbar: document.querySelector('.projectsTitles'),
             list: document.querySelector('.projectsTitles__list'),
             tab: document.querySelector('.projectsTitles__tab'),
@@ -23,11 +25,29 @@ class ScrollBar
             visibleWords: 5,
         }
 
+        this.bool =
+        {
+            header:
+            {
+                isActive: true
+            }
+        }
+
+        this.devices =
+        {
+            mobile: 
+            {
+                break: 800,
+                status: false
+            }
+        }
+
         this.sounds = {}
 
         // const aboutText = this.$.about.innerText
 
         // this._parseWords(aboutText)
+        this._checkDevice()
         this._craftScrollBarDOM()
         this._initParams()
         // this._initSounds()
@@ -47,6 +67,19 @@ class ScrollBar
         this._initParams()
         this._initStyles()
         this._handleScroll()
+        this._checkDevice()
+    }
+
+    _checkDevice()
+    {
+        if(window.innerWidth <= this.devices.mobile.break)
+        {
+            this.devices.mobile.status = true
+        }
+        else
+        {
+            this.devices.mobile.status = false
+        }
     }
 
     skewEffect()
@@ -114,10 +147,8 @@ class ScrollBar
         this.params.listScrollEnding = this.$.scrollbar.offsetHeight - this.params.visibleItemsHeight
         this.params.documentScrollEnding = document.body.offsetHeight - window.innerHeight /*+ this.params.initialOffsetY * 2*/ 
         // this.params.documentScrollEnding = document.body.offsetHeight - window.innerHeight + this.params.initialOffsetY * 2 // after loading init
-        // console.log( document.body.offsetHeight - window.innerHeight)
         // this.params.listHeight = this.$.list.offsetHeight + this.params.itemMarginTop * 2 // after loading init
         this.params.listHeight = this.$.list.offsetHeight  + this.params.itemMarginTop * 2
-        console.log(this.params.listHeight)
         this.params.initialOffset = ((this.params.visibleWords - (this.params.visibleWords % 2)) / 2 * this.params.itemHeight) - this.params.itemMarginTop
 
         // this.params.tabScrollEnding = this.params.listHeight + this.params.initialOffset - this.params.visibleItemsHeight
@@ -242,6 +273,17 @@ class ScrollBar
         // console.log(this.params.documentScrollEnding)
         // this.$.tab.style.transform = `translateY(${Math.round(scrollRatio)}px)`
         this.$.list.style.transform = `translateY(${this.params.initialOffset + Math.round(-tabScrollRatio)}px)`
+
+        if(this.params.oldScrollY < window.scrollY - 10 && this.devices.mobile.status && window.scrollY >= 0)
+        {
+            this.$.header.classList.contains('active') && this.$.header.classList.remove('active')
+            this.$.contact.classList.contains('active') && this.$.contact.classList.remove('active')
+        }
+        else if(this.params.oldScrollY > window.scrollY + 20 && this.devices.mobile.status)
+        {
+            !this.$.header.classList.contains('active') && this.$.header.classList.add('active')
+            !this.$.contact.classList.contains('active') && this.$.contact.classList.add('active')
+        }
 
         this.params.oldScrollY = window.scrollY
         this.params.deltaY = window.scrollY

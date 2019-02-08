@@ -13,6 +13,11 @@
   margin-bottom: 10px;
   animation: scrollIndicator 1s ease both infinite;
 }
+@media screen and (max-width: $mobile) {
+  .scrollIndicator p {
+    font-size: 12px;
+  }
+}
 .scrollIndicator .scrollArrow__body {
   width: 1px;
   height: 100px;
@@ -24,7 +29,7 @@
   width: 1px;
   height: 10px;
   background-color: $fonts;
-  transform: translate(-146%, 0%) rotate(45deg);
+  transform: translate(-128%, 3%) rotate(45deg);
   position: absolute;
   transform-origin: bottom;
   bottom: 0;

@@ -31,6 +31,10 @@
 .projectsPreviews {
   transition: transform 1s;
 }
+header,
+.contact {
+  transition: opacity 1s;
+}
 .loader.loading {
   visibility: visible;
   opacity: 1;
@@ -43,6 +47,12 @@
 }
 .loading .projectsTitles {
   opacity: 0;
+}
+.loading .contact {
+  opacity: 0.01;
+}
+.loading header {
+  opacity: 0.01;
 }
 @-moz-keyframes initLoader {
   0% {

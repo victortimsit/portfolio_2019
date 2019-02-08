@@ -8,11 +8,13 @@ class HomeController
     }
     
     new OpenedTransitions()
+
+    document.body.className = ''
+    document.body.classList.add('home')
   }
 
   _updateScrollBar()
   {
-    console.log('update scroll bar')
     this.controller.ScrollBar._initParams()
     this.controller.ScrollBar._initStyles()
     this.controller.ScrollBar._handleScroll()
