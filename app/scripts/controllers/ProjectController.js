@@ -46,7 +46,7 @@ class ProjectController
 
   _listeners()
   {
-    window.addEventListener('resize', () => { this._handleResize() })
+    // window.addEventListener('resize', () => { this._handleResize() })
 
     console.log(this.$.links)
     for(let i = 0; i < this.$.links.length; i++)
