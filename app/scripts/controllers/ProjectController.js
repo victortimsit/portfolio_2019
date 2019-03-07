@@ -186,10 +186,16 @@ class ProjectController
       for(let i = 0; i < _data.content.length; i++)
       {
 
-        if(_data.content[i][key] == 'img') 
+        if(_data.content[i][key] == 'img' || _data.content[i][key] == 'video') 
         {
           const div = document.createElement('div')
-          const img = document.createElement('img')
+          let img = document.createElement('img')
+
+          if(_data.content[i][key] == 'video') 
+          {
+            img = document.createElement('video')
+          } 
+          
           const p = document.createElement('p')
 
           p.classList.add('section__description')

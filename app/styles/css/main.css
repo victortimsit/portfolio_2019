@@ -479,7 +479,8 @@ section {
   will-change: transform;
   opacity: 1;
 }
-.section__image img {
+.section__image img,
+.section__image video {
   width: 100%;
   height: 100%;
   object-fit: cover;
