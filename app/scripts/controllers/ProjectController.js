@@ -6,7 +6,8 @@ class ProjectController
 
     this.$ = 
     {
-      view: document.querySelector('.view'),
+      container: document.querySelector('.container'),
+      loader: document.querySelector('.loader'),
       footer: document.querySelector('footer'),
       footerGoHome: document.querySelector('footer a'),
       category: document.querySelector('.hero__category'),
@@ -15,7 +16,8 @@ class ProjectController
       description: document.querySelector('.description'),
       descriptionParagraph: document.querySelector('.description__paragraph'),
       content: document.querySelector('.content'),
-      humanResources: document.querySelector('.humanResources')
+      humanResources: document.querySelector('.humanResources'),
+      links: []
     } 
 
     this.params = 
@@ -36,8 +38,8 @@ class ProjectController
     
     this._sendRequest()
     this._checkDevice()
-    // this._listeners()
-    this.$.view.classList.remove('loading')
+    this.$.container.classList.remove('loading')
+    this.$.loader.classList.remove('loading')
     
     document.body.className = 'project'
   }
@@ -45,6 +47,12 @@ class ProjectController
   _listeners()
   {
     window.addEventListener('resize', () => { this._handleResize() })
+
+    console.log(this.$.links)
+    for(let i = 0; i < this.$.links.length; i++)
+    {
+      this.$.links[i].addEventListener('click', () => { this._openProject(this.$.links[i]) })
+    }
   }
 
   _checkDevice()
@@ -73,6 +81,15 @@ class ProjectController
       // this._listeners(data)
       // this._initData(data)
     }
+  }
+
+  _openProject(_project)
+  {
+    console.log(_project)
+    _project.style.transform = 'translateY(-50px)'
+    setTimeout(() => {
+      _project.style.transform = 'translateY(0px)'
+    }, 300);
   }
 
   _craftProjectsDOM(_data)
@@ -230,15 +247,18 @@ class ProjectController
           const img = document.createElement('img')
   
           img.src = _data[i].thumbnail
-          a.href = this._toCamelCase(_data[i].title)
+          a.href = '/' + this._toCamelCase(_data[i].title)
 
           a.classList.add('other__project')
+          a.dataset.index = i
           div.classList.add('other__image')
   
           div.appendChild(img)
           a.appendChild(div)
   
           container.appendChild(a)
+
+          this.$.links.push(a)
         }
       }
 
@@ -247,6 +267,7 @@ class ProjectController
       // this.$.footer.appendChild(h2)
       // this.$.footer.appendChild(container)
     }
+    this._listeners()
   }
   _toCamelCase(_string)
   {

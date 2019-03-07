@@ -9,8 +9,7 @@ class HomeController
     
     new OpenedTransitions()
 
-    document.body.className = ''
-    document.body.classList.add('home')
+    document.body.className = 'home'
   }
 
   _updateScrollBar()

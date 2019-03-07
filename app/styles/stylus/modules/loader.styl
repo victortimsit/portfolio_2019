@@ -42,9 +42,12 @@
     // transform translateY(0px)
     transition transform 1s
 
+.openedProject
+  transition opacity 1s
+
 header,
 .contact
-  transition opacity 1s
+  transition opacity 1s, transform .3s
 
 // Loading
 .loader.loading
@@ -63,6 +66,9 @@ header,
     opacity 0
 
   .contact
+    opacity .01
+
+  .openedProject
     opacity .01
 
   header

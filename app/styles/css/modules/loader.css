@@ -31,9 +31,12 @@
 .projectsPreviews {
   transition: transform 1s;
 }
+.openedProject {
+  transition: opacity 1s;
+}
 header,
 .contact {
-  transition: opacity 1s;
+  transition: opacity 1s, transform 0.3s;
 }
 .loader.loading {
   visibility: visible;
@@ -49,6 +52,9 @@ header,
   opacity: 0;
 }
 .loading .contact {
+  opacity: 0.01;
+}
+.loading .openedProject {
   opacity: 0.01;
 }
 .loading header {

@@ -6,6 +6,7 @@ class Router
     {
       // links: document.querySelectorAll('a:not(.external)'), // Not if external link
       links: [],
+      undeletedLinks: [],
       content: document.querySelector('.container'),
       loader: document.querySelector('.loader'),
       loaderFill: document.querySelector('.loader__fill')
@@ -23,6 +24,8 @@ class Router
       loaderHeight: this.$.loader.offsetHeight,
       validProjects: []
     }
+
+    this.once = true
 
     this.controllers = {}
     
@@ -58,56 +61,93 @@ class Router
 
   _disabledLinks()
   {
+    this.$.links = document.querySelectorAll('a:not(.external):not(.undeleted)')
+    this.$.undeletedLinks = document.querySelectorAll('.undeleted')
+
+    console.log('DISABLED LINKS')
+    console.log(this.$.links)
+    console.log(this.once)
+
     for(let i = 0; i < this.$.links.length; i++)
     {
-      this.$.links[i].addEventListener('click', (event) => { this._handleLinks(event, this.$.links[i]) })
+        // this.$.links[i].removeEventListener('click', (event) => { this._handleLinks(event, this.$.links[i])  })
+        this.$.links[i].addEventListener('click', (event) => 
+        { 
+          console.log(this.$.links[i])
+          this._handleLinks(event, this.$.links[i]) 
+        })
+        // REMOVE EVENT LISTENER 
     }
+
+    for(let i = 0; i < this.$.undeletedLinks.length; i++) 
+    {
+      if(this.once) this.$.undeletedLinks[i].addEventListener('click', (event) => 
+      { 
+        this._handleLinks(event, this.$.undeletedLinks[i]) 
+        this.$.undeletedLinks[i].style.transform = 'scale(2)'
+      })
+    }
+
+    this.once = false
   }
 
   _handleLinks(_event, _link)
   {
     let once = true
-
+    console.log(_link)
     _event.preventDefault()
 
     if(_link.dataset.index) this.openedProjectIndex = _link.dataset.index
   
     const path = _link.getAttribute('href')
 
-    _link.addEventListener('transitionend', () => 
-    { 
+    if(path === '/about' && once)
+    {
+      console.log('craft ajax dom from path==about')
       if(once) this._craftAjaxDOM(path)
       once = false
-
-    })
-    setTimeout(() => {
-      
-    }, 300);
+    }
+    else
+    {
+      _link.addEventListener('transitionend', () => 
+      { 
+        if(once) 
+        {
+          this._craftAjaxDOM(path)
+          console.log('craft ajax dom from transition end & once == true')
+        }
+        
+        once = false
+  
+      })
+    }
   }
 
   _checkUrl(_data)
   {
     const pathname = window.location.pathname
     let validSrc = false
-
+    console.log(pathname)
     for(let i = 0; i < this.params.validProjects.length; i++)
     {
       const src = '/' + this.params.validProjects[i]
 
-      if(src === pathname)
+      console.log(src)
+      if(src === pathname || pathname === '/about')
       {
         this.openedProjectIndex = i
 
         this._craftAjaxDOM(pathname)
+        console.log('craft ajax dom from check URL')
         validSrc = true
-        
+
         break
       }
     }
     
     if(!validSrc) // if route go home
     {
-
+      console.log('GO HOME')
       // this._httpRequest()
       // this._craftAjaxDOM('/')
       this._craftProjectsDOM(_data)
@@ -124,11 +164,12 @@ class Router
   {
     if(_event.state)
     {
+      // console.log('handlePOP')
       document.title = _event.state.documentTitle
       document.querySelector(".view").innerHTML = _event.state.DOM
 
       // Update links
-      this.$.links = document.querySelectorAll('a')
+      // this.$.links = document.querySelectorAll('a')
       this._disabledLinks()
 
       // Run current controller
@@ -139,24 +180,38 @@ class Router
   _craftAjaxDOM(_path)
   { 
     let fromPath = _path
+
     // Ajax request
-    
+    console.log(_path)
     for(let i = 0; i < this.params.validProjects.length; i++)
     {
-      if(_path == '/' + this.params.validProjects[i]) fromPath = '/project'
+      if(_path == '/' + this.params.validProjects[i]) { fromPath = '/project' }
     }
 
     // this._getPage('pages' + fromPath + '.html', 'body', 'body', _path)
+    console.log('GET PAGE')
+    console.log(fromPath)
+    
     this._getPage('pages' + fromPath + '.html', 'body', '.view', _path)
+
+
+    setTimeout(() => 
+    {
+      this._disabledLinks()
+
+    }, 300)
   }
 
   _pushState(_response, _path)
   {
+    // this.$.links = document.querySelectorAll('a:not(.external)')
+
     window.history.pushState({ DOM: _response.DOM, documentTitle: _response.title },"", _path)
   }
 
   _getPage(_url, _from = "body", _to = "body", _path)
   {
+    console.log(_url)
     let to = {}
 
     this._waitCursor()
@@ -171,6 +226,25 @@ class Router
       to.title = this.cached.title
       to.DOM.innerHTML = this.cached.DOM 
 
+      // let images = to.DOM.querySelectorAll('img')
+        
+      // const catchImages = () => 
+      // {
+      //   if(images.length < 2)
+      //   {
+      //     setTimeout(() => {
+      //       images = to.DOM.querySelectorAll('img')
+      //       catchImages()
+      //     }, 10);
+      //   }
+      //   else
+      //   {
+      //     // console.log(images)
+      //     this._runLoader(images, images.length)
+      //   }
+      // }
+      // catchImages()
+      console.log(_path)
       this._pushState(this.cached, _path)
       this._runController(_path)
     }
@@ -182,11 +256,33 @@ class Router
       XHRt.onload = () => 
       { 
         this._waitCursor(false)
-  
+        
         this.cached.DOM = to.DOM.innerHTML = XHRt.response.querySelector(_from).innerHTML
         this.cached.title = document.title = XHRt.response.querySelector('title').innerHTML
         this.cached.url = _url
-
+        
+        // let images = to.DOM.querySelectorAll('img')
+        
+        // const catchImages = () => 
+        // {
+        //   if(images.length < 2)
+        //   {
+        //     // console.log('RERUN')
+        //     setTimeout(() => {
+        //       images = to.DOM.querySelectorAll('img')
+        //       catchImages()
+        //     }, 10);
+        //   }
+        //   else
+        //   {
+        //     // console.log(images)
+        //     console.log('runLoader')
+        //     this._runLoader(images, images.length)
+        //   }
+        // }
+        // console.log('Launch catchImages')
+        // catchImages()
+        console.log(_path)
         this._pushState(this.cached, _path)
         this._runController(_path)
         // this._checkUrl()
@@ -226,6 +322,7 @@ class Router
 
     let count = 0
     let items = []
+    let images = []
 
     const $ = 
     {
@@ -249,7 +346,8 @@ class Router
       item.img = item.link.querySelector('img')
       item.title = document.createElement('li')
 
-      this.$.links.push(item.link)
+      // this.$.links.push(item.link)
+      // this.$.links = document.querySelectorAll('a:not(.external)')
       this.datas.img.push(item.img)
 
       item.category.innerText = data[i].category
@@ -260,28 +358,63 @@ class Router
       item.title.innerText = data[i].title
 
       items.push(item)
+      images.push(item.img)
 
-      item.img.addEventListener('load', () => 
+      
+      // item.img.addEventListener('load', () => 
+			// {
+      //   item.img.classList.add('loaded')
+
+      //   count++
+
+      //   loaderRatio = 1 / (this.datas.img.length / count)
+
+      //   // if(this.datas.img.length == count) this._initProjects($.projectsPreviews, $.projectsTitles, $.projectItems, $.projectsTitlesItems, items, data)
+
+      //   if(this.datas.img.length == count) this._removeLoader()
+
+      //   this.$.loaderFill.style.transform = `scaleX(${loaderRatio})`
+      // })
+    }
+    this._runLoader(images, this.datas.img.length)
+    this._initProjects($.projectsPreviews, $.projectsTitles, $.projectItems, $.projectsTitlesItems, items, data)
+  }
+
+  _runLoader(_images, _numberToLoad)
+  {
+    // console.log('_runLoader')
+    // console.log(_images)
+    let count = 0
+    let loaderRatio = 0
+    let once = true
+    // console.log('number to load ' + _numberToLoad)
+
+    for(let i = 0; i < _images.length; i++)
+    {
+      _images[i].addEventListener('load', () => 
 			{
-        item.img.classList.add('loaded')
+        _images[i].classList.add('loaded')
 
         count++
+        // console.log(_images[i])
 
-        loaderRatio = 1 / (this.datas.img.length / count)
+        loaderRatio = 1 / (_numberToLoad / count)
 
-        // if(this.datas.img.length == count) this._initProjects($.projectsPreviews, $.projectsTitles, $.projectItems, $.projectsTitlesItems, items, data)
-
-        if(this.datas.img.length == count) this._removeLoader()
+        if(Math.floor(_numberToLoad) / 3 <= count && once) 
+        {
+          this._removeLoader()
+          once = false
+        } 
 
         this.$.loaderFill.style.transform = `scaleX(${loaderRatio})`
+        // console.log(this.$.loaderFill)
       })
-      
-      this._initProjects($.projectsPreviews, $.projectsTitles, $.projectItems, $.projectsTitlesItems, items, data)
     }
   }
 
   _removeLoader()
   {
+    console.log('remove loader')
     this.$.content.classList.remove('loading')
     this.$.loader.classList.remove('loading')
 
@@ -289,8 +422,13 @@ class Router
     const documentTitle = document.title
     
     this._disabledLinks()
-    this.controllers.home._updateScrollBar()
-    this._pushState({ DOM: DOM, title: documentTitle }, '/')
+
+    if(document.body.classList.contains('home')) 
+    {
+      this.controllers.home._updateScrollBar()
+      console.log('pushstate')
+      this._pushState({ DOM: DOM, title: documentTitle }, '/')
+    } 
   }
 
   _initProjects(_previews, _titles, _projectItems, _projectTitlesItems, _items, _data)

@@ -13,6 +13,9 @@ header li.active {
   text-decoration: underline;
   opacity: 1;
 }
+header li a {
+  transition: transform 1s easeIn;
+}
 @media screen and (max-width: $mobile) {
   header {
     top: 6vw;

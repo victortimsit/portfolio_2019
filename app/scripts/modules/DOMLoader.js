@@ -20,8 +20,6 @@ class DOMLoader
                 }
             }
 
-            console.log(this.sources)
-
             this.bool= 
             {
                 isEnding: false,
@@ -87,8 +85,6 @@ class DOMLoader
                 {
 
                 }
-
-                console.log(this.int.ratio)
 
 				this.count.loaded == this.sources.length ? this.init() : false
 			})

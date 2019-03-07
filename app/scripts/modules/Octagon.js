@@ -94,7 +94,6 @@ class Octagon
       this.$.cursorCircle.classList.add('fill')
 
       setTimeout(() => {
-        console.log(this.bool.cursorIsMouseDown)
         if(this.bool.cursorIsMouseDown) 
         {
           this._handleOpenDescription(true, _index)
