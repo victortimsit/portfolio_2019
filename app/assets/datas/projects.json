@@ -26,6 +26,10 @@
         "title": "La Montgolfière",
         "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/lamontgolfiere.jpg",
         "description": "La Montgolfière est une salle de sport parisienne. Le site à été développé à l'agence Purée Maison dans le cadre d'un stage en tant que développeur front-end.",
+        "role": ["Front-end development"],
+        "contributors": ["Gabriel Stick", "Julien Stephan"],
+        "date": "Juillet 2018",
+        "url": "https://lamontgolfiereclub.com/",
         "content": 
         [
           ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/scroll.mp4", "Scroll animations"],

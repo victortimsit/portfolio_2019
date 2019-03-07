@@ -916,8 +916,7 @@ body.project .contact a::after {
 }
 .hero__title {
   margin-bottom: 50px;
-  width: 5em;
-  word-break: break-word;
+  word-spacing: 999999px;
   animation: initHero 500ms both;
 }
 .hero__category {
