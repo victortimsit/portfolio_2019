@@ -28,9 +28,9 @@
         "description": "Ceci est un paragraphe décrivant la nature du projet, ses enjeux, ses objectifs, ainsi que ses conditions de réalisation et ses particularités",
         "content": 
         [
-          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/scroll.mov", "Scroll animations"],
-          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/stickyButton.mov", "Sticky button"],
-          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/skew.mov", "Description numéro 3 de l'image"],
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/scroll.mp4", "Scroll animations"],
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/stickyButton.mp4", "Sticky button"],
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/skew.mp4", "Description numéro 3 de l'image"],
           ["img", "https://scontent-cdt1-1.xx.fbcdn.net/v/t31.0-8/17635219_1495189310501051_1583943578705654215_o.jpg?_nc_cat=103&_nc_ht=scontent-cdt1-1.xx&oh=1745aaa01f5a3cf6097a2bf93ea3eda3&oe=5CB664F7", "Paul le gros PD ISSOUUUU"],
           ["img", "https://picsum.photos/500", "Description numéro 4 de l'image"],
           ["img", "https://picsum.photos/600", "Description numéro 5 de l'image"],
