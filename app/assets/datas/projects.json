@@ -22,8 +22,8 @@
         ]
       },
       {
-        "category": "School",
-        "title": "Project number two",
+        "category": "Internship at Purée Maison",
+        "title": "La Montgolfière",
         "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/lamontgolfiere.jpg",
         "description": "La Montgolfière est une salle de sport parisienne. Le site à été développé à l'agence Purée Maison dans le cadre d'un stage en tant que développeur front-end.",
         "content": 
@@ -35,8 +35,8 @@
         ]
       },
       {
-        "category": "Agency",
-        "title": "Project number three",
+        "category": "Internship at Purée Maison",
+        "title": "La Montgolfière",
         "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/player.jpg",
         "description": "Ceci est un paragraphe décrivant la nature du projet, ses enjeux, ses objectifs, ainsi que ses conditions de réalisation et ses particularités"
       },
