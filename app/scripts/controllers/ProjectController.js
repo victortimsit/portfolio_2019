@@ -194,8 +194,10 @@ class ProjectController
           if(_data.content[i][key] == 'video') 
           {
             img = document.createElement('video')
+            img.setAttribute('autoplay')
+            img.setAttribute('loop')
           } 
-          
+
           const p = document.createElement('p')
 
           p.classList.add('section__description')
