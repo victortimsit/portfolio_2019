@@ -1,7 +1,7 @@
 .contact {
   opacity: 0.01;
   transform: translateY(-200%);
-  transition: transform 300ms, opacity 300ms;
+  transition: transform 300ms, opacity 100ms;
   position: fixed;
   bottom: 50px;
   z-index: 100;
@@ -9,6 +9,10 @@
 .contact.active {
   opacity: 0.6;
   transform: translateY(0%);
+}
+.contact.perspective {
+  opacity: 0;
+  transition: transform 300ms, opacity 100ms;
 }
 @media screen and (max-width: $mobile) {
   .contact {

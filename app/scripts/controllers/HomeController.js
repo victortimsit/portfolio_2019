@@ -4,7 +4,8 @@ class HomeController
   {
     this.controller = 
     {
-      ScrollBar: new ScrollBar()
+      ScrollBar: new ScrollBar(),
+      AboutController: new AboutController()
     }
     
     new OpenedTransitions()

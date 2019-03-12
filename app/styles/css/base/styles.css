@@ -6,7 +6,9 @@ body {
   background-color: $background;
   padding: 50px 6vw;
   overflow-x: hidden;
-  transition: height 300ms;
+  overflow-y: auto;
+  transition: perspective 500ms;
+  perspective-origin: 0vw -50vh;
 }
 @media screen and (max-width: $mobile) {
   body {

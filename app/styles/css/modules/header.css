@@ -8,6 +8,7 @@ header {
 header li {
   margin-bottom: 6px;
   opacity: 0.6;
+  cursor: pointer;
 }
 header li.active {
   text-decoration: underline;
@@ -36,4 +37,12 @@ header.active {
 }
 .container.loading header li a {
   opacity: 0;
+}
+.container {
+  transition: transform 500ms ease;
+  position: relative;
+  z-index: 100;
+}
+.container.perspective {
+  transform: scale(0.8) translateY(0%);
 }

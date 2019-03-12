@@ -9,11 +9,18 @@ body
   background-color $background
   padding 50px 6vw
   overflow-x hidden
-  transition height 300ms
+  overflow-y auto
+  // transition height 300ms, perspective 500ms
+  transition perspective 500ms
+  perspective-origin 0vw -50vh
+  // perspective 800px
   // opacity 0
   @media screen and (max-width: $mobile)
     color $white
     // background-color black
+  &.perspective
+    // perspective 800px
+    // overflow hidden
 
 h1
   font-size 60px

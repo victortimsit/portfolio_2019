@@ -16,7 +16,8 @@
       <header class="active">
         <ul>
           <li class="active"><a class="external" href="/">Projects</a></li>
-          <li><a class="undeleted" href="/about">About</a></li>
+          <!-- <li><a class="undeleted about" href="/about">About</a></li> -->
+          <li class="about">About</li>
         </ul>
       </header>
       <div class="contact active">
@@ -113,12 +114,30 @@
     <div class="loader loading">
       <div class="loader__fill"></div>
     </div>
+    <div class="aboutContent">
+      <div class="aboutContent__close">
+        <div class="aboutContent__cross">
+          <div class="aboutContent__crossBar"></div>
+          <div class="aboutContent__crossBar"></div>
+        </div>
+        <div class="aboutContent__closeLabel">Close</div>
+      </div>
+      <div class="aboutContent__content">
+        <p>I’m Victor, student at HETIC school based in Paris, France. I am currently in my third year of study, i'm very passionate about web development, interface and graphic design.</p>
+        <div class="aboutContent__network">
+          <a href="">LinkedIn</a>
+          <a href="">GitHub</a>
+          <a href="">Download my resume</a>
+        </div>
+      </div>
+    </div>
     <!--build:js scripts/main.min.js -->
     <script src="scripts/Router.js"></script>
     <script src="scripts/modules/DOMLoader.js"></script>
     <script src="scripts/modules/ScrollBar.js"></script>
     <script src="scripts/modules/OpenedTransition.js"></script>
     <script src="scripts/controllers/HomeController.js"></script>
+    <script src="scripts/controllers/AboutController.js"></script>
     <script src="scripts/modules/Octagon.js"></script>
     <script src="scripts/script.js"></script>
 

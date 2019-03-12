@@ -4,13 +4,16 @@
   // transition opacity 300ms
   opacity 0.01
   transform translateY(-200%)
-  transition transform 300ms, opacity 300ms
+  transition transform 300ms, opacity 100ms
   position fixed
   bottom 50px
   z-index 100
   &.active
     opacity .6
     transform translateY(0%)
+  &.perspective
+    opacity 0
+    transition transform 300ms, opacity 100ms
 
   @media screen and (max-width: $mobile)
     width 100px

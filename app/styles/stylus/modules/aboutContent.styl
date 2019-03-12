@@ -1,0 +1,96 @@
+.aboutContent
+  height 100vh
+  width 100vw
+  position fixed
+  top 0
+  left 0
+  // opacity 0
+  visibility hidden
+  transition opacity 500ms, visibility 500ms, transform 500ms
+  z-index 200
+  background-color $background
+  transform translateY(100vh)
+
+  &__content
+    width 65vw
+    margin 0 auto
+    margin-top calc(50vh - 132px)
+    transform translateY(-50%) scale(.9)
+    opacity .8
+
+  p
+    font-family SemiBold
+    font-size 38px
+    line-height 1.6
+    margin-bottom 50px
+    transform translateY(100px) skewY(10deg)
+    transform-origin left
+    transition 1s transform 300ms
+
+  &.active
+    // opacity 1
+    visibility visible
+    transform translateY(0vh)
+
+  &__close
+      width 60px
+      margin-left 6vw
+      margin-top 50px
+      cursor pointer
+      display flex
+      flex-flow column
+      align-items center
+
+  &__cross
+    width 60px
+    height 60px
+    position relative
+
+  &__crossBar
+    width 3px
+    height 60px
+    position absolute
+    background-color $fonts
+    left 50%
+    top 50%
+    transition 500ms transform 250ms
+
+    &:nth-child(1)
+      transform translate(-50%, -50%) rotate(0deg)
+    &:nth-child(2)
+      transform translate(-50%, -50%) rotate(0deg)
+
+  &__closeLabel
+    text-align center
+    font-family SemiBold
+    font-size 16px
+
+  &__network
+    transform translateY(150px) scale(1.1) skewY(10deg)
+    transform-origin top left
+    transition 1s transform 300ms
+
+    a
+      margin-left 50px
+
+    a:nth-child(1)
+      margin-left 0
+      text-decoration underline
+
+    a:nth-child(2)
+      text-decoration underline
+
+  &.active p
+    transform translateY(0px) skewY(0deg)
+
+  &.active .aboutContent__network
+    transform translateY(0px) scale(1.1) skewY(0deg)
+
+  &.active .aboutContent__crossBar:nth-child(1)
+    transform translate(-50%, -50%) rotate(45deg)
+
+  &.active .aboutContent__crossBar:nth-child(2)
+    transform translate(-50%, -50%) rotate(-45deg)
+
+
+

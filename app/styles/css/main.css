@@ -248,7 +248,9 @@ body {
   background-color: #001c20;
   padding: 50px 6vw;
   overflow-x: hidden;
-  transition: height 300ms;
+  overflow-y: auto;
+  transition: perspective 500ms;
+  perspective-origin: 0vw -50vh;
 }
 @media screen and (max-width: 800px) {
   body {
@@ -309,6 +311,7 @@ h3 {
   flex-direction: column;
   justify-content: space-between;
   z-index: 20;
+  transition: opacity 1s;
 }
 @media screen and (max-width: 800px) {
   .leftSide {
@@ -320,6 +323,10 @@ h3 {
     padding: 0 6vw;
     z-index: 10;
   }
+}
+.leftSide.perspective {
+  opacity: 0;
+  transition: opacity 100ms;
 }
 .openedProject .leftSide {
   height: auto;
@@ -596,6 +603,7 @@ header {
 header li {
   margin-bottom: 6px;
   opacity: 0.6;
+  cursor: pointer;
 }
 header li.active {
   text-decoration: underline;
@@ -624,6 +632,14 @@ header.active {
 }
 .container.loading header li a {
   opacity: 0;
+}
+.container {
+  transition: transform 500ms ease;
+  position: relative;
+  z-index: 100;
+}
+.container.perspective {
+  transform: scale(0.8) translateY(0%);
 }
 .projectsTitles {
   flex: 1;
@@ -714,7 +730,7 @@ header.active {
 .contact {
   opacity: 0.01;
   transform: translateY(-200%);
-  transition: transform 300ms, opacity 300ms;
+  transition: transform 300ms, opacity 100ms;
   position: fixed;
   bottom: 50px;
   z-index: 100;
@@ -722,6 +738,10 @@ header.active {
 .contact.active {
   opacity: 0.6;
   transform: translateY(0%);
+}
+.contact.perspective {
+  opacity: 0;
+  transition: transform 300ms, opacity 100ms;
 }
 @media screen and (max-width: 800px) {
   .contact {
@@ -1246,4 +1266,97 @@ header,
   left: 0;
   pointer-events: none;
   background: linear-gradient(180deg, #001c20 0%, rgba(0,28,32,0) 100%);
+}
+.aboutContent {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  transition: opacity 500ms, visibility 500ms, transform 500ms;
+  z-index: 200;
+  background-color: #001c20;
+  transform: translateY(100vh);
+}
+.aboutContent__content {
+  width: 65vw;
+  margin: 0 auto;
+  margin-top: calc(50vh - 132px);
+  transform: translateY(-50%) scale(0.9);
+  opacity: 0.8;
+}
+.aboutContent p {
+  font-family: SemiBold;
+  font-size: 38px;
+  line-height: 1.6;
+  margin-bottom: 50px;
+  transform: translateY(100px) skewY(10deg);
+  transform-origin: left;
+  transition: 1s transform 300ms;
+}
+.aboutContent.active {
+  visibility: visible;
+  transform: translateY(0vh);
+}
+.aboutContent__close {
+  width: 60px;
+  margin-left: 6vw;
+  margin-top: 50px;
+  cursor: pointer;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.aboutContent__cross {
+  width: 60px;
+  height: 60px;
+  position: relative;
+}
+.aboutContent__crossBar {
+  width: 3px;
+  height: 60px;
+  position: absolute;
+  background-color: #749ea3;
+  left: 50%;
+  top: 50%;
+  transition: 500ms transform 250ms;
+}
+.aboutContent__crossBar:nth-child(1) {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+.aboutContent__crossBar:nth-child(2) {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+.aboutContent__closeLabel {
+  text-align: center;
+  font-family: SemiBold;
+  font-size: 16px;
+}
+.aboutContent__network {
+  transform: translateY(150px) scale(1.1) skewY(10deg);
+  transform-origin: top left;
+  transition: 1s transform 300ms;
+}
+.aboutContent__network a {
+  margin-left: 50px;
+}
+.aboutContent__network a:nth-child(1) {
+  margin-left: 0;
+  text-decoration: underline;
+}
+.aboutContent__network a:nth-child(2) {
+  text-decoration: underline;
+}
+.aboutContent.active p {
+  transform: translateY(0px) skewY(0deg);
+}
+.aboutContent.active .aboutContent__network {
+  transform: translateY(0px) scale(1.1) skewY(0deg);
+}
+.aboutContent.active .aboutContent__crossBar:nth-child(1) {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.aboutContent.active .aboutContent__crossBar:nth-child(2) {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }

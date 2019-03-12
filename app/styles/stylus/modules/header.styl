@@ -7,6 +7,7 @@ header
   li
     margin-bottom 6px
     opacity .6
+    cursor pointer
 
     &.active
       text-decoration underline
@@ -36,3 +37,11 @@ header
       background-color $loadingDOM
       a
         opacity 0
+
+.container
+  transition transform 500ms ease
+  position relative 
+  z-index 100
+
+.container.perspective
+  transform scale(.8) translateY(0%)

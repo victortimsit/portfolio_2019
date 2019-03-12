@@ -1,0 +1,93 @@
+.aboutContent {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  transition: opacity 500ms, visibility 500ms, transform 500ms;
+  z-index: 200;
+  background-color: $background;
+  transform: translateY(100vh);
+}
+.aboutContent__content {
+  width: 65vw;
+  margin: 0 auto;
+  margin-top: calc(50vh - 132px);
+  transform: translateY(-50%) scale(0.9);
+  opacity: 0.8;
+}
+.aboutContent p {
+  font-family: SemiBold;
+  font-size: 38px;
+  line-height: 1.6;
+  margin-bottom: 50px;
+  transform: translateY(100px) skewY(10deg);
+  transform-origin: left;
+  transition: 1s transform 300ms;
+}
+.aboutContent.active {
+  visibility: visible;
+  transform: translateY(0vh);
+}
+.aboutContent__close {
+  width: 60px;
+  margin-left: 6vw;
+  margin-top: 50px;
+  cursor: pointer;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.aboutContent__cross {
+  width: 60px;
+  height: 60px;
+  position: relative;
+}
+.aboutContent__crossBar {
+  width: 3px;
+  height: 60px;
+  position: absolute;
+  background-color: $fonts;
+  left: 50%;
+  top: 50%;
+  transition: 500ms transform 250ms;
+}
+.aboutContent__crossBar:nth-child(1) {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+.aboutContent__crossBar:nth-child(2) {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+.aboutContent__closeLabel {
+  text-align: center;
+  font-family: SemiBold;
+  font-size: 16px;
+}
+.aboutContent__network {
+  transform: translateY(150px) scale(1.1) skewY(10deg);
+  transform-origin: top left;
+  transition: 1s transform 300ms;
+}
+.aboutContent__network a {
+  margin-left: 50px;
+}
+.aboutContent__network a:nth-child(1) {
+  margin-left: 0;
+  text-decoration: underline;
+}
+.aboutContent__network a:nth-child(2) {
+  text-decoration: underline;
+}
+.aboutContent.active p {
+  transform: translateY(0px) skewY(0deg);
+}
+.aboutContent.active .aboutContent__network {
+  transform: translateY(0px) scale(1.1) skewY(0deg);
+}
+.aboutContent.active .aboutContent__crossBar:nth-child(1) {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.aboutContent.active .aboutContent__crossBar:nth-child(2) {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
