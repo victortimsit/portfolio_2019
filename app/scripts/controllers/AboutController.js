@@ -23,7 +23,7 @@ class AboutController
 
   _listeners()
   {
-    this.$.container.addEventListener('click', (event) => { this._openAbout(event) })
+    this.$.about.addEventListener('click', (event) => { this._openAbout(event) })
     this.$.close.addEventListener('click', (event) => { this._closeAbout(event) })
   }
 

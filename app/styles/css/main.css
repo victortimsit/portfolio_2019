@@ -513,6 +513,7 @@ section {
   height: 60vw;
   width: 120px;
   font-family: 'Bold';
+  mix-blend-mode: difference;
 }
 .section--fixed {
   width: 65vw;
@@ -1277,14 +1278,29 @@ header,
   transition: opacity 500ms, visibility 500ms, transform 500ms;
   z-index: 200;
   background-color: #001c20;
+  background-color: #000d0f;
   transform: translateY(100vh);
+  overflow-y: scroll;
 }
 .aboutContent__content {
   width: 65vw;
   margin: 0 auto;
   margin-top: calc(50vh - 132px);
-  transform: translateY(-50%) scale(0.9);
+  margin-bottom: 100px;
+  transform: translateY(-50%);
   opacity: 0.8;
+}
+@media screen and (max-height: 580px), (max-width: 800px) {
+  .aboutContent__content {
+    margin-top: 0;
+    transform: translateY(0);
+  }
+}
+@media screen and (max-width: 800px) {
+  .aboutContent__content {
+    margin-top: 50px;
+    width: 88vw;
+  }
 }
 .aboutContent p {
   font-family: SemiBold;
@@ -1292,24 +1308,25 @@ header,
   line-height: 1.6;
   margin-bottom: 50px;
   transform: translateY(100px) skewY(10deg);
-  transform-origin: left;
-  transition: 1s transform 300ms;
+  transform-origin: center;
+  transition: 500ms transform 300ms;
 }
 .aboutContent.active {
   visibility: visible;
   transform: translateY(0vh);
 }
 .aboutContent__close {
-  width: 60px;
+  width: 45px;
   margin-left: 6vw;
   margin-top: 50px;
   cursor: pointer;
   display: flex;
   flex-flow: column;
   align-items: center;
+  opacity: 0.8;
 }
 .aboutContent__cross {
-  width: 60px;
+  width: 45px;
   height: 60px;
   position: relative;
 }
@@ -1320,7 +1337,7 @@ header,
   background-color: #749ea3;
   left: 50%;
   top: 50%;
-  transition: 500ms transform 250ms;
+  transition: 300ms transform 250ms;
 }
 .aboutContent__crossBar:nth-child(1) {
   transform: translate(-50%, -50%) rotate(0deg);
@@ -1336,7 +1353,8 @@ header,
 .aboutContent__network {
   transform: translateY(150px) scale(1.1) skewY(10deg);
   transform-origin: top left;
-  transition: 1s transform 300ms;
+  transition: 500ms transform 300ms;
+  display: flex;
 }
 .aboutContent__network a {
   margin-left: 50px;

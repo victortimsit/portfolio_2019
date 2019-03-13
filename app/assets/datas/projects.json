@@ -2,14 +2,14 @@
   "projects":
     [
       {
-        "category": "School",
-        "title": "Retro audio player",
+        "category": "Développement",
+        "title": "Ascora",
         "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/player.jpg",
-        "description": "Ceci est un paragraphe décrivant la nature du projet, ses enjeux, ses objectifs, ainsi que ses conditions de réalisation et ses particularités",
-        "role": ["Development"],
-        "contributors": ["Didier Bourdon", "Dieter Rams", "Raymound Lewis"],
-        "date": "February 2018",
-        "url": "https://google.fr",
+        "description": "Ascora est un cabinet de courtage d'assurances situé en région parisienne. Il nous été chargé de réaliser en binôme la totalité du développement de leur site web. ",
+        "role": ["Développment front et back"],
+        "contributors": ["Développé à l'agence Purée Maison"],
+        "date": "Juin à aout 2018",
+        "url": "https://www.ascora.com/",
         "content": 
         [
           ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/keyboardGame.jpg", "Ceci est la description de l'image"],
@@ -18,67 +18,90 @@
           ["img", "https://scontent-cdt1-1.xx.fbcdn.net/v/t31.0-8/17635219_1495189310501051_1583943578705654215_o.jpg?_nc_cat=103&_nc_ht=scontent-cdt1-1.xx&oh=1745aaa01f5a3cf6097a2bf93ea3eda3&oe=5CB664F7", "Paul le gros PD ISSOUUUU"],
           ["img", "https://picsum.photos/500", "Description numéro 4 de l'image"],
           ["img", "https://picsum.photos/600", "Description numéro 5 de l'image"],
-          ["p", "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme du texte."]
+          ["p", "Le développement du site web d'Ascora à été l'occasion de réaliser un site institutionnel, simple et efficace. Chacun des modules tel que les divers sliders ont été réaliser en Vanilla JavaScript, permettant une grande flexibilité dans le développement."]
         ]
       },
       {
-        "category": "Internship at Purée Maison",
-        "title": "La Montgolfière",
+        "category": "Développement",
+        "title": "Street Connection",
         "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/lamontgolfiere.jpg",
-        "description": "La Montgolfière est une salle de sport parisienne. Le site à été développé à l'agence Purée Maison dans le cadre d'un stage en tant que développeur front-end.",
+        "description": "Street connection est un web documentaire traitant de l'évolution de la culture urbaine réalisé en équipe dans le cadre d'une semaine de projet.",
         "role": ["Front-end development"],
-        "contributors": ["Gabriel Stick", "Julien Stephan"],
-        "date": "Juillet 2018",
-        "url": "https://lamontgolfiereclub.com/",
+        "contributors": ["Maud Rochel", "Nicolas Delattre", "Lucas Resh", "Gabriel Stik"],
+        "date": "Mai 2018",
+        "url": "https://street.gabrielstik.fr/",
         "content": 
         [
           ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/scroll.mp4", "Scroll animations"],
           ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/stickyButton.mp4", "Sticky button"],
           ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/skew.mp4", "Scroll skew effect"],
-          ["p", "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même."]
+          ["p", "Cette réalisation nous a permis de mettre en oeuvre notre créativité dans un contexte nouveau, le web documentaire. Cela a également été l'occasion d'experimenté tant dans le développement, que dans la réalisation de multiples éxperiences immersives."]
         ]
       },
       {
-        "category": "Internship at Purée Maison",
+        "category": "Développement",
         "title": "La Montgolfière",
         "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/player.jpg",
-        "description": "Ceci est un paragraphe décrivant la nature du projet, ses enjeux, ses objectifs, ainsi que ses conditions de réalisation et ses particularités"
+        "description": "La Montgolfière est un Social Club de 2000m² situé au coeur de Paris dédié au sport, à la culture et à toute forme de créativité. Il nous été chargé de réaliser en binôme le développement de leur site web. ",
+        "date": "Juin à aout 2018",
+        "url": "https://lamontgolfiereclub.com/",
+        "contributors": ["Développé à l'agence Purée Maison"],
+        "content": 
+        [
+          ["p", "Le développement de la Montgolfière a permis une familliarisation avec la librairie d'animation Green Sock en réalisant  de nombreuses effets et animations."]
+        ]
       },
       {
-        "category": "Agency",
-        "title": "Project number four",
+        "category": "Développement",
+        "title": "Melody Maker",
         "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/keyboardGame.jpg",
-        "description": "Ceci est un paragraphe décrivant la nature du projet, ses enjeux, ses objectifs, ainsi que ses conditions de réalisation et ses particularités"
+        "description": "Melody Maker est une éxperience musicale fonctionnant sur le tracking de couleurs : scannez un objet d'une couleur distinctive et jouez de la musique avec !",
+        "date": "Janvier à Mars 2018",
+        "url": "http://melodymaker.xyz",
+        "contributors": ["Milan Roustan"],
+        "content": 
+        [
+          ["p", "Le développement de Melody Maker a été un très gros challenge : réaliser un outil de tracking de couleur efficace de A à Z en JavaScript. De nombreuses difficulitées on été rencontré, notamment des soucis de performances nous contraignant à beaucoup d'optimisations."]
+        ]
       },
       {
-        "category": "School",
-        "title": "Project number five",
+        "category": "Développement et design",
+        "title": "uGarden",
         "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/lamontgolfiere.jpg",
-        "description": "Ceci est un paragraphe décrivant la nature du projet, ses enjeux, ses objectifs, ainsi que ses conditions de réalisation et ses particularités"
+        "description": "uGarden est une plateforme communautaire de référencement et de proposition de création de jardins collaboratifs en milieu urbain. Publiez un lieu et voyez le nombres d'intéressé à la création d'un jardin.",
+        "date": "Novembre 2018",
+        "url": "https://ugarden.edhbr.fr",
+        "contributors": ["Edouard Haberer", "Milan Roustan", "Paul Goutry"],
+        "content": 
+        [
+          ["p", "Dans le cadre de la deadline courte de ce projet, le choix d'une charte graphique simple a été fait. Le développement front a quant à lui été l'occasion d'un premier contact avec le framework Vue.js."]
+        ]
       },
       {
-        "category": "Agency",
-        "title": "Project number six",
+        "category": "Développement et design",
+        "title": "WWF donations",
         "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/player.jpg",
-        "description": "Ceci est un paragraphe décrivant la nature du projet, ses enjeux, ses objectifs, ainsi que ses conditions de réalisation et ses particularités"
+        "description": "WWF donations est un concept d'application de donations. Réalisez des achats dans les super-marchés et autres commercant partenaire, récoltés des points en scannant votre identifiant en caisse (ou en renseignant votre identifiant directement sur le site marchand) puis une fois suffisement de point récoltés, distribuez les aux causes de votre choix.",
+        "date": "Décembre 2018",
+        "url": "https://lamontgolfiereclub.com/",
+        "contributors": ["Pauline Aperghis, Xavier Dersy, Mathieu Parisot, Lucas Valette"],
+        "content": 
+        [
+          ["p", "La création de WWF donations à été le fruit de mûres réfléctions sur les fonctionnements actuels de dons, ces enjeux, ces limites, comment réinventer et réangager le don ? Le développement du prototype à permis de concrétiser et de tester le bon fonctionnement d'un tel système de donation."]
+        ]
       },
       {
-        "category": "Agency",
-        "title": "Project number seven",
+        "category": "Développment et design",
+        "title": "Jumbo",
         "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/keyboardGame.jpg",
-        "description": "Ceci est un paragraphe décrivant la nature du projet, ses enjeux, ses objectifs, ainsi que ses conditions de réalisation et ses particularités"
+        "description": "Jumbo est né d'une réflection simple : comment réechanter la lecture auprès d'un public atteint de trouble de la concentration ? ",
+        "date": "Septembre 2018",
+        "url": "https://lamontgolfiereclub.com/",
+        "contributors": ["Dylan Leonard, Thomas Draulette, Jayminbhai Pattel, Paul Lamy"],
+        "content": 
+        [
+          ["p", "Les perspective de Jumbo ? Proposer une bibliothèque complète d'oeuvre : la mise en place d'une oeuvre au format Jumbo est simple, copier/coller, Jumbo s'occupe du découpage ! Suivi d'avancement : reprenner votre lecture où vous l'avez arêté. Suivre ses progrès : combien de livre ai-je lu, quel sont mes vitesses de lecture ? "]
+        ]
       },
-      {
-        "category": "School",
-        "title": "Project number eight",
-        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/lamontgolfiere.jpg",
-        "description": "Ceci est un paragraphe décrivant la nature du projet, ses enjeux, ses objectifs, ainsi que ses conditions de réalisation et ses particularités"
-      },
-      {
-        "category": "Agency",
-        "title": "Project number nine",
-        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/player.jpg",
-        "description": "Ceci est un paragraphe décrivant la nature du projet, ses enjeux, ses objectifs, ainsi que ses conditions de réalisation et ses particularités"
-      }
     ]
 }
