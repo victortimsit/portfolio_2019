@@ -37,7 +37,6 @@ section {
   height: 60vw;
   width: 120px;
   font-family: 'Bold';
-  mix-blend-mode: difference;
 }
 .section--fixed {
   width: 65vw;
