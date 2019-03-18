@@ -12,10 +12,10 @@
         "url": "https://www.ascora.com/",
         "content": 
         [
-          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/video/projects/ascora/ascora_dropdown.mp4", "Menu déroulant"],
-          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/video/projects/ascora/ascora_canvasSlider.mp4", "Canvas slider"],
-          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/video/projects/ascora/ascora_scroll.mp4", "Animation d'intersection au scroll"],
-          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/video/projects/ascora/ascora_slider.mp4", "Javascript slider"],
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/video/projects/ascora/ascora_dropdown.mp4", "Menu déroulant"],
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/video/projects/ascora/ascora_canvasSlider.mp4", "Canvas slider"],
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/video/projects/ascora/ascora_scroll.mp4", "Animation d'intersection au scroll"],
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/video/projects/ascora/ascora_slider.mp4", "Javascript slider"],
           ["p", "Le développement du site web d'Ascora à été l'occasion de réaliser un site institutionnel, simple et efficace. Chacun des modules tel que les divers sliders ont été réaliser en Vanilla JavaScript, permettant une grande flexibilité dans le développement."]
         ]
       },
@@ -101,11 +101,11 @@
         "contributors": ["Dylan Leonard, Thomas Draulette, Jayminbhai Pattel, Paul Lamy"],
         "content": 
         [
-          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/video/projects/jumbo/jumboCréation.mp4", "Jumbo ? quoi ?"],
-          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/video/projects/jumbo/jumboDemo-1.mp4", "Mise en avant de mots clefs"],
-          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/video/projects/jumbo/jumboDemo-2.mp4", "Bulle qui gonfle relativement à l'avancé du chapitre"],
-          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/video/projects/jumbo/jumboAptique.mp4", "Vibrations stimulante"],
-          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/video/projects/jumbo/jumboEnd.mp4", "Lire n'a jamais été aussi simple."],
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/video/projects/jumbo/jumboCréation.mp4", "Jumbo ? quoi ?"],
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/video/projects/jumbo/jumboDemo-1.mp4", "Mise en avant de mots clefs"],
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/video/projects/jumbo/jumboDemo-2.mp4", "Bulle qui gonfle relativement à l'avancé du chapitre"],
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/video/projects/jumbo/jumboAptique.mp4", "Vibrations stimulante"],
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/video/projects/jumbo/jumboEnd.mp4", "Lire n'a jamais été aussi simple."],
           ["p", "Les perspective de Jumbo ? Proposer une bibliothèque complète d'oeuvre : la mise en place d'une oeuvre au format Jumbo est simple, copier/coller, Jumbo s'occupe du découpage ! Suivi d'avancement : reprenner votre lecture où vous l'avez arêté. Suivre ses progrès : combien de livre ai-je lu, quel sont mes vitesses de lecture ? "]
         ]
       }
