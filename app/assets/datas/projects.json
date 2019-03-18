@@ -12,12 +12,10 @@
         "url": "https://www.ascora.com/",
         "content": 
         [
-          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/keyboardGame.jpg", "Ceci est la description de l'image"],
-          ["img", "https://picsum.photos/800", "Description numéro 2 de l'image"],
-          ["img", "https://picsum.photos/1000", "Description numéro 3 de l'image"],
-          ["img", "https://scontent-cdt1-1.xx.fbcdn.net/v/t31.0-8/17635219_1495189310501051_1583943578705654215_o.jpg?_nc_cat=103&_nc_ht=scontent-cdt1-1.xx&oh=1745aaa01f5a3cf6097a2bf93ea3eda3&oe=5CB664F7", "Paul le gros PD ISSOUUUU"],
-          ["img", "https://picsum.photos/500", "Description numéro 4 de l'image"],
-          ["img", "https://picsum.photos/600", "Description numéro 5 de l'image"],
+          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/ascora/ascora_dropdown.mp4", "Menu déroulant"],
+          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/ascora/ascora_canvasSlider.mp4", "Canvas slider"],
+          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/ascora/ascora_scroll.mp4", "Animation d'intersection au scroll"],
+          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/ascora/ascora_slider.mp4", "Javascript slider"],
           ["p", "Le développement du site web d'Ascora à été l'occasion de réaliser un site institutionnel, simple et efficace. Chacun des modules tel que les divers sliders ont été réaliser en Vanilla JavaScript, permettant une grande flexibilité dans le développement."]
         ]
       },
@@ -32,9 +30,9 @@
         "url": "https://street.gabrielstik.fr/",
         "content": 
         [
-          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/scroll.mp4", "Scroll animations"],
-          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/stickyButton.mp4", "Sticky button"],
-          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/skew.mp4", "Scroll skew effect"],
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/streetConnection/streetconnection_discover.mp4", "Map monde interactive"],
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/streetConnection/streetconnection_graf.mp4", "Simulation de graffiti"],
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/streetConnection/streetconnection_parallax.mp4", "Effet parallax"],
           ["p", "Cette réalisation nous a permis de mettre en oeuvre notre créativité dans un contexte nouveau, le web documentaire. Cela a également été l'occasion d'experimenté tant dans le développement, que dans la réalisation de multiples éxperiences immersives."]
         ]
       },
@@ -48,6 +46,9 @@
         "contributors": ["Développé à l'agence Purée Maison"],
         "content": 
         [
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/laMontgolfiere/laMontgolfiere_sticky.mp4", "Sticky bouton"],
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/laMontgolfiere/laMontgolfiere_scroll.mp4", "Animations au scroll"],
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/laMontgolfiere/laMontgolfiere_skew.mp4", "Skew scroll effet"],
           ["p", "Le développement de la Montgolfière a permis une familliarisation avec la librairie d'animation Green Sock en réalisant  de nombreuses effets et animations."]
         ]
       },
@@ -100,8 +101,13 @@
         "contributors": ["Dylan Leonard, Thomas Draulette, Jayminbhai Pattel, Paul Lamy"],
         "content": 
         [
+          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/jumbo/jumboCréation.mp4", "Jumbo ? quoi ?"],
+          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/jumbo/jumboDemo-1.mp4", "Mise en avant de mots clefs"],
+          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/jumbo/jumboDemo-2.mp4", "Bulle qui gonfle relativement à l'avancé du chapitre"],
+          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/jumbo/jumboAptique.mp4", "Vibrations stimulante"],
+          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/jumbo/jumboEnd.mp4", "Lire n'a jamais été aussi simple."],
           ["p", "Les perspective de Jumbo ? Proposer une bibliothèque complète d'oeuvre : la mise en place d'une oeuvre au format Jumbo est simple, copier/coller, Jumbo s'occupe du découpage ! Suivi d'avancement : reprenner votre lecture où vous l'avez arêté. Suivre ses progrès : combien de livre ai-je lu, quel sont mes vitesses de lecture ? "]
         ]
-      },
+      }
     ]
 }
