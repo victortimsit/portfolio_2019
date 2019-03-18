@@ -4,7 +4,7 @@
       {
         "category": "Développement",
         "title": "Ascora",
-        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/player.jpg",
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projectsThumbs/ascora-thumb.jpg",
         "description": "Ascora est un cabinet de courtage d'assurances situé en région parisienne. Il nous été chargé de réaliser en binôme la totalité du développement de leur site web. ",
         "role": ["Développment front et back"],
         "contributors": ["Développé à l'agence Purée Maison"],
@@ -22,7 +22,7 @@
       {
         "category": "Développement",
         "title": "Street Connection",
-        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/lamontgolfiere.jpg",
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projectsThumbs/streetConnection-thumb.jpg",
         "description": "Street connection est un web documentaire traitant de l'évolution de la culture urbaine réalisé en équipe dans le cadre d'une semaine de projet.",
         "role": ["Front-end development"],
         "contributors": ["Maud Rochel", "Nicolas Delattre", "Lucas Resh", "Gabriel Stik"],
@@ -39,7 +39,7 @@
       {
         "category": "Développement",
         "title": "La Montgolfière",
-        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/player.jpg",
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projectsThumbs/laMontgolfiere-thumb.jpg",
         "description": "La Montgolfière est un Social Club de 2000m² situé au coeur de Paris dédié au sport, à la culture et à toute forme de créativité. Il nous été chargé de réaliser en binôme le développement de leur site web. ",
         "date": "Juin à aout 2018",
         "url": "https://lamontgolfiereclub.com/",
@@ -94,7 +94,7 @@
       {
         "category": "Développment et design",
         "title": "Jumbo",
-        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/keyboardGame.jpg",
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projectsThumbs/jumbo-thumbs.jpg",
         "description": "Jumbo est né d'une réflection simple : comment réechanter la lecture auprès d'un public atteint de trouble de la concentration ? ",
         "date": "Septembre 2018",
         "url": "https://lamontgolfiereclub.com/",
