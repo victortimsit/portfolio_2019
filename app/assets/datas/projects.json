@@ -5,7 +5,7 @@
         "category": "Développement",
         "title": "Ascora",
         "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projectsThumbs/ascora-thumb.jpg",
-        "description": "Ascora est un cabinet de courtage d'assurances situé en région parisienne. Il nous été chargé de réaliser en binôme la totalité du développement de leur site web. ",
+        "description": "Ascora est un cabinet de courtage d'assurances situé en région parisienne. Il nous a été chargé de réaliser en binôme le développement de ce site web. ",
         "role": ["Développment front et back"],
         "contributors": ["Développé à l'agence Purée Maison"],
         "date": "Juin à aout 2018",
@@ -16,7 +16,7 @@
           ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/ascora/ascora_canvasSlider.mp4", "Canvas slider"],
           ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/ascora/ascora_scroll.mp4", "Animation d'intersection au scroll"],
           ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/ascora/ascora_slider.mp4", "Javascript slider"],
-          ["p", "Le développement du site web d'Ascora à été l'occasion de réaliser un site institutionnel, simple et efficace. Chacun des modules tel que les divers sliders ont été réaliser en Vanilla JavaScript, permettant une grande flexibilité dans le développement."]
+          ["p", "Le développement du site web d'Ascora a été l'occasion de réaliser un site institutionnel, simple et efficace. Chacun des modules tel que les divers sliders ont été réalisés en Vanilla JavaScript, permettant une grande flexibilité dans le développement."]
         ]
       },
       {
@@ -88,7 +88,7 @@
         "contributors": ["Pauline Aperghis, Xavier Dersy, Mathieu Parisot, Lucas Valette"],
         "content": 
         [
-          ["p", "La création de WWF donations à été le fruit de mûres réfléctions sur les fonctionnements actuels de dons, ces enjeux, ces limites, comment réinventer et réangager le don ? Le développement du prototype à permis de concrétiser et de tester le bon fonctionnement d'un tel système de donation."]
+          ["p", "La création de WWF donations a été le fruit de mûres réfléctions sur les fonctionnements actuels de dons, ces enjeux, ces limites, comment réinventer et réangager le don ? Le développement du prototype à permis de concrétiser et de tester le bon fonctionnement d'un tel système de donation."]
         ]
       },
       {
