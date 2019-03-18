@@ -28,6 +28,7 @@ footer a {
 }
 .other__project {
   width: auto;
+  flex: 1;
   margin: 0 10px;
   transition: transform 400ms ease;
 }
