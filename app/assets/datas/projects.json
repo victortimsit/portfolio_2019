@@ -95,6 +95,8 @@
         "contributors": ["Pauline Aperghis, Xavier Dersy, Mathieu Parisot, Lucas Valette"],
         "content": 
         [
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/wwfDonation/wwfDonation-distribute.mp4", "Distribuez vos points"],
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/wwfDonation/wwfDonation-donate.mp4", "D'un simple glissement de doigt"],
           ["p", "La création de WWF donations a été le fruit de mûres réfléctions sur les fonctionnements actuels de dons, ces enjeux, ces limites, comment réinventer et réangager le don ? Le développement du prototype à permis de concrétiser et de tester le bon fonctionnement d'un tel système de donation."]
         ]
       },
