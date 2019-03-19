@@ -13,7 +13,18 @@
   text-align: right;
   overflow-y: hidden;
   position: relative;
+  transform: scale(3);
   flex: 1;
+}
+@media screen and (max-width: 1200px) {
+  .projectsTitles__tab {
+    transform: scale(2) translateX(4vw);
+  }
+}
+@media screen and (max-width: $mobile) {
+  .projectsTitles__tab {
+    transform: scale(1);
+  }
 }
 .projectsTitles li {
   margin: 10px 0;
