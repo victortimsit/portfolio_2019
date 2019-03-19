@@ -66,7 +66,7 @@
           ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/melodyMaker/melodyMaker-calibrate.mp4", "Calibrer la couleur"],
           ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/melodyMaker/melodyMaker-recording.mp4", "Jouez et enregistrez"],
           ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/melodyMaker/melodyMaker-play.mp4", "Composez !"],
-          ["p", "Le développement de Melody Maker a été un très gros challenge : réaliser un outil de tracking de couleur efficace de A à Z en JavaScript. De nombreuses difficulitées on été rencontré, notamment des soucis de performances nous contraignant à beaucoup d'optimisations."]
+          ["p", "Le développement de Melody Maker a été un très gros challenge : réaliser un outil de tracking de couleur efficace de A à Z en JavaScript. De nombreuses difficultés on été rencontré, notamment des soucis de performances nous contraignant à beaucoup d'optimisations."]
         ]
       },
       {
