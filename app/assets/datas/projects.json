@@ -79,9 +79,9 @@
         "contributors": ["Edouard Haberer", "Milan Roustan", "Paul Goutry"],
         "content": 
         [
-          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/uGarden/uGarden-1-min.png"],
-          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/uGarden/uGarden-2-min.png"],
-          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/uGarden/uGarden-3-min.png"],
+          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/uGarden/uGarden-1-min.png", "Page d'accueil"],
+          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/uGarden/uGarden-2-min.png", "Propositions en cours"],
+          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/uGarden/uGarden-3-min.png", "Fiche jardin ouvert"],
           ["p", "Dans le cadre de la deadline courte de ce projet, le choix d'une charte graphique simple a été fait. Le développement front a quant à lui été l'occasion d'un premier contact avec le framework Vue.js."]
         ]
       },
