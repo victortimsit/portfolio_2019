@@ -62,19 +62,26 @@
         "contributors": ["Milan Roustan"],
         "content": 
         [
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/melodyMaker/melodyMaker-colorPicker.mp4", "Pipetez une couleur"],
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/melodyMaker/melodyMaker-calibrate.mp4", "Calibrer la couleur"],
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/melodyMaker/melodyMaker-recording.mp4", "Jouez et enregistrez"],
+          ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/melodyMaker/melodyMaker-play.mp4", "Composez !"],
           ["p", "Le développement de Melody Maker a été un très gros challenge : réaliser un outil de tracking de couleur efficace de A à Z en JavaScript. De nombreuses difficulitées on été rencontré, notamment des soucis de performances nous contraignant à beaucoup d'optimisations."]
         ]
       },
       {
         "category": "Développement et design",
         "title": "uGarden",
-        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/lamontgolfiere.jpg",
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/uGarden-thumb.jpg",
         "description": "uGarden est une plateforme communautaire de référencement et de proposition de création de jardins collaboratifs en milieu urbain. Publiez un lieu et voyez le nombres d'intéressé à la création d'un jardin.",
         "date": "Novembre 2018",
         "url": "https://ugarden.edhbr.fr",
         "contributors": ["Edouard Haberer", "Milan Roustan", "Paul Goutry"],
         "content": 
         [
+          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/uGarden/uGarden-1-min.png"],
+          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/uGarden/uGarden-2-min.png"],
+          ["img", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projects/uGarden/uGarden-3-min.png"],
           ["p", "Dans le cadre de la deadline courte de ce projet, le choix d'une charte graphique simple a été fait. Le développement front a quant à lui été l'occasion d'un premier contact avec le framework Vue.js."]
         ]
       },
