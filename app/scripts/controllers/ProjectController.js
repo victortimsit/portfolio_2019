@@ -107,6 +107,7 @@ class ProjectController
       const button = document.createElement('a')
       button.innerText = "Live view"
       button.classList.add('button')
+      button.classList.add('external')
       button.setAttribute('href', _data.url)
       button.setAttribute('target', "_blank")
       this.$.description.appendChild(button)
