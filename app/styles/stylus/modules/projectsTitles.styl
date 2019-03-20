@@ -17,16 +17,24 @@
     text-align right
     overflow-y hidden
     position relative
-    transform scale(3)
+    font-size 40px
+    margin-left -6vw
+    // transform scale(3) translateX(-.8vw)
+    transform scale(1) translateX(0vw)
 
     flex 1
     @media screen and (max-width: 1200px)
-      transform scale(2) translateX(4vw)
+      transform scale(1) translateX(0vw)
+      font-size 24px
     @media screen and (max-width: $mobile)
       transform scale(1)
 
   li
     margin 10px 0
+    -webkit-text-stroke: .6px black
+    color $background
+    // color transparent
+    white-space nowrap
 
 .container.loading
   & .projectsTitles__list

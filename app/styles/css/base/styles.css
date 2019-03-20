@@ -10,22 +10,24 @@ body {
   transition: perspective 500ms;
   perspective-origin: 0vw -50vh;
 }
-@media screen and (max-width: $mobile) {
-  body {
-    color: $white;
-  }
-}
 h1 {
-  font-size: 60px;
+  font-size: 120px;
   font-family: Black;
   color: $fonts;
-  opacity: 0.9;
+  opacity: 1;
   -webkit-background-clip: text;
   background-attachment: fixed;
+  -webkit-text-stroke: 1px #000;
+  color: $background;
+}
+@media screen and (max-width: 1200px) {
+  h1 {
+    font-size: 80px;
+  }
 }
 @media screen and (max-width: $mobile) {
   h1 {
-    font-size: 40px;
+    font-size: 56px;
   }
 }
 h2 {

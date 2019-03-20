@@ -10,6 +10,9 @@ class ScrollProject
       radialGradient: document.querySelector('.background__gradient--radial'),
       description: document.querySelector('.description'),
       hero: document.querySelector('.hero'),
+      heroTitle: document.querySelector('.hero__title'),
+      heroImage: document.querySelector('.hero__img'),
+      heroCategory: document.querySelector('.hero__category'),
       footer: document.querySelector('footer'),
       // sections: document.querySelectorAll('section'),
       fixedSection: document.querySelector('.section--fixed'),
@@ -88,9 +91,9 @@ class ScrollProject
       radial: window.scrollY / (window.innerHeight * this.params.opacityRadial.scroll)
     }
     
-    this._scaleBackground(ratio.background)
+    // this._scaleBackground(ratio.background)
     this._scaleHero(ratio.hero)
-    this._opacityRadialGradient(ratio.radial)
+    // this._opacityRadialGradient(ratio.radial)
     this._translateDescription()
     if(this.$.fixedSection) this._stickySection()
     this._scrollIndicator()
@@ -144,10 +147,14 @@ class ScrollProject
   {
     const scaleSubstraction = (1 - this.params.scaleHero.ending) * _ratio
     let scaleRatio = 1 - scaleSubstraction
+    let imageScaleRatio = 1 + (scaleSubstraction * 20)
+    let translate = 1 + (scaleSubstraction * 20)
 
     if(scaleRatio <= this.params.scaleHero.ending) scaleRatio = this.params.scaleHero.ending
 
-    this.$.hero.style.transform = `scale(${scaleRatio}) translateY(${-window.scrollY * .5}px)`
+    this.$.heroTitle.style.transform = `scale(${scaleRatio}) translateY(${-window.scrollY * .5}px)`
+    this.$.heroImage.style.transform = `translateY(${-window.scrollY * 3}px)`
+    this.$.heroCategory.style.transform = `translateY(${-window.scrollY * 2}px)`
   }
 
   _opacityRadialGradient(_ratio)

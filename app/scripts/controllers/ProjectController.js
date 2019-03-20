@@ -12,6 +12,7 @@ class ProjectController
       footerGoHome: document.querySelector('footer a'),
       category: document.querySelector('.hero__category'),
       title: document.querySelector('.hero__title'),
+      image: document.querySelector('.hero__img'),
       backgroundImage: document.querySelector('.background__image img'),
       description: document.querySelector('.description'),
       descriptionParagraph: document.querySelector('.description__paragraph'),
@@ -97,7 +98,8 @@ class ProjectController
     // Set hero data
     this.$.category.innerText = _data.category
     this.$.title.innerText = _data.title
-    this.$.backgroundImage.src = _data.thumbnail
+    this.$.image.querySelector('img').src = _data.thumbnail
+    // this.$.backgroundImage.src = _data.thumbnail
     this.$.descriptionParagraph.innerText = _data.description
 
     this.$.title.style.backgroundImage = `url(${_data.thumbnail})` // Cette ligne fait tout capote ?????
@@ -195,8 +197,10 @@ class ProjectController
           if(_data.content[i][key] == 'video') 
           {
             img = document.createElement('video')
-            img.setAttribute('autoplay', '')
+            img.setAttribute('playsinline', '')
             img.setAttribute('loop', '')
+            img.setAttribute('muted', '')
+            img.setAttribute('autoplay', '')
           } 
 
           const p = document.createElement('p')

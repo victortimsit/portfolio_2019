@@ -41,7 +41,6 @@ header.active {
 .container {
   transition: transform 500ms ease;
   position: relative;
-  z-index: 100;
 }
 .container.perspective {
   transform: scale(0.8) translateY(0%);

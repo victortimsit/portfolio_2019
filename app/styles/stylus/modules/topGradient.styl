@@ -5,4 +5,7 @@
   top 0
   left 0
   pointer-events none
-  background linear-gradient(180deg, #001c20 0%, rgba(0,28,32,0) 100%)
+  // background linear-gradient(180deg, #F08080 0%, rgba(240, 128, 128, 0) 100%) // pink
+  z-index 90
+  @media screen and (max-width: $mobile)
+    background linear-gradient(180deg, $background 0%, $backgroundLinear 100%)

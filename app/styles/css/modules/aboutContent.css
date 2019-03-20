@@ -19,6 +19,7 @@
   margin-bottom: 100px;
   transform: translateY(-50%);
   opacity: 0.8;
+  color: $background;
 }
 @media screen and (max-height: 580px), (max-width: $mobile) {
   .aboutContent__content {
@@ -64,7 +65,7 @@
   width: 3px;
   height: 60px;
   position: absolute;
-  background-color: $fonts;
+  background-color: $background;
   left: 50%;
   top: 50%;
   transition: 300ms transform 250ms;

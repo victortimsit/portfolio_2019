@@ -55,7 +55,7 @@
       {
         "category": "Expérience musicale",
         "title": "Melody Maker",
-        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projectsThumbs/melodyMaker-thumb.png",
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projectsThumbs/melodyMaker-thumb.jpg",
         "description": "Melody Maker est une éxperience musicale fonctionnant sur le tracking de couleurs : scannez un objet d'une couleur distinctive et jouez de la musique avec !",
         "date": "Janvier à Mars 2018",
         "url": "https://melodymaker.xyz",
@@ -88,7 +88,7 @@
       {
         "category": "Réenchanter la donation",
         "title": "WWF donations",
-        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projectsThumbs/wwfDonation-thumb.png",
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projectsThumbs/wwfDonation-thumb.jpg",
         "description": "WWF donations est un concept d'application de donations. Réalisez des achats dans les super-marchés et autres commercant partenaire, récoltés des points en scannant votre identifiant en caisse (ou en renseignant votre identifiant directement sur le site marchand) puis une fois suffisement de point récoltés, distribuez les aux causes de votre choix.",
         "date": "Décembre 2018",
         "contributors": ["Pauline Aperghis, Xavier Dersy, Mathieu Parisot, Lucas Valette"],
@@ -102,7 +102,7 @@
       {
         "category": "Réenchanter la lecture",
         "title": "Jumbo",
-        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projectsThumbs/jumbo-thumb.png",
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projectsThumbs/jumbo-thumb.jpg",
         "description": "Jumbo est né d'une réflection simple : comment réechanter la lecture auprès d'un public atteint de trouble de la concentration ? ",
         "date": "Septembre 2018",
         "url": "https://lamontgolfiereclub.com/",
