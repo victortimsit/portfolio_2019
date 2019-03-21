@@ -121,9 +121,36 @@
         "title": "Empty room",
         "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projectsThumbs/emptyRoom-thumb.jpg",
         "description": "Empty room à été réaliser en découvrant la libraire Three.js. Aucun .obj, uniquement des BoxGeometry et du temps. Cela a également été l'occasion de travailler du sound design 3D. Les glitchs ont été réalisés en canvas.",
-        "role": ["Développeur"],
-        "date": "mars 2018",
+        "role": ["Développeur / créateur"],
+        "date": "Mars 2018",
         "url": "http://tiiim.fr/assets/projects/emptyRoom/app/index.html"
+      },
+      {
+        "category": "Jeu canvas",
+        "title": "Keyboard training",
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projectsThumbs/keyBoardTraining-thumb.jpg",
+        "description": "Vous pensez connaître votre clavier ? Prouvez le ! Keyboard training met vos compétences de vitesse de frappe à l'épreuve ! L'intégralité de ce jeu a été réalisé en canvas.",
+        "role": ["Développeur / créateur"],
+        "date": "Février 2018",
+        "url": "http://tiiim.fr/assets/projects/keyboardTrainer/index.html"
+      },
+      {
+        "category": "Player audio éxperience",
+        "title": "Retro player",
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projectsThumbs/retroPlayer-thumb.jpg",
+        "description": "Retro player est un player audio web réaliser en Javascript et CSS 3D. Écoutez, modifiez la vitesse de lecture, le volume, découvrez !",
+        "role": ["Développeur / créateur"],
+        "date": "Janvier 2018",
+        "url": "http://tiiim.fr/assets/projects/player/index.html"
+      },
+      {
+        "category": "CSS 3D éxperience",
+        "title": "CSS Speed Jump",
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projectsThumbs/jumpSpeed-thumb.jpg",
+        "description": "CSS Speed Jump est une éxperience web réalisé entièrement en CSS 3D. Le JavaScript est utilisé uniquement pour les intéractions. Êtes-vous prêt pour ce voyage interstellaire ?",
+        "role": ["Développeur / créateur"],
+        "date": "Novembre 2017",
+        "url": "http://tiiim.fr/assets/projects/cssSpeedJumpExperience/index.html"
       }
     ]
 }
