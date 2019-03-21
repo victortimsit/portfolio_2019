@@ -64,9 +64,9 @@ class Router
     this.$.links = document.querySelectorAll('a:not(.external):not(.undeleted)')
     this.$.undeletedLinks = document.querySelectorAll('.undeleted')
 
-    console.log('DISABLED LINKS')
-    console.log(this.$.links)
-    console.log(this.once)
+    // console.log('DISABLED LINKS')
+    // console.log(this.$.links)
+    // console.log(this.once)
 
     for(let i = 0; i < this.$.links.length; i++)
     {
@@ -94,7 +94,7 @@ class Router
   _handleLinks(_event, _link)
   {
     let once = true
-    console.log(_link)
+    // console.log(_link)
     _event.preventDefault()
 
     if(_link.dataset.index) this.openedProjectIndex = _link.dataset.index
@@ -103,7 +103,7 @@ class Router
 
     if(path === '/about' && once)
     {
-      console.log('craft ajax dom from path==about')
+      // console.log('craft ajax dom from path==about')
       if(once) this._craftAjaxDOM(path)
       once = false
     }
@@ -114,7 +114,7 @@ class Router
         if(once) 
         {
           this._craftAjaxDOM(path)
-          console.log('craft ajax dom from transition end & once == true')
+          // console.log('craft ajax dom from transition end & once == true')
         }
         
         once = false
@@ -127,18 +127,18 @@ class Router
   {
     const pathname = window.location.pathname
     let validSrc = false
-    console.log(pathname)
+    // console.log(pathname)
     for(let i = 0; i < this.params.validProjects.length; i++)
     {
       const src = '/' + this.params.validProjects[i]
 
-      console.log(src)
+      // console.log(src)
       if(src === pathname || pathname === '/about')
       {
         this.openedProjectIndex = i
 
         this._craftAjaxDOM(pathname)
-        console.log('craft ajax dom from check URL')
+        // console.log('craft ajax dom from check URL')
         validSrc = true
 
         break
@@ -147,7 +147,7 @@ class Router
     
     if(!validSrc) // if route go home
     {
-      console.log('GO HOME')
+      // console.log('GO HOME')
       // this._httpRequest()
       // this._craftAjaxDOM('/')
       this._craftProjectsDOM(_data)
@@ -182,15 +182,15 @@ class Router
     let fromPath = _path
 
     // Ajax request
-    console.log(_path)
+    // console.log(_path)
     for(let i = 0; i < this.params.validProjects.length; i++)
     {
       if(_path == '/' + this.params.validProjects[i]) { fromPath = '/project' }
     }
 
     // this._getPage('pages' + fromPath + '.html', 'body', 'body', _path)
-    console.log('GET PAGE')
-    console.log(fromPath)
+    // console.log('GET PAGE')
+    // console.log(fromPath)
     
     this._getPage('pages' + fromPath + '.html', 'body', '.view', _path)
 
@@ -211,7 +211,7 @@ class Router
 
   _getPage(_url, _from = "body", _to = "body", _path)
   {
-    console.log(_url)
+    // console.log(_url)
     let to = {}
 
     this._waitCursor()
@@ -244,7 +244,7 @@ class Router
       //   }
       // }
       // catchImages()
-      console.log(_path)
+      // console.log(_path)
       this._pushState(this.cached, _path)
       this._runController(_path)
     }
@@ -282,7 +282,7 @@ class Router
         // }
         // console.log('Launch catchImages')
         // catchImages()
-        console.log(_path)
+        // console.log(_path)
         this._pushState(this.cached, _path)
         this._runController(_path)
         // this._checkUrl()
@@ -414,7 +414,7 @@ class Router
 
   _removeLoader()
   {
-    console.log('remove loader')
+    // console.log('remove loader')
     this.$.content.classList.remove('loading')
     this.$.loader.classList.remove('loading')
 
@@ -426,7 +426,7 @@ class Router
     if(document.body.classList.contains('home')) 
     {
       this.controllers.home._updateScrollBar()
-      console.log('pushstate')
+      // console.log('pushstate')
       this._pushState({ DOM: DOM, title: documentTitle }, '/')
     } 
   }
@@ -460,6 +460,7 @@ class Router
         break
       case '/' + this.params.validProjects[this.openedProjectIndex]:
         this.controllers.project = new ProjectController(this.openedProjectIndex)
+        this.controllers.home.removeListeners()
         break
     }
   }
@@ -493,7 +494,7 @@ class Router
   {
     if(_state)
     {
-      console.log('cursor wait')
+      // console.log('cursor wait')
       document.body.style.cursor = 'wait'
   
       for(let i = 0; i < this.$.links.length; i++)
@@ -503,7 +504,7 @@ class Router
     }
     else
     {
-      console.log('cursor')
+      // console.log('cursor')
       document.body.style.cursor = 'auto'
   
       for(let i = 0; i < this.$.links.length; i++)

@@ -47,9 +47,6 @@ class ProjectController
 
   _listeners()
   {
-    // window.addEventListener('resize', () => { this._handleResize() })
-
-    console.log(this.$.links)
     for(let i = 0; i < this.$.links.length; i++)
     {
       this.$.links[i].addEventListener('click', () => { this._openProject(this.$.links[i]) })
@@ -86,7 +83,6 @@ class ProjectController
 
   _openProject(_project)
   {
-    console.log(_project)
     _project.style.transform = 'translateY(-50px)'
     setTimeout(() => {
       _project.style.transform = 'translateY(0px)'

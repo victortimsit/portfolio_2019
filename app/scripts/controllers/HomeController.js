@@ -2,6 +2,7 @@ class HomeController
 {
   constructor()
   {
+    
     this.controller = 
     {
       ScrollBar: new ScrollBar(),
@@ -18,5 +19,10 @@ class HomeController
     this.controller.ScrollBar._initParams()
     this.controller.ScrollBar._initStyles()
     this.controller.ScrollBar._handleScroll()
+  }
+
+  removeListeners()
+  {
+    this.controller.ScrollBar.removeListeners()
   }
 }

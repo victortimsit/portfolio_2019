@@ -147,14 +147,12 @@ class ScrollProject
   {
     const scaleSubstraction = (1 - this.params.scaleHero.ending) * _ratio
     let scaleRatio = 1 - scaleSubstraction
-    let imageScaleRatio = 1 + (scaleSubstraction * 20)
-    let translate = 1 + (scaleSubstraction * 20)
 
     if(scaleRatio <= this.params.scaleHero.ending) scaleRatio = this.params.scaleHero.ending
 
     this.$.heroTitle.style.transform = `scale(${scaleRatio}) translateY(${-window.scrollY * .5}px)`
-    this.$.heroImage.style.transform = `translateY(${-window.scrollY * 3}px)`
-    this.$.heroCategory.style.transform = `translateY(${-window.scrollY * 2}px)`
+    this.$.heroImage.style.transform = `translateY(${-window.scrollY * 1}px)`
+    this.$.heroCategory.style.transform = `translateY(${-window.scrollY * .8}px)`
   }
 
   _opacityRadialGradient(_ratio)

@@ -14,8 +14,10 @@ class ScrollBar
             projectsItems: document.querySelectorAll('.projectsPreviews__item'),
             projectsPreviews: document.querySelector('.projectsPreviews'),
             projectsPreviewsImage: document.querySelector('.projectsPreviews__image')
-            // about: document.querySelector('.about'),
         }
+
+        // Bind for removeEventListener
+        this._handleScroll = this._handleScroll.bind(this)
 
         this.parseWords = []    
 
@@ -58,7 +60,7 @@ class ScrollBar
 
     _listeners()
     {
-        window.addEventListener('scroll', () => { this._handleScroll() })
+        window.addEventListener('scroll', this._handleScroll )
         window.addEventListener('resize', () => { this._handleResize() })
     }
 
@@ -89,16 +91,13 @@ class ScrollBar
 		const diff = newPixel - this.params.currentPixel
 		
 		const speed = diff * 0.1
-		
-		// if(speed < 15 && speed > -15) this.testTitle.style.transform = `skewY(${-speed}deg)`
-        // if(speed < 15 && speed > -15) console.log(speed)
+
         if(speed < 15 && speed > -15) {
             for(let i = 0; i < this.$.projectsItems.length; i++)
             {
 
                 this.$.projectsItems[i].style.transform = `scaleY(${1 - speed / 50})`
             }
-            // this.$.projectsPreviews.style.transform = `translateZ(${-speed * 10}px)`
         }
 
 		this.params.currentPixel = newPixel
@@ -162,8 +161,6 @@ class ScrollBar
         this.params.currentPixel = window.scrollY
         this.params.tic = true
         this.params.oldIndex = 0
-
-        // console.log(this.params.documentScrollEnding)
     }
 
     _initSounds()
@@ -184,22 +181,8 @@ class ScrollBar
             this.$.items[i].style.transformOrigin = 'right'
         }
 
-        // Padding top projects previews
-        // const halfWindowHeight = window.innerHeight / 2
-        // const paddingTop = (halfWindowHeight - this.params.projectsPreviews.offsetTop) - (this.params.projectsPreviews.imageHeight  / 2)
-        // console.log(this.params.projectsPreviews.offsetTop)
-
-        // console.log(this.$.projectsPreviews)
-        // this.params.initialOffsetY = paddingTop
         this.$.projectsPreviews.style.paddingTop = `${this.params.initialOffsetY}px`
         this.$.projectsPreviews.style.paddingBottom = `${this.params.initialOffsetY}px`
-
-        // this.$.scrollbar.style.transition = 'opacity 3s ease'
-        // setTimeout(() => {
-            
-            // this.$.scrollbar.style.transform= 'translateY(0px)'
-            // this.$.scrollbar.style.opacity = '1'
-        // }, 200);
     }
 
     _craftScrollBarDOM()
@@ -220,12 +203,6 @@ class ScrollBar
 
     _handleScroll()
     {
-        // if(this.params.listHeight != this.$.list.offsetHeight + this.params.itemMarginTop * 2)
-        // {
-        //     this.params.listHeight = this.$.list.offsetHeight  + this.params.itemMarginTop * 2
-        //     this.params.tabScrollEnding = this.params.listHeight + this.params.initialOffset - this.params.visibleItemsHeight + this.params.initialOffset
-        // } 
-
         // Prendre en compte le initial offset top dans le documentScrollEnding
         const documentScrollEnding = this.params.documentScrollEnding + this.params.initialOffsetY
 
@@ -270,8 +247,7 @@ class ScrollBar
 
             this.params.oldIndex = currentWordIndex
         }
-        // console.log(this.params.documentScrollEnding)
-        // this.$.tab.style.transform = `translateY(${Math.round(scrollRatio)}px)`
+
         this.$.list.style.transform = `translateY(${this.params.initialOffset + Math.round(-tabScrollRatio)}px)`
 
         if(this.params.oldScrollY < window.scrollY - 10 && this.devices.mobile.status && window.scrollY >= 0)
@@ -287,5 +263,10 @@ class ScrollBar
 
         this.params.oldScrollY = window.scrollY
         this.params.deltaY = window.scrollY
+    }
+
+    removeListeners()
+    {
+        window.removeEventListener('scroll', this._handleScroll )
     }
 }

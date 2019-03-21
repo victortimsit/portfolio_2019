@@ -8,6 +8,7 @@ class OpenedTransitions
       projectPreviewsImage: document.querySelectorAll('.projectsPreviews__image img'),
       projectPreviewsContainer: document.querySelector('.projectsPreviews'),
       projectsTitles: document.querySelector('.projectsTitles'),
+      contact: document.querySelector('.contact'),
       radialBackground: document.querySelectorAll('.projectsPreviews .background__gradient--radial'),
       linearBackground: document.querySelectorAll('.projectsPreviews .background__gradient--linear')
     }
@@ -86,9 +87,15 @@ class OpenedTransitions
       // _currentPreview.style.position = 'fixed'
       this.$.projectsTitles.style.transition = 'opacity 150ms'
       this.$.projectsTitles.style.opacity = '0'
+      this.$.contact.style.opacity = '0'
+      this.$.contact.style.transition = 'opacity 150ms'
+
+      setTimeout(() => {
+        this.$.contact.style.transition = 'opacity 1s'
+        this.$.contact.style.opacity = '1'
+      }, 500);
       _currentPreview.style.zIndex = '10'
       _currentPreview.style.transform = `translate(${-translateXRatio}px, ${-translateYRatio + window.scrollY}px) scale(${scaleRatio})`
-      console.log('scale')
     }
 
     if(!_isResize)
