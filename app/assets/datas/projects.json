@@ -115,6 +115,15 @@
           ["video", "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/videos/projects/jumbo/jumboEnd.mp4", "Lire n'a jamais été aussi simple."],
           ["p", "Les perspectives de Jumbo ? Proposer une bibliothèque complète d'oeuvres : la mise en place d'une oeuvre au format Jumbo est simple, copier/coller, Jumbo s'occupe du découpage ! Suivi d'avancement : reprennez votre lecture où vous l'avez arêté. Suivre ses progrès : combien de livres ai-je lu, quelles sont mes vitesses de lecture ? "]
         ]
+      },
+      {
+        "category": "Three.js découverte",
+        "title": "Empty room",
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projectsThumbs/emptyRoom-thumb.jpg",
+        "description": "Empty room à été réaliser en découvrant la libraire Three.js. Aucun .obj, uniquement des BoxGeometry et du temps. Cela a également été l'occasion de travailler du sound design 3D. Les glitchs ont été réalisés en canvas.",
+        "role": ["Développeur"],
+        "date": "mars 2018",
+        "url": "http://tiiim.fr/assets/projects/emptyRoom/app/index.html"
       }
     ]
 }
