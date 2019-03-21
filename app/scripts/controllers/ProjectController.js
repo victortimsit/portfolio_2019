@@ -243,6 +243,7 @@ class ProjectController
     {
       const h2 = document.createElement('h2')
       const container = document.createElement('div')
+      let lastIndex = []
 
       h2.innerText = 'Other projects'
       container.classList.add('other')
@@ -251,15 +252,30 @@ class ProjectController
       {
         for(let i = 0; i < _projectNumber; i++)
         {
+          let projectIndex = Math.floor(Math.random() * _data.length)
+
+          for(let i = 0; i < lastIndex.length; i++) 
+          {
+            if(projectIndex == lastIndex[i]) 
+            {
+              while(projectIndex == lastIndex[i]) 
+              {
+                projectIndex = Math.floor(Math.random() * _data.length)
+              }
+            }
+          }
+
+          lastIndex.push(projectIndex)
+          
           const a = document.createElement('a')
           const div = document.createElement('div')
           const img = document.createElement('img')
   
-          img.src = _data[i].thumbnail
-          a.href = '/' + this._toCamelCase(_data[i].title)
+          img.src = _data[projectIndex].thumbnail
+          a.href = '/' + this._toCamelCase(_data[projectIndex].title)
 
           a.classList.add('other__project')
-          a.dataset.index = i
+          a.dataset.index = projectIndex
           div.classList.add('other__image')
   
           div.appendChild(img)
