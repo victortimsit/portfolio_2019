@@ -128,7 +128,7 @@
       {
         "category": "Jeu canvas",
         "title": "Keyboard training",
-        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projectsThumbs/keyBoardTraining-thumb.jpg",
+        "thumbnail": "https://raw.githubusercontent.com/vtimsit/portfolio_2019/master/app/assets/images/projectsThumbs/keyboardTraining-thumb.jpg",
         "description": "Vous pensez connaître votre clavier ? Prouvez le ! Keyboard training met vos compétences de vitesse de frappe à l'épreuve ! L'intégralité de ce jeu a été réalisé en canvas.",
         "role": ["Développeur / créateur"],
         "date": "Février 2018",
